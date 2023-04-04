@@ -4,8 +4,7 @@ Projeto IoT para o monitoramento de transformadores
 # Features 
 
 - Site institucional
-- Cadastro de clientes
-- Lorem ipsum 
+- Monitoramento ao vivo e remoto
 
 ## Ferramentas 
 
