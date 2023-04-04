@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="PT-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Pública</title>
+</head>
+
+<body style="font-family: sans-serif;">
+    <h1>Zenit Soluções</h1>
+    <h2>Calcule o <u>Prejuízo</u> que a Zenit pode evitar à você estado ou para você síndico</h2>
+    <div>
+        <div>
+            <h3>Caso o transformador foi de poste ou afeta uma área residencial/condomínio utilize esta calculadora!
+            </h3>
+            <br>
+            <p>Digite a quantidade de transformadores de poste que explodiram</p>
+            <input type="text" id="poste">
+            <br>
+            <p>Digite a quantidade de carros afetados(máximo 3 por transformador)</p>
+            <input type="text" id="carros">
+            <br>
+            <p>Digite a quantidade de pessoas afetadas</p>
+            <input type="text" id="feridos">
+            <button onclick="Calcular()">Calcular</button>
+            <br>
+            <div id="msg"></div>
+        </div>
+    </div>
+    <div>
+        <h3>Informações dos cálculos</h3>
+        <ul>
+            <li>
+                <p>Foi levado em consideração para o número de pessoas afetadas um caso onde a pessoa recebeu R$ 55000</p>
+            </li>
+            <li>
+                <p>Foi levado em consideração para o preço dos carros a tabela fipe de hatchs populares e chegado na méia de R$ 50000 para um hatch seminovo(menos de cem mil KM)</p>
+            </li>
+            <li>
+                <p>A quantidade de carros atingidos ao máximo foi feito baseado em parâmetros de um transformador de poste</p>
+            </li>
+            <li>
+                <p>O preço de R$ 30000 do transformador foi retirado da média de preços de transformadores trifásicos a óleo com até 112,5 KVA de potência nominal</p>
+            </li>
+        </ul>
+        <h3>Fontes</h3>
+        <ul>
+            <li>
+                <a href="https://www.eletricabsb.com.br/item/transformador-de-distribuicao-trifasico-a-oleo-1125-kva-138-kv380220-v-nucleo-de-aluminio">Preço transformadores</a>
+            </li>
+            <li>
+                <a href="https://stj.jusbrasil.com.br/noticias/100731/companhia-energetica-vai-indenizar-vitima-de-explosao-de-transformador">Vítima indenizada</a>
+            </li>
+
+        </ul>
+    </div>
+</body>
+
+</html>
+<script>
+    function Calcular() {
+        if (carros.value < 3) {
+
+            var preju = (50000 * carros.value) + (feridos.value * 55000) + (poste.value * 30000);
+            msg.innerHTML = `Podemos evitar cerca de R$ ${preju} em prejuízo`
+        }
+        if (carros.value > 3) {
+            alert(`O máximo de carros que um transformador de poste médio pode atingir é de 3`);
+        }
+    }
+
+</script>

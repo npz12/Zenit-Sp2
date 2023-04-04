@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+
+body {
+    margin: 0px;
+    padding: 0px;
+    padding-top: 0px;
+}
+
+/*Style Header*/
+.divHeader {
+    display: flex;
+    background-color: #5cabeb;
+    width: 100%;
+    height: 100px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    border-bottom: solid 3px #98bfdc;
+    font-family: 'Playfair Display';
+    font-weight: 800;
+}
+
+.divLogo {
+    display: flex;
+}
+
+.divCalGanhos{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1px;
+}
+
+
+.divPerfil {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1px;
+}
+
+#imgHeader{
+    display: flex;
+    width: 40px;
+}
+
+.divBarraPesquisa {
+    display: flex;
+    align-items: center;
+}
+
+#iptBarraPesquisa {
+    display: flex;
+    border-radius: 10px;
+    margin-left: 10px;
+    border: solid 3px #acdcfc;
+    text-align: left;
+
+}
+
+
+#imgHeaderLogo {
+    display: flex;
+    width: 40%;
+    height: 40%;
+    justify-content: center;
+    transform: 2s (1.4);
+
+}
+
+/*Animação header*/
+#liCalGanhos:hover {
+    text-decoration: underline;
+    transform: scale(1.1);
+}
+
+#liNossoProduto:hover {
+    text-decoration: underline;
+    transform: scale(1.1);
+
+}
+
+#liQuemSomos:hover {
+    text-decoration: underline;
+    transform: scale(1.1);
+
+}
+
+.divPerfil:hover {
+    text-decoration: underline;
+    transform: scale(1.1);
+}
+
+
+/*Style Modal*/
+.divModal {
+    width: 100%;
+    font-family: 'Playfair Display'
+}
+
+#imgLogo {
+    width: 100%;
+    border-bottom: solid 1px #5cabeb;
+}
+
+/*Style Modal 2*/
+
+.divModal2 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.divContainer {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    width: 80%;
+    justify-content: center;
+    gap: 50px;
+}
+
+#imgTransformador {
+    width: 30%;
+    align-items: center;
+
+
+}
+
+#h1AreaAtu {
+    margin: 0;
+    margin-top: 10px;
+    font-family: 'Playfair Display'
+}
+
+/*Style DivMiniContainer*/
+
+.divMiniContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border: solid 2px #acdcfc;
+    border-radius: 50px;
+    width: 30%;
+    height: 250px;
+    transition: 1s border;
+    transition: 0.5s background-color;
+    transition: 1s;
+    font-family: 'Playfair Display'
+}
+
+.divMiniContainer:hover {
+    border: solid 3px #5cabeb;
+    background-color: #acdcfca8;
+    transform: scale(1.1);
+}
+
+/*Style Footer*/
+.divFooter {
+    display: flex;
+    margin-top: 80px;
+    background-color: #5cabeb;
+    width: 100%;
+    height: 200px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-top: solid 3px #98bfdc;
+    font-family: 'Playfair Display'
+}
+
+.divColuna {
+    width: 20%;
+    border-left: solid 2px #acdcfc;
+    padding-left: 60px;
+    margin-right: 20px;
+}
+
+#imgFooterLogo {
+    width: 200px;
+    margin: 40px;
+}
