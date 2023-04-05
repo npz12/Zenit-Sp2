@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styleMain.css">
+    <link rel="stylesheet" href="../CSS/styleCadastro.css">
+    <title>Cadastro</title>
+</head>
+
+<body>
+    <div class="divHeader">
+        <div class="divLogo">
+            <img src="../imagens/logo-1.png" alt="Logo Zenit" id="imgHeaderLogo">
+        </div>
+        <h4 id="liCalGanhos">Calcular Ganhos</h4>
+        <h4 id="liNossoProduto">Nosso Produto</h4>
+        <h4 id="liQuemSomos">Quem Somos</h4>
+        <div class="divPerfil">
+            <img id="imgHeader"
+                src="../imagens/icon-user-transparente.png"
+                alt="">
+            <h4 id="liPerfil"><a href ='HTML/cadastro.html'>Perfil</a></h4>
+        </div>
+
+        <div class="divBarraPesquisa">
+            &#8981;
+            <input type="text" id="iptBarraPesquisa" placeholder="Buscar">
+        </div>
+    </div>
+        <div class="divTitulo">
+            <h1>Login    </h1>
+        </div>
+        <div class="divCadastro">
+                <h1 class="h1Titulo">SIGN-IN</h1>
+                <input type="email" placeholder="Email" id="iptEmail">
+                <input type="password" placeholder="Senha" id="iptSenha">
+                <button class="btnCadastro" onclick="cadastro()">Login</button>
+                <h3>Ainda não possui uma conta?</h3>
+                <a href="cadastro.html">SIGN-UP</a>
+
+        </div>
+</body>
+
+</html>
+<script>
+
+    function cadastro(){
+        var erro = false
+        var email = iptEmail.value;
+        var senha = iptSenha.value;
+
+        if (senha.length < 8 || senha ==''){
+            alert('A senha está muito curta')
+            erro = true
+        }
+        if (email == '' || email.indexOf('@') == -1){
+            alert('Insira um email válido')
+            erro = true
+        }
+        if(erro == false){
+            alert('Login realizado com sucesso!')
+        }
+    }
+</script>
