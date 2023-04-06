@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="PT-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zenit Soluções</title>
+</head>
+
+<body>
+    <header>
+        <!--Necessário indicar o caminho dos arquivos do header-->
+        <a class="link"  href=""><img src="images/logo.png" alt="Logotipo"></a>
+        <!--Necessário decidir se o botão calcular gannhos levará
+        a outra versão da calculadora ou fazer um botão a parte (Mais informações falar com o Gustavo!!)-->
+        <a class="link" href="CalculadorPub.html">
+            <img src="images/grafico.png" alt="Desenho de Gráfico">
+            <h5>Calcular gannhos</h5>
+        </a>
+        <a class="link" href="">
+            <img src="images/chat.png" alt="">
+            <h5>Quem Somos</h5></a>
+        <a class="link" href="">
+            <img src="images/profile.png" alt="">
+            <h5>Perfil</h5></a>
+        <div class="searchBar">
+            <img src="images/lupa.png" alt="Lupa para pesquisa">
+            <input type="text" id="iptSearch">
+            <img src="images/funil.png">
+        </div>
+        
+    </header>
+    <div>
+        <h3>Calculadora zenit para empresas</h3>
+        <div>
+            <div>
+                <p>Sua Empresa é grande (mais de 100 funcionários)?(s/n)</p>
+                <input id="empresaSize">
+            </div>
+            <div>
+                <p>Quantos transformádores trifásicos à óleo possúi? </p>
+                <input id="qntdTransf">
+            </div>
+            <div>
+                <p>Qual o faturamento mensal da sua empresa</p>
+                <input id="faturamento">
+            </div>
+            <button onclick="calcularEmp()">Calcular</button>
+            <div>
+                <p id="message"></p>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+<script>
+    function calcularEmp() {
+        // Divisão do faturamento por dia
+        var fatMensal = faturamento.value / 30
+        if (empresa_size.value === 's') {
+            var precoTrasnf = 50000;
+            var preju = (Number(precoTrasnf) * Number(qntdTransf.value)) + Number(fatMensal)
+            message.innerHTML = `<b> Podemos evitar até R$ ${preju.toFixed(2)} em percas caso ocorra alguma falha no transformador<b>`
+        } else if (empresa_size.value === 'n') {
+
+            var precoTransfor = 10000;
+            var preju = precoTransfor * Number(qntdTransf.value) + fatMensal
+            message.innerHTML = `<b> Podemos evitar até R$ ${preju.toFixed(2)} em percas caso ocorra alguma falha no transformador<b>`
+        }
+        else {
+            alert('Valor inválido no campo informando o tamanho da empresa')
+        }
+    }
+</script>

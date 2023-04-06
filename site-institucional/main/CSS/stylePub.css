@@ -1,0 +1,37 @@
+.main{
+    margin: 0;
+    padding: 0;
+    height: 10vh;
+}
+.infoFooter{
+    border-top: solid 3px #98bfdc;
+    margin-top: 15%;
+    background-color: #5cabeb;
+    display: flex;
+    justify-content: space-around;
+    padding: 2vh 2vw 0 2vw ;
+}
+.infoFooter div{
+    padding-left: 2vw;
+    padding-right: 2vw;
+    border-right: solid 1px black;
+}
+.footerContent{
+    display: flex;
+    justify-content: space-around;
+    border: none !important;
+}
+.footerFonts{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-bottom: 4vh;
+}
+.footerFonts a{
+    margin: auto;
+}
+.infoFooter img{
+    
+    width: 80%;
+    height: 25%;
+}
