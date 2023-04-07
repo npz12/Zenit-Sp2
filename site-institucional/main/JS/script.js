@@ -18,12 +18,7 @@ function enviar() {
     var senhaPreenchido = senha != '';
     var confirmarSenhaPreenchido = confirmarSenha != '';
 
-
-    var numeroNomeValido = !nome.includes('1') && !nome.includes('2') && !nome.includes('3') && !nome.includes('4') && !nome.includes('5') && !nome.includes('6') && !nome.includes('7') && !nome.includes('8') && !nome.includes('9') && !nome.includes('0');
-
     var caractereEspecialNomeValido = !nome.includes('!') && !nome.includes('@') && !nome.includes('#') && !nome.includes('$') && !nome.includes('%') && !nome.includes('&') && !nome.includes('*') && !nome.includes('(') && !nome.includes(')') && !nome.includes('-') && !nome.includes('+') && !nome.includes('=') && !nome.includes('/') && !nome.includes('.') && !nome.includes(',');
-
-    var tamanhoNomeValido = nome.length >= 3;
 
     var emailValido = email.includes('@') && email.includes('.');
 
@@ -45,7 +40,7 @@ function enviar() {
         iptEmail.style = 'border: 1px solid black;'
         iptSenha.style = 'border: 1px solid black;'
         iptConfirmarSenha.style = 'border: 1px solid black;'
-        if (tamanhoNomeValido && caractereEspecialNomeValido && numeroNomeValido && emailValido && confirmacaoValida && tamanhoSenhaValido && caractereEspecialSenhaValido && numeroSenhaValido) {
+        if (caractereEspecialNomeValido && emailValido && confirmacaoValida && tamanhoSenhaValido && caractereEspecialSenhaValido && numeroSenhaValido) {
             
 
             // span_erro_caractere_nome.style = 'color:black';
@@ -59,23 +54,13 @@ function enviar() {
 
         } else {
             
-            if (!tamanhoNomeValido) {
-                span_erro_caractere_nome.style = 'color:red'
-            } else{
-                span_erro_caractere_nome.style = 'color:black'
-            }
             if (!caractereEspecialNomeValido) {
                 span_erro_caractere_especial_nome.style = 'color:red;'
             } else {
                 span_erro_caractere_especial_nome.style = 'color:black;'
 
             }
-            if (!numeroNomeValido) {
-                span_erro_numero_nome.style = 'color:red;'
-            } else {
-                span_erro_numero_nome.style = 'color:black;'
-
-            }
+            
             if (!emailValido) {
                 alert('email invalido')
             }
@@ -127,5 +112,5 @@ function enviar() {
 
 
 
-    console.log(`Nome numero ${numeroNomeValido} Nome especial ${caractereEspecialNomeValido} tamanho nome${tamanhoNomeValido} email ${emailValido} confirmacao ${confirmacaoValida} tamanho senha ${tamanhoSenhaValido} especial ${caractereEspecialSenhaValido} numeros ${numeroSenhaValido}`)
+    console.log(`Nome especial ${caractereEspecialNomeValido} email ${emailValido} confirmacao ${confirmacaoValida} tamanho senha ${tamanhoSenhaValido} especial ${caractereEspecialSenhaValido} numeros ${numeroSenhaValido}`)
 }

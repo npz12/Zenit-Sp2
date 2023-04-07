@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styleMain.css">
     <link rel="stylesheet" href="../CSS/styleCadastro.css">
+    <link rel="icon" href="/">
     <script src="../JS/script.js"></script>
     <title>Cadastro</title>
 </head>
@@ -37,14 +38,48 @@
         <div class="divCadastro">
                 <h1 class="h1Titulo">SIGN-UP</h1>
                 <input type="text" placeholder="Nome da Empresa" id="iptNome">
+                <span class="mensagem-de-erro">
+                    <span id="span_erro_caractere_especial_nome">*Não deve conter caractere especial</span></span>
+                </span>
+
                 <input type="email" placeholder="Email" id="iptEmail">
-                <input type="tel" placeholder="Telefone" id="iptTelefone">
-                <input type="text" placeholder="CNPJ" id="iptCNPJ">
+
+                <input type="number" placeholder="Telefone" id="iptTelefone">
+
+                <input type="number" placeholder="CNPJ" id="iptCNPJ">
+
                 <input type="password" placeholder="Senha" id="iptSenha">
+                <span class="mensagem-de-erro">
+                    <span id="span_erro_caractere_senha">*Minimo 8 caracteres</span><br>
+                    <span id="span_erro_numero_senha">*Deve ter ao menos um numero</span><br>
+                    <span id="span_erro_caractere_especial_senha">*Deve ter ao menos um <br>caracter especial</span>
+                </span>
+
                 <input type="password" placeholder="Confirmar senha" id="iptConfirmarSenha">
+
                 <button class="btnCadastro" onclick="enviar()">Cadastrar</button>
+
                 <h3>Ja tem uma conta?</h3>
                 <a href="login.html">SIGN-IN</a>
+        </div>
+
+        <div class="divFooter">
+            <img src="../imagens/logo-1.png" alt="Logo Footer" id="imgFooterLogo">
+            <div class="divColuna">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In qui tempore aut voluptate obcaecati
+                    exercitationem nihil, aspernatur, delectus ut laudantium alias cupiditate reiciendis libero voluptas?
+                    Eum voluptas deleniti eveniet. Assumenda!</p>
+            </div>
+            <div class="divColuna">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In qui tempore aut voluptate obcaecati
+                    exercitationem nihil, aspernatur, delectus ut laudantium alias cupiditate reiciendis libero voluptas?
+                    Eum voluptas deleniti eveniet. Assumenda!</p>
+            </div>
+            <div class="divColuna">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In qui tempore aut voluptate obcaecati
+                    exercitationem nihil, aspernatur, delectus ut laudantium alias cupiditate reiciendis libero voluptas?
+                    Eum voluptas deleniti eveniet. Assumenda!</p>
+            </div>
         </div>
 </body>
 
