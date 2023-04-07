@@ -1,13 +1,17 @@
 var nome = '';
 var email = '';
-var senha = '';
+var tel = '';
+var cnpj = '';
+var senha = ''
 var confirmarSenha = '';
 
 function enviar() {
-    nome = ipt_nome.value;
-    email = ipt_email.value;
-    senha = ipt_senha.value;
-    confirmarSenha = ipt_confirmar_senha.value;
+    var nome = iptNome.value;
+    var email = iptEmail.value;
+    var tel = iptTelefone.value;
+    var cnpj = iptCNPJ.value;
+    var senha = iptSenha.value;
+    confirmarSenha = iptConfirmarSenha.value;
 
     var nomePreenchido = nome != '';
     var emailPreenchido = email != '';
@@ -37,10 +41,10 @@ function enviar() {
 
 
     if (nomePreenchido && emailPreenchido && senhaPreenchido && confirmarSenhaPreenchido) {
-        ipt_nome.style = 'border: 1px solid black;'
-        ipt_email.style = 'border: 1px solid black;'
-        ipt_senha.style = 'border: 1px solid black;'
-        ipt_confirmar_senha.style = 'border: 1px solid black;'
+        iptNome.style = 'border: 1px solid black;'
+        iptEmail.style = 'border: 1px solid black;'
+        iptSenha.style = 'border: 1px solid black;'
+        iptConfirmarSenha.style = 'border: 1px solid black;'
         if (tamanhoNomeValido && caractereEspecialNomeValido && numeroNomeValido && emailValido && confirmacaoValida && tamanhoSenhaValido && caractereEspecialSenhaValido && numeroSenhaValido) {
             
 
@@ -99,24 +103,24 @@ function enviar() {
     } else {
         alert('Informe todos os campos!')
         if (!nomePreenchido) {
-            ipt_nome.style = 'border: 1px solid red;'
+            iptNome.style = 'border: 1px solid red;'
         } else{
-            ipt_nome.style = 'border: 1px solid black;'
+            iptNome.style = 'border: 1px solid black;'
         }
         if (!emailPreenchido) {
-            ipt_email.style = 'border: 1px solid red;'
+            iptEmail.style = 'border: 1px solid red;'
         } else{
-            ipt_email.style = 'border: 1px solid black;'
+            iptEmail.style = 'border: 1px solid black;'
         }
         if (!senhaPreenchido) {
-            ipt_senha.style = 'border: 1px solid red;'
+            iptSenha.style = 'border: 1px solid red;'
         } else{
-            ipt_senha.style = 'border: 1px solid black;'
+            iptSenha.style = 'border: 1px solid black;'
         }
         if (!confirmarSenhaPreenchido) {
-            ipt_confirmar_senha.style = 'border: 1px solid red;'
+            iptConfirmarSenha.style = 'border: 1px solid red;'
         } else{
-            ipt_confirmar_senha.style = 'border: 1px solid black;'
+            iptConfirmarSenha.style = 'border: 1px solid black;'
         }
     }
 

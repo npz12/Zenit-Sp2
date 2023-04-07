@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styleMain.css">
     <link rel="stylesheet" href="../CSS/styleCadastro.css">
+    <script src="../JS/script.js"></script>
     <title>Cadastro</title>
 </head>
 
@@ -31,19 +32,19 @@
         </div> -->
     </div>
         <div class="divTitulo">
-            <h1>Cadastro    </h1>
+            <h1>Cadastro</h1>
         </div>
         <div class="divCadastro">
                 <h1 class="h1Titulo">SIGN-UP</h1>
                 <input type="text" placeholder="Nome da Empresa" id="iptNome">
                 <input type="email" placeholder="Email" id="iptEmail">
-                <input type="number" placeholder="Telefone" id="iptTelefone">
-                <input type="number" placeholder="CNPJ" id="iptCNPJ">
+                <input type="tel" placeholder="Telefone" id="iptTelefone">
+                <input type="text" placeholder="CNPJ" id="iptCNPJ">
                 <input type="password" placeholder="Senha" id="iptSenha">
-                <button class="btnCadastro" onclick="cadastro()">Cadastrar</button>
+                <input type="password" placeholder="Confirmar senha" id="iptConfirmarSenha">
+                <button class="btnCadastro" onclick="enviar()">Cadastrar</button>
                 <h3>Ja tem uma conta?</h3>
                 <a href="login.html">SIGN-IN</a>
-
         </div>
 </body>
 
