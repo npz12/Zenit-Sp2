@@ -58,6 +58,10 @@ body {
 
 }
 
+#liPerfil {
+    display: flex;
+    margin: 20px;
+}
 
 #imgHeaderLogo {
     display: flex;
@@ -86,10 +90,11 @@ body {
 
 }
 
-.divPerfil:hover {
+#liPerfil:hover {
     text-decoration: underline;
     transform: scale(1.1);
 }
+
 
 
 /*Style Modal*/
