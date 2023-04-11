@@ -7,15 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora Pública</title>
     <link rel="stylesheet" href="../styleMain.css">
-    <link rel="stylesheet" href="../CSS/stylePub.css"> </head>
+    <link rel="stylesheet" href="../CSS/stylePub.css">
+</head>
 
 <body>
     <div class="main">
         <!-- Header copiado da Main-->
         <div class="divHeader">
             <div class="divLogo">
-                <img src="../imagens/logo-1.png" alt="Logo Zenit"
-                    id="imgHeaderLogo">
+                <img src="../imagens/logo-1.png" alt="Logo Zenit" id="imgHeaderLogo">
             </div>
             <a href="Calculador.html">
                 <h4 id="liCalGanhos">Calcular Ganhos</h4>
@@ -35,54 +35,64 @@
             </div>
 
         </div>
-        <h2>Calcule o <u>Prejuízo</u> que a Zenit pode evitar à você estado ou para você síndico</h2>
-        <div class="container">
-            <div>
-                <h3>Caso o transformador foi de poste ou afeta uma área residencial/condomínio utilize esta calculadora!
-                </h3>
-                <br>
-                <p>Digite a quantidade de transformadores de poste que explodiram</p>
-                <input type="text" id="poste">
-                <br>
-                <p>Digite a quantidade de carros afetados(máximo 3 por transformador)</p>
-                <input type="text" id="carros">
-                <br>
-                <p>Digite a quantidade de pessoas afetadas</p>
-                <input type="text" id="feridos">
-                <button onclick="Calcular()">Calcular</button>
-                <br>
-                <div id="msg"></div>
-            </div>
-        </div>
-        <div class="infoFooter">
-            
-            <div class="footerContent">
-                <div>
-                    <img src="../imagens/logo-1.png" alt="footerLogo">
-                    <h3>Informações dos cálculos</h3>
+        <div class="contentContainer">
+            <h2>Calcule o <u>Prejuízo</u> que a Zenit pode evitar à você estado ou para você síndico</h2>
+            <div class="container">
+                <div class="base">
+                    <h3>Caso o transformador foi de poste ou afeta uma área residencial/condomínio utilize esta
+                        calculadora!
+                    </h3>
+                    <div class="interaction">
+                        <p>Digite a quantidade de transformadores de poste que explodiram</p>
+                        <input type="text" id="poste">
+                    </div>
+                    <div class="interaction">
+                        <p>Digite a quantidade de carros afetados(máximo 3 por transformador)</p>
+                        <input type="text" id="carros">
+                    </div>
+                    <div class="interaction">
+                        <p>Digite a quantidade de pessoas afetadas</p>
+                        <input type="text" id="feridos">
+                    </div>
+                    <button onclick="Calcular()">Calcular</button>
+
+                    <div id="msg"></div>
                 </div>
-                
-                <div>Foi levado em consideração para o número de pessoas afetadas um caso onde a pessoa recebeu <b>R$
-                        55000</b></div>
-
-                <div>Foi levado em consideração para o preço dos carros a tabela fipe de hatchs populares e chegado na
-                    méia de <b>R$ 50000</b> para um hatch seminovo(menos de cem mil KM)</div>
-
-                <div>A quantidade de carros atingidos ao máximo foi feito baseado em parâmetros de um transformador de
-                    poste</div>
-
-                <div>O preço de <b>R$ 30000</b> do transformador foi retirado da média de preços de transformadores
-                    trifásicos a óleo com até 112,5 KVA de potência nominal</div>
-
             </div>
-
-            <div class="footerFonts">
-                <h3>Fontes</h3>
-                    <a href="https://www.eletricabsb.com.br/item/transformador-de-distribuicao-trifasico-a-oleo-1125-kva-138-kv380220-v-nucleo-de-aluminio">
-                        Preço transformadores</a>
-                    <a href="https://stj.jusbrasil.com.br/noticias/100731/companhia-energetica-vai-indenizar-vitima-de-explosao-de-transformador">
-                        Vítima indenizada</a>
+            <div class="menu">
+                <p>O preço de <b>R$ 30000</b> do transformador foi retirado da média de preços de transformadores
+                    trifásicos a óleo com até 112,5 KVA de potência nominal</p>
+                <p>A quantidade de carros atingidos ao máximo foi feito baseado em parâmetros de um transformador de
+                    poste</p>
+                <p>Foi levado em consideração para o preço dos carros a tabela fipe de hatchs populares e chegado na
+                    méia de <b>R$ 50000</b> para um hatch seminovo(menos de cem mil KM)</p>
+                <p>Foi levado em consideração para o número de pessoas afetadas um caso onde a pessoa recebeu <b>R$
+                        55000</p>
+            </div>
         </div>
+        <div class="divFooter">
+            <div class="content">
+            <img src="../imagens/logo-1.png" alt="Logo Footer" id="imgFooterLogo">
+            <div class="divColuna">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In qui tempore aut voluptate obcaecati
+                    exercitationem nihil, aspernatur, delectus ut laudantium alias cupiditate reiciendis libero
+                    voluptas?
+                    Eum voluptas deleniti eveniet. Assumenda!</p>
+            </div>
+            <div class="divColuna">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In qui tempore aut voluptate obcaecati
+                    exercitationem nihil, aspernatur, delectus ut laudantium alias cupiditate reiciendis libero
+                    voluptas?
+                    Eum voluptas deleniti eveniet. Assumenda!</p>
+            </div>
+            <div class="divColuna">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In qui tempore aut voluptate obcaecati
+                    exercitationem nihil, aspernatur, delectus ut laudantium alias cupiditate reiciendis libero
+                    voluptas?
+                    Eum voluptas deleniti eveniet. Assumenda!</p>
+            </div>
+        </div>
+    </div>
     </div>
 </body>
 
