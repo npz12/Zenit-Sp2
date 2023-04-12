@@ -1,0 +1,5 @@
+CorrelationId: 3fa635a4-6678-45a0-be8e-2300fa0ccdfa
+UTC DateTime: 04/11/2023 21:53:10
+
+The following file/folder has not been downloaded
+0. arduino_api_v3/node_modules/@serialport/bindings-cpp/prebuilds/darwin-x64+arm64
