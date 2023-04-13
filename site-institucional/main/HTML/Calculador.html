@@ -6,53 +6,75 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zenit Soluções</title>
+    <link rel="stylesheet" href="../styleMain.css">
+    <link rel="stylesheet" href="../CSS/stylePub.css"
 </head>
 
 <body>
-    <header>
-        <!--Necessário indicar o caminho dos arquivos do header-->
-        <a class="link"  href=""><img src="images/logo.png" alt="Logotipo"></a>
-        <!--Necessário decidir se o botão calcular gannhos levará
-        a outra versão da calculadora ou fazer um botão a parte (Mais informações falar com o Gustavo!!)-->
-        <a class="link" href="CalculadorPub.html">
-            <img src="images/grafico.png" alt="Desenho de Gráfico">
-            <h5>Calcular gannhos</h5>
-        </a>
-        <a class="link" href="QuemSomos.html">
-            <img src="images/chat.png" alt="">
-            <h5>Quem Somos</h5></a>
-        <a class="link" href="">
-            <img src="images/profile.png" alt="">
-            <h5>Perfil</h5></a>
-        <div class="searchBar">
-            <img src="images/lupa.png" alt="Lupa para pesquisa">
-            <input type="text" id="iptSearch">
-            <img src="images/funil.png">
+    <div class="divHeader">
+        <div class="divLogo">
+            <img src="../imagens/logo-1.png" alt="Logo Zenit" id="imgHeaderLogo">
         </div>
-        
-    </header>
-    <div>
+        <a href="Calculador.html">
+            <h4 id="liCalGanhos">Calcular Ganhos</h4>
+        </a>
+        <h4 id="liNossoProduto">Nosso Produto</h4>
+        <h4 id="liQuemSomos">Quem Somos</h4>
+        <div class="divPerfil">
+            <!-- <img id="imgHeader"
+                src="imagens/icon-user-transparente.png"
+                alt=""> -->
+            <h4 id="liPerfil"><a href ='HTML/login.html'>Log In</a></h4>
+            <h4>|</h4>
+            <h4 id="liPerfil"><a href ='HTML/cadastro.html'>Cadastro</a></h4>
+        </div>
+
+        <div class="divBarraPesquisa">
+            &#8981;
+            <input type="text" id="iptBarraPesquisa" placeholder="Buscar">
+        </div>
+
+    </div>
+    <div class="contentContainer">
         <h3>Calculadora zenit para empresas</h3>
-        <div>
-            <div>
+
+        <div class="container">
+        <div class="base">
+            <div class="interaction">
                 <p>Sua Empresa é grande (mais de 100 funcionários)?(s/n)</p>
                 <input id="empresaSize">
             </div>
-            <div>
+            <div class="interaction">
                 <p>Quantos transformádores trifásicos à óleo possúi? </p>
                 <input id="qntdTransf">
             </div>
-            <div>
+            <div class="interaction">
                 <p>Qual o faturamento mensal da sua empresa</p>
                 <input id="faturamento">
             </div>
-            <button onclick="calcularEmp()">Calcular</button>
+            <button class="calcular" onclick="calcularEmp()">Calcular</button>
             <div>
                 <p id="message"></p>
             </div>
         </div>
+        </div>
     </div>
-
+    <div class="divFooter">
+        <div class="content">
+        <img src="../imagens/logo-1.png" alt="Logo Footer" id="imgFooterLogo">
+        <div class="divColuna">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In qui tempore aut voluptate obcaecati
+                exercitationem nihil, aspernatur</p>
+        </div>
+        <div class="divColuna">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In qui tempore aut voluptate obcaecati
+                exercitationem nihil, aspernatur</p>
+        </div>
+        <div class="divColuna">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In qui tempore aut voluptate obcaecati
+                exercitationem nihil, aspernatur</p>
+        </div>
+    </div>
 </body>
 
 </html>
