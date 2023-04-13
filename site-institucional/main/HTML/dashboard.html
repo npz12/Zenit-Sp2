@@ -18,7 +18,7 @@
         </div>
         <h4 id="liCalGanhos">Calcular Ganhos</h4>
         <h4 id="liNossoProduto">Nosso Produto</h4>
-        <h4 id="liQuemSomos">Quem Somos</h4>
+        <h4 id="liQuemSomos"><a href="QuemSomos.html"> Quem Somos </a></h4>
         <div class="divPerfil">
             <!-- <img id="imgHeader"
                 src="imagens/icon-user-transparente.png"
@@ -38,7 +38,7 @@
 
     <div class="divContainerGrafico">
         <h1>Visão geral dos transformadores</h1>
-            <div class="grafico" id="transformadoresTotais">
+            <div class="grafico" id="transformadoresTotais" >
                 <canvas id="graficoVisaoAmpla" width="800px"></canvas>
             </div>
         <h1>Transformador 1</h1>
@@ -81,14 +81,14 @@
     Chart.defaults.color = "#fff";
 
     new Chart(visaoAmpla, { 
-        type: 'line',
+        type: 'bar',
       data: {
         labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13'],
         datasets: [{
             // label: 'Ideal',
             label: 'Temperatura( °C ) 21:00',
           data: [80, 86, 105, 120, 77, 82, 48, 80, 76, 10, 31, 84, 80],
-          borderWidth: 5,
+          borderWidth: 1,
           borderColor: "#4472c4",
           backgroundColor: "#4472c4"
         //   borderColor: ["#0000ff", "#ffff00", "#ff0000", "#ff0000", "#ffff00", "#ffff00", "#ffff00", "#ffff00", "#0000ff", "#0000ff", "#ffff00", "#0000ff" ],
