@@ -1,0 +1,220 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+
+    body {
+        margin: 0px;
+        padding: 0px;
+        padding-top: 0px;
+    }
+
+    /*Style Header*/
+    .divHeader {
+        display: flex;
+        background-color: #5cabeb;
+        width: 100%;
+        height: 100px;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        border-bottom: solid 3px #98bfdc;
+        font-family: 'Playfair Display';
+        font-weight: 800;
+        margin-bottom: 50px;
+    }
+
+    .divLogo {
+        display: flex;
+    }
+
+    .divCalGanhos{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 1px;
+    }
+
+
+    .divPerfil {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 1px;
+    }
+
+    #imgHeader{
+        display: flex;
+        width: 40px;
+    }
+
+    .divBarraPesquisa {
+        display: flex;
+        align-items: center;
+    }
+
+    #iptBarraPesquisa {
+        display: flex;
+        border-radius: 10px;
+        margin-left: 10px;
+        border: solid 3px #acdcfc;
+        text-align: left;
+
+    }
+
+
+    #imgHeaderLogo {
+        display: flex;
+        width: 40%;
+        height: 40%;
+        justify-content: center;
+        transform: 2s (1.4);
+
+    }
+
+    /*Animação header*/
+    #liCalGanhos:hover {
+        text-decoration: underline;
+        transform: scale(1.1);
+    }
+
+    #liNossoProduto:hover {
+        text-decoration: underline;
+        transform: scale(1.1);
+
+    }
+
+    #liQuemSomos:hover {
+        text-decoration: underline;
+        transform: scale(1.1);
+
+    }
+
+    #liPerfil:hover {
+        text-decoration: underline;
+        transform: scale(1.1);
+    }
+
+    /*Style Footer*/
+    .divFooter {
+        display: flex;
+        margin-top: 80px;
+        background-color: #5cabeb;
+        width: 100%;
+        height: 200px;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        border-top: solid 3px #98bfdc;
+        font-family: 'Playfair Display'
+    }
+
+    .divColuna {
+        width: 20%;
+        border-left: solid 2px #acdcfc;
+        padding-left: 60px;
+        margin-right: 20px;
+    }
+
+    #imgFooterLogo {
+        width: 200px;
+        margin: 40px;
+    }
+
+    a{
+        text-decoration: none;
+        color: black;
+    }
+
+    #link{
+        display: flex;
+        width: 100%;
+        height: 100%;
+    }
+
+    /*Style Quem somos*/
+    .QuemSomos{
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+        margin-bottom: 200px;
+        border-radius: 50px;
+    }
+
+    .QuemSomos .MVV {
+        flex-direction: column;
+        border-radius: 50px;
+        align-items: center;
+        display: flex;
+        width: 250px;
+        margin-top: 50px;
+        padding: 30px;
+        border: solid 2px #acdcfc;
+        transition: 1s border;
+        transition: 0.5s background-color;
+        transition: 1s;
+    }
+
+    .QuemSomos .MVV:hover{
+        border: solid 3px #5cabeb;
+        background-color: #acdcfca8;
+        transform: scale(1.1);
+    }
+
+    .QuemSomos .MVV img {
+        width: 200px;
+        height: 200px;
+        border: solid #98bfdc;
+        border-radius: 50px;
+    }
+
+
+    .SobreNos{
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+        margin-bottom: 100px;
+    }
+
+    .SobreNos .boxSobreNos{
+        flex-direction: column;
+        border-radius: 50px;
+        background-color: #5cabeb;
+        align-items: center;
+        display: flex;
+        width: 150px;
+        height: 200px;
+        margin-top: 20px;
+        padding: 30px;
+        border: solid 2px #000;
+    }
+
+    .SobreNos .boxSobreNos img{
+        width: 110px;
+        height: 110px;
+        border-radius: 55px;
+        border: solid 2px #acdcfc;
+        display: flex;
+    }
+
+    .SobreNos .boxSobreNos h1{
+        display: flex;
+        justify-content: center;
+    }
+
+
+    #iconGit{
+        height: 30px;
+        width: 30px;
+        display: flex;
+        border-radius: 15px;
+    }
+
+    #miniBoxSobreNos{
+        display: flex;
+        justify-content: flex-start;
+        border: solid 2px #000;
+        border-radius: 10px;
+        margin: 10px;
+        gap: 10px;
+        width: 160px;
+        height: 45px;
+        align-items: center;
+    }
