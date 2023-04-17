@@ -95,6 +95,11 @@ body {
     transform: scale(1.1);
 }
 
+.divPerfil:hover {
+    text-decoration: underline;
+    transform: scale(1.1);
+}
+
 
 
 /*Style Modal*/
