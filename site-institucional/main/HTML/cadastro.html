@@ -15,7 +15,8 @@
 <body>
     <div class="divHeader">
         <div class="divLogo">
-            <a href="../mainZenit.html" id="link">  <img src="../imagens/logo-1.png" alt="Logo Zenit" id="imgHeaderLogo"> </a> 
+            <a href="../mainZenit.html" id="link"> <img src="../imagens/logo-1.png" alt="Logo Zenit" id="imgHeaderLogo">
+            </a>
         </div>
         <h4 id="liCalGanhos">Calcular Ganhos</h4>
         <h4 id="liNossoProduto">Nosso Produto</h4>
@@ -24,9 +25,9 @@
             <!-- <img id="imgHeader"
                 src="imagens/icon-user-transparente.png"
                 alt=""> -->
-            <h4 id="liPerfil"><a href ='login.html'>Log In</a></h4>
+            <h4 id="liPerfil"><a href='login.html'>Log In</a></h4>
             <h4>|</h4>
-            <h4 id="liPerfil"><a href ='cadastro.html'>Cadastro</a></h4>
+            <h4 id="liPerfil"><a href='cadastro.html'>Cadastro</a></h4>
         </div>
 
         <!-- <div class="divBarraPesquisa">
@@ -34,39 +35,39 @@
             <input type="text" id="iptBarraPesquisa" placeholder="Buscar">
         </div> -->
     </div>
-        <div class="divTitulo">
-            <h1>Cadastro</h1>
-        </div>
-        <div class="divCadastro">
-                <h1 class="h1Titulo">SIGN-UP</h1>
-                <input type="text" placeholder="Nome da Empresa" id="iptNome">
-                <span class="mensagem-de-erro">
-                    <span id="span_erro_caractere_especial_nome">*Não deve conter caractere especial</span></span>
-                </span>
+    <div class="divTitulo">
+        <h1>Cadastro</h1>
+    </div>
+    <div class="divCadastro">
+        <h1 class="h1Titulo">SIGN-UP</h1>
+        <input type="text" placeholder="Nome da Empresa" id="iptNome">
+        <span class="mensagem-de-erro">
+            <span id="span_erro_caractere_especial_nome">*Não deve conter caractere especial</span></span>
+        </span>
 
-                <input type="text" placeholder="Email" id="iptEmail">
+        <input type="text" placeholder="Email" id="iptEmail">
 
-                <input type="text" placeholder="Telefone" id="iptTelefone">
+        <input type="text" placeholder="Telefone" id="iptTelefone">
 
-                <input type="text" placeholder="CNPJ" id="iptCNPJ">
+        <input type="text" placeholder="CNPJ" id="iptCNPJ">
 
-                <input type="text" placeholder="Senha" id="iptSenha">
-                <span class="mensagem-de-erro">
-                    <span id="span_erro_caractere_senha">*Minimo 8 caracteres</span><br>
-                    <span id="span_erro_numero_senha">*Deve ter ao menos um numero</span><br>
-                    <span id="span_erro_caractere_especial_senha">*Deve ter ao menos um <br>caracter especial</span>
-                </span>
+        <input type="text" placeholder="Senha" id="iptSenha">
+        <span class="mensagem-de-erro">
+            <span id="span_erro_caractere_senha">*Minimo 8 caracteres</span><br>
+            <span id="span_erro_numero_senha">*Deve ter ao menos um numero</span><br>
+            <span id="span_erro_caractere_especial_senha">*Deve ter ao menos um <br>caracter especial</span>
+        </span>
 
-                <input type="password" placeholder="Confirmar senha" id="iptConfirmarSenha">
+        <input type="password" placeholder="Confirmar senha" id="iptConfirmarSenha">
 
-                <button class="btnCadastro" onclick="cadastrar()">Cadastrar</button>
+        <button class="btnCadastro" onclick="cadastrar()">Cadastrar</button>
 
-                <h3>Ja tem uma conta?</h3>
-                <a href="login.html">SIGN-IN</a>
-        </div>
+        <h3>Ja tem uma conta?</h3>
+        <a href="login.html">SIGN-IN</a>
+    </div>
 
-        <div class="divFooter">
-            <div class="content">
+    <div class="divFooter">
+        <div class="content">
             <img src="../imagens/logo-1.png" alt="Logo Footer" id="imgFooterLogo">
             <div class="divColuna">
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In qui tempore aut voluptate obcaecati
@@ -85,7 +86,7 @@
 
 </html>
 <script>
-    function cadastro(){
+    function cadastro() {
         var nome = iptNome.value;
         var email = iptEmail.value;
         var tel = iptTelefone.value;
@@ -93,27 +94,27 @@
         var senha = iptSenha.value;
         var erro = false;
 
-        if (nome == ''){
+        if (nome == '') {
             alert('Nome inválido')
             erro = true
         }
-        if (tel.length > 9 || tel.length < 9 || tel =='' ){
+        if (tel.length > 9 || tel.length < 9 || tel == '') {
             alert('O telefone está incorreto!')
             erro = true
         }
-        if (cnpj.length > 14 || cnpj.length < 14 || cnpj =='' ){
+        if (cnpj.length > 14 || cnpj.length < 14 || cnpj == '') {
             alert('O CNPJ está inválido!')
             erro = true
         }
-        if (senha.length < 8 || senha ==''){
+        if (senha.length < 8 || senha == '') {
             alert('A senha está muito curta')
             erro = true
         }
-        if (email == '' || email.indexOf('@') == -1){
+        if (email == '' || email.indexOf('@') == -1) {
             alert('Insira um email válido')
             erro = true
         }
-        if(erro==false){
+        if (erro == false) {
             alert('Cadastrado com sucesso')
         }
     }

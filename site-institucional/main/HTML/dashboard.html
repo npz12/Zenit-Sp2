@@ -20,10 +20,8 @@
         <h4 id="liNossoProduto">Nosso Produto</h4>
         <h4 id="liQuemSomos"><a href="QuemSomos.html"> Quem Somos </a></h4>
         <div class="divPerfil">
-            <img id="imgHeader"
-                src="../imagens/icon-user-transparente.png"
-                alt="user">
-                <h4>Perfil</h4>
+            <img id="imgHeader" src="../imagens/icon-user-transparente.png" alt="user">
+            <h4>Perfil</h4>
             <!-- <h4 id="liPerfil"><a href ='../HTML/login.html'>Log In</a></h4>
             <h4>|</h4>
             <h4 id="liPerfil"><a href ='../HTML/cadastro.html'>Cadastro</a></h4> -->
@@ -39,14 +37,14 @@
 
     <div class="divContainerGrafico">
         <h1>Visão geral dos transformadores</h1>
-            <div class="grafico" id="transformadoresTotais" >
-                <canvas id="graficoVisaoAmpla" width="800px"></canvas>
-            </div>
+        <div class="grafico" id="transformadoresTotais">
+            <canvas id="graficoVisaoAmpla" width="800px"></canvas>
+        </div>
         <h1>Transformador 1</h1>
-            <div class="grafico" id="transformadorUm" >
-                <canvas id="graficoVisaoDetalhada" width="800px"></canvas>
-            </div>
-            <!-- <span class="buttonGrafico">
+        <div class="grafico" id="transformadorUm">
+            <canvas id="graficoVisaoDetalhada" width="800px"></canvas>
+        </div>
+        <!-- <span class="buttonGrafico">
                 <button onclick="expVisaoAmpla()">Visão ampla</button>
                 <button onclick="expTransformador()">Transformador 1</button>
             </span> -->
@@ -54,151 +52,151 @@
 
     <div class="divFooter">
         <div class="content">
-        <img src="../imagens/logo-1.png" alt="Logo Footer" id="imgFooterLogo">
-        <div class="divColuna">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In qui tempore aut voluptate obcaecati
-                exercitationem nihil, aspernatur</p>
+            <img src="../imagens/logo-1.png" alt="Logo Footer" id="imgFooterLogo">
+            <div class="divColuna">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In qui tempore aut voluptate obcaecati
+                    exercitationem nihil, aspernatur</p>
+            </div>
+            <div class="divColuna">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In qui tempore aut voluptate obcaecati
+                    exercitationem nihil, aspernatur</p>
+            </div>
+            <div class="divColuna">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In qui tempore aut voluptate obcaecati
+                    exercitationem nihil, aspernatur</p>
+            </div>
         </div>
-        <div class="divColuna">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In qui tempore aut voluptate obcaecati
-                exercitationem nihil, aspernatur</p>
-        </div>
-        <div class="divColuna">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In qui tempore aut voluptate obcaecati
-                exercitationem nihil, aspernatur</p>
-        </div>
-    </div>
 </body>
 
 </html>
 <script>
     const visaoAmpla = document.getElementById('graficoVisaoAmpla');
     const visaoDetalhada = document.getElementById('graficoVisaoDetalhada');
-  
+
     Chart.defaults.color = "#fff";
 
-    new Chart(visaoAmpla, { 
+    new Chart(visaoAmpla, {
         type: 'bar',
-      data: {
-        labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13'],
-        datasets: [{
-            // label: 'Ideal',
-            label: 'Temperatura( °C ) 21:00',
-          data: [80, 86, 105, 120, 77, 82, 48, 80, 76, 10, 31, 84, 80],
-          borderWidth: 1,
-          borderColor: "#4472c4",
-          backgroundColor: "#4472c4"
-        //   borderColor: ["#0000ff", "#ffff00", "#ff0000", "#ff0000", "#ffff00", "#ffff00", "#ffff00", "#ffff00", "#0000ff", "#0000ff", "#ffff00", "#0000ff" ],
-        //   backgroundColor: ["#0000ff"]
+        data: {
+            labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13'],
+            datasets: [{
+                // label: 'Ideal',
+                label: 'Temperatura( °C ) 21:00',
+                data: [80, 86, 105, 120, 77, 82, 48, 80, 76, 10, 31, 84, 80],
+                borderWidth: 1,
+                borderColor: "#4472c4",
+                backgroundColor: "#4472c4"
+                //   borderColor: ["#0000ff", "#ffff00", "#ff0000", "#ff0000", "#ffff00", "#ffff00", "#ffff00", "#ffff00", "#0000ff", "#0000ff", "#ffff00", "#0000ff" ],
+                //   backgroundColor: ["#0000ff"]
+            },
+                // {
+                //     label: 'Alerta',
+                //   borderWidth: 5,
+                //   borderColor: ["#ffff00"],
+                //   backgroundColor: ["#ffff00"]
+                // },
+                // {
+                //     label: 'Emergência',
+                //   borderWidth: 5,
+                //   borderColor: ["#ff0000"],
+                //   backgroundColor: ["#ff0000"]
+                // }
+            ]
         },
-        // {
-        //     label: 'Alerta',
-        //   borderWidth: 5,
-        //   borderColor: ["#ffff00"],
-        //   backgroundColor: ["#ffff00"]
-        // },
-        // {
-        //     label: 'Emergência',
-        //   borderWidth: 5,
-        //   borderColor: ["#ff0000"],
-        //   backgroundColor: ["#ff0000"]
-        // }
-    ]
-      },
-      options: {
-        plugins: {
-            legend: {
-                labels: {
-                    font: {
-                        size: 25
+        options: {
+            plugins: {
+                legend: {
+                    labels: {
+                        font: {
+                            size: 25
+                        }
                     }
                 }
-            }
-        },
-          scales: {
-              y: {
-                grid: {
-                    color: '#636363'
+            },
+            scales: {
+                y: {
+                    grid: {
+                        color: '#636363'
+                    },
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Temperatura'
+                    }
                 },
-                  beginAtZero: true,
-                  title : {
-                    display: true,
-                    text: 'Temperatura'
-                  }
-                },
-              x: {
-                grid: {
-                    display: false
-                },
-                title: {
-                    display: true,
-                    text: 'Identificão do transformador'
+                x: {
+                    grid: {
+                        display: false
+                    },
+                    title: {
+                        display: true,
+                        text: 'Identificão do transformador'
+                    }
                 }
-              }
             }
         }
     });
 
     new Chart(visaoDetalhada, {
         type: 'line',
-      data: {
-        labels: ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00'],
-        datasets: [{
-            label: 'Temperatura( °C ) 22/11/2022',
-            // label: 'Ideal',
-          data: [80, 90, 100, 95, 87, 82, 88, 80, 76, 70, 81, 83, 84],
-          borderWidth: 5,
-          borderColor: "#4472c4",
-          backgroundColor: "#4472c4"
+        data: {
+            labels: ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00'],
+            datasets: [{
+                label: 'Temperatura( °C ) 22/11/2022',
+                // label: 'Ideal',
+                data: [80, 90, 100, 95, 87, 82, 88, 80, 76, 70, 81, 83, 84],
+                borderWidth: 5,
+                borderColor: "#4472c4",
+                backgroundColor: "#4472c4"
 
-        //   borderColor: ["#00f", "#ff0", "#f00", "#f00", "#00f", "#ff0", "#00f", "#ff0", "#00f", "#f00", "#ff0", "#ff0", "#00f" ],
-        //   backgroundColor: ["#0000ff"]
+                //   borderColor: ["#00f", "#ff0", "#f00", "#f00", "#00f", "#ff0", "#00f", "#ff0", "#00f", "#f00", "#ff0", "#ff0", "#00f" ],
+                //   backgroundColor: ["#0000ff"]
 
+            },
+                // {
+                //     label: 'Alerta',
+                //   borderWidth: 5,
+                //   borderColor: ["#ffff00"],
+                //   backgroundColor: ["#ffff00"]
+                // },
+                // {
+                //     label: 'Emergência',
+                //   borderWidth: 5,
+                //   borderColor: ["#ff0000"],
+                //   backgroundColor: ["#ff0000"]
+                // }
+            ]
         },
-        // {
-        //     label: 'Alerta',
-        //   borderWidth: 5,
-        //   borderColor: ["#ffff00"],
-        //   backgroundColor: ["#ffff00"]
-        // },
-        // {
-        //     label: 'Emergência',
-        //   borderWidth: 5,
-        //   borderColor: ["#ff0000"],
-        //   backgroundColor: ["#ff0000"]
-        // }
-    ]
-      },
-      options: {
-        plugins: {
-            legend: {
-                labels: {
-                    font: {
-                        size: 25
+        options: {
+            plugins: {
+                legend: {
+                    labels: {
+                        font: {
+                            size: 25
+                        }
                     }
                 }
-            }
-        },
-          scales: {
-              y: {
-                grid: {
-                    color: '#636363'
+            },
+            scales: {
+                y: {
+                    grid: {
+                        color: '#636363'
+                    },
+                    beginAtZero: false,
+                    title: {
+                        display: true,
+                        text: 'Temperatura'
+                    }
                 },
-                  beginAtZero: false,
-                  title : {
-                    display: true,
-                    text: 'Temperatura'
-                  }
-                },
-              x: {
-                grid: {
-                    display: false
-                },
-                title: {
-                    display: true,
-                    text: 'Horário'
+                x: {
+                    grid: {
+                        display: false
+                    },
+                    title: {
+                        display: true,
+                        text: 'Horário'
+                    }
                 }
-              }
             }
         }
     });
