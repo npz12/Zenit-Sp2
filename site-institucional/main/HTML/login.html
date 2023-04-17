@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styleMain.css">
     <link rel="stylesheet" href="../CSS/styleCadastro.css">
-    <title>Cadastro</title>
+    <script src="../JS/validacao.js"></script>
+    <title>Login</title>
 </head>
 
 <body>
@@ -37,9 +38,9 @@
         </div>
         <div class="divCadastro">
                 <h1 class="h1Titulo">SIGN-IN</h1>
-                <input type="email" placeholder="Email" id="iptEmail">
-                <input type="password" placeholder="Senha" id="iptSenha">
-                <button class="btnCadastro" onclick="cadastro()">Login</button>
+                <input type="text" placeholder="Email" id="iptEmailRegistrado">
+                <input type="text" placeholder="Senha" id="iptSenhaRegistrado">
+                <button class="btnCadastro" onclick="logar()">Login</button>
                 <h3>Ainda não possui uma conta?</h3>
                 <a href="cadastro.html">SIGN-UP</a>
 
@@ -47,7 +48,7 @@
 </body>
 
 </html>
-<script>
+<!-- <script>
 
     function cadastro(){
         var erro = false
@@ -66,4 +67,4 @@
             alert('Login realizado com sucesso!')
         }
     }
-</script>
+</script> -->

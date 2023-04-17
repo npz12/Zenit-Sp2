@@ -4,8 +4,10 @@ var tel = '';
 var cnpj = '';
 var senha = ''
 var confirmarSenha = '';
+var emailRegistrado = '';
+var senhaRegistrado = '';
 
-function enviar() {
+function cadastrar() {
     var nome = iptNome.value;
     var email = iptEmail.value;
     var tel = iptTelefone.value;
@@ -49,8 +51,11 @@ function enviar() {
             // span_erro_caractere_senha.style = 'color:black;'
             // span_erro_caractere_especial_senha.style = 'color:black;'
             // span_erro_numero_senha.style = 'color:black;'
-            tela_registro.style = 'display: none;';
-            tela_sucesso.style = 'display: flex;';
+            // tela_registro.style = 'display: none;';
+            // tela_sucesso.style = 'display: flex;';
+
+            emailRegistrado = email;
+            senhaRegistrado = senha;
 
         } else {
             
@@ -113,4 +118,14 @@ function enviar() {
 
 
     console.log(`Nome especial ${caractereEspecialNomeValido} email ${emailValido} confirmacao ${confirmacaoValida} tamanho senha ${tamanhoSenhaValido} especial ${caractereEspecialSenhaValido} numeros ${numeroSenhaValido}`)
+}
+
+function logar(){
+    var senhaRegistradoValido = senha == senhaRegistrado;
+    var emailRegistradoValido = email == emailRegistrado;
+    if (senhaRegistradoValido && emailRegistradoValido){
+        alert('logado com sucesso');
+    } else{
+        alert('Email ou senha incorreto')
+    }
 }
