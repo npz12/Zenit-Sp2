@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CALCULADORA</title>
+    <link rel="stylesheet" href="calculadora.css">
+</head>
+
+<body>
+    <div class="header">
+        <div class="container">
+            <ul class="navBar">
+                <li><a href="site.html">ZENIT & ELÉTRICA</a></li>
+                <l1><a href="calculadora.html">Calcular ganhos</a></l1>
+                <l1><a href="nosso_produto.html">Nosso produto</a></l1>
+                <l1><a href="quem_somos.html">Quem somos?</a></l1>
+                <l1><a href="perfil.html">Perfil</a></l1>
+            </ul>
+            <div class="pesquisa">
+                <h3>Pesquisar:</h3>
+                <input type="text" placeholder="Pesquise algo!">
+            </div>
+        </div>
+    </div>
+
+    <div class="banner">
+        <div class="container">
+            <div class="calculadora">
+                <h2>Calcule o <u>Prejuízo</u> que a Zenit pode evitar à você estado ou para você síndico</h2>
+                <h3>Caso o transformador foi de poste ou afeta uma área residencial/condomínio utilize esta
+                    calculadora!
+                    <p>Digite a quantidade de transformadores de poste que explodiram</p>
+                        <input type="text" id="poste">
+                        <p>Digite a quantidade de carros afetados(máximo 3 por transformador)</p>
+                        <input type="text" id="carros">
+                        <p>Digite a quantidade de pessoas afetadas</p>
+                        <input type="text" id="feridos">
+                        <button class="calcular" onclick="Calcular()">Calcular</button>
+                        <div id="msg"></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <h1>NOS SOMOS A ZENIT!!!</h1>
+    </div>
+
+</body>
+
+<script>
+    function Calcular() {
+        if (carros.value < 3) {
+
+            var preju = (50000 * carros.value) + (feridos.value * 55000) + (poste.value * 30000);
+            msg.innerHTML = `Podemos evitar cerca de R$ ${preju} em prejuízo`
+        }
+        if (carros.value > 3) {
+            alert(`O máximo de carros que um transformador de poste médio pode atingir é de 3`);
+        }
+    }
+
+</script>
+
+</html>
