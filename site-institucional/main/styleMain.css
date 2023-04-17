@@ -169,6 +169,14 @@ body {
     transform: scale(1.1);
 }
 
+.divMiniContainer a {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
 /*Style Footer*/
 
 .divFooter {
