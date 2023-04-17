@@ -26,9 +26,9 @@
                 <!-- <img id="imgHeader"
                     src="imagens/icon-user-transparente.png"
                     alt=""> -->
-                <h4 id="liPerfil"><a href ='HTML/login.html'>Log In</a></h4>
+                <h4 id="liPerfil"><a href='HTML/login.html'>Log In</a></h4>
                 <h4>|</h4>
-                <h4 id="liPerfil"><a href ='HTML/cadastro.html'>Cadastro</a></h4>
+                <h4 id="liPerfil"><a href='HTML/cadastro.html'>Cadastro</a></h4>
             </div>
 
             <div class="divBarraPesquisa">
@@ -38,27 +38,29 @@
 
         </div>
         <div class="contentContainer">
-            <h2>Calcule o <u>Prejuízo</u> que a Zenit pode evitar à você estado ou para você síndico</h2>
             <div class="container">
                 <div class="base">
-                    <h3>Caso o transformador foi de poste ou afeta uma área residencial/condomínio utilize esta
-                        calculadora!
-                    </h3>
-                    <div class="interaction">
-                        <p>Digite a quantidade de transformadores de poste que explodiram</p>
-                        <input type="text" id="poste">
-                    </div>
-                    <div class="interaction">
-                        <p>Digite a quantidade de carros afetados(máximo 3 por transformador)</p>
-                        <input type="text" id="carros">
-                    </div>
-                    <div class="interaction">
-                        <p>Digite a quantidade de pessoas afetadas</p>
-                        <input type="text" id="feridos">
-                    </div>
-                    <button class="calcular" onclick="Calcular()">Calcular</button>
+                    <h2>Calcule o <u>Prejuízo</u> que a Zenit irá evitar à você servidor público ou para você síndico
+                    </h2>
 
-                    <div id="msg"></div>
+                    <h4>Caso o transformador foi de poste ou afeta uma área residencial/condomínio utilize esta
+                        calculadora!
+                        </h3>
+                        <div class="interaction">
+                            <p>Digite a quantidade de transformadores de poste que explodiram</p>
+                            <input type="text" id="poste">
+                        </div>
+                        <div class="interaction">
+                            <p>Digite a quantidade de carros afetados(máximo 3 por transformador)</p>
+                            <input type="text" id="carros">
+                        </div>
+                        <div class="interaction">
+                            <p>Digite a quantidade de pessoas afetadas</p>
+                            <input type="text" id="feridos">
+                        </div>
+                        <button class="calcular" onclick="Calcular()">Calcular</button>
+
+                        <div id="msg"></div>
                 </div>
             </div>
             <!-- <div class="menu"> conteúdo a ser inserido em navbar lateral!!
@@ -71,38 +73,103 @@
                 <p>Foi levado em consideração para o número de pessoas afetadas um caso onde a pessoa recebeu <b>R$
                         55000</p>
             </div> -->
+            <div class="container">
+                <div class="base">
+                    <div class="interaction">
+                        <h2>Cálcule o <u>prejuízo</u> que a Zenit evitará a você dono de empresa!</h2>
+                        <h4>Utilize esta calculadora caso o transformador se localizava em uma empresa</h4>
+                        <p>Sua Empresa é grande (mais de 100 funcionários)?(s/n)</p>
+                        <input id="empresaSize">
+                    </div>
+                    <div class="interaction">
+                        <p>Quantos transformádores trifásicos à óleo possúi? </p>
+                        <input id="qntdTransf">
+                    </div>
+                    <div class="interaction">
+                        <p>Qual o faturamento mensal da sua empresa</p>
+                        <input id="faturamento">
+                    </div>
+                    <button class="calcular" onclick="calculando()">Calcula</button>
+                    <div>
+                        <p id="message"></p>
+                    </div>
+                </div>
+            </div>
         </div>
+
         <div class="divFooter">
             <div class="content">
-            <img src="../imagens/logo-1.png" alt="Logo Footer" id="imgFooterLogo">
-            <div class="divColuna">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In qui tempore aut voluptate obcaecati
-                    exercitationem nihil, aspernatur</p>
-            </div>
-            <div class="divColuna">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In qui tempore aut voluptate obcaecati
-                    exercitationem nihil, aspernatur</p>
-            </div>
-            <div class="divColuna">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In qui tempore aut voluptate obcaecati
-                    exercitationem nihil, aspernatur</p>
+                <img src="../imagens/logo-1.png" alt="Logo Footer" id="imgFooterLogo">
+                <div class="divColuna">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In qui tempore aut voluptate obcaecati
+                        exercitationem nihil, aspernatur</p>
+                </div>
+                <div class="divColuna">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In qui tempore aut voluptate obcaecati
+                        exercitationem nihil, aspernatur</p>
+                </div>
+                <div class="divColuna">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In qui tempore aut voluptate obcaecati
+                        exercitationem nihil, aspernatur</p>
+                </div>
             </div>
         </div>
-    </div>
     </div>
 </body>
 
 </html>
 <script>
     function Calcular() {
-        if (carros.value < 3) {
+        if (carros.value < 0) {
+            alert("O número de carros deve ser maior ou igual a zero");
+        }
+        if (poste.value <= 0) {
+            alert(`Deve haver no mínimo um poste danificado`)
+        }
+        if (feridos.value < 0) {
+            alert("O número de feridos deve ser maior ou igual a zero");
+        }
+        else {
+            if (carros.value < 3) {
 
-            var preju = (50000 * carros.value) + (feridos.value * 55000) + (poste.value * 30000);
-            msg.innerHTML = `Podemos evitar cerca de R$ ${preju} em prejuízo`
+                var preju = (50000 * carros.value) + (feridos.value * 55000) + (poste.value * 30000);
+                msg.innerHTML = `<br><p>Podemos evitar cerca de R$ ${preju} em prejuízo</p>`
+            }
+            if (carros.value > 3) {
+                alert(`O máximo de carros que um transformador de poste médio pode atingir é de 3`);
+            }
         }
-        if (carros.value > 3) {
-            alert(`O máximo de carros que um transformador de poste médio pode atingir é de 3`);
-        }
+
     }
+    function calculando() {
+        // Divisão do faturamento por dia
+        if (faturamento.value < 10000) {
+            alert('O faturamento da empresa deve ser maior do que 10000')
+        }
+        if (qntdTransf.value <= 0) {
+            alert('O número de transformadores tem que ser maior que 0')
+        }
+        if (empresaSize != 's' && empresaSize != 'n') {
+            alert('O campo empresa deve ser preenchido com o tamanho de empresa(s/n)');
+        }
 
+
+        else {
+            var fatMensal = faturamento.value / 30
+            if (empresaSize === 's') {
+                var precoTrasnf = 50000;
+                var preju = (Number(precoTrasnf) * Number(qntdTransf.value)) + Number(fatMensal)
+                message.innerHTML = `<b> Podemos evitar até R$ ${preju.toFixed(2)} em percas caso ocorra alguma falha no transformador<b>`
+            } else if (empresaSize.value === 'n') {
+
+                var precoTransfor = 10000;
+                var preju = precoTransfor * Number(qntdTransf.value) + fatMensal
+                message.innerHTML = `<b> Podemos evitar até R$ ${preju.toFixed(2)} em percas caso ocorra alguma falha no transformador<b>`
+            }
+            else {
+                alert('Valor inválido no campo informando o tamanho da empresa')
+            }
+        }
+
+    }
 </script>
