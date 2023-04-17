@@ -164,7 +164,8 @@
         border: solid #98bfdc;
         border-radius: 50px;
     }
-
+ 
+/*box com nossas fotos Começo */
 
     .SobreNos{
         width: 100%;
@@ -218,3 +219,51 @@
         height: 45px;
         align-items: center;
     }
+
+    /* Fim box das nossas fotos */
+
+    /* começo da introdução */
+
+    .caixatxtSobrenos{
+        display: flex;
+        width: 500px;
+        height: 300px;
+        margin: 50px;
+        background-color: #5cabeb;
+        border-radius: 50px;
+        align-items: center;
+        justify-content: center;
+        border: solid 3px #000;
+    }
+
+    .caixatxtSobrenos:hover{
+        transform: scale(1.1);
+        background-color: #fff;
+        opacity: 0.9;
+        border: solid 3px #5cabeb;
+        transition: 1s border;
+        transition: 0.5s background-color;
+        transition: 2s;
+    }
+
+    .caixatxtSobrenos img{
+        display: flex;
+        gap: 10px;
+        width: 450px;
+        height: 100px;
+    }
+
+    .caixatxtSobrenos .txtSobrenos{
+        height: 80%;
+        width: 80%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    #nomeSobrenos{
+        margin-bottom: 8px;
+        font-family: 'Playfair Display';
+    }
+
+    /* Fim introducao */
