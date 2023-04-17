@@ -1,0 +1,22 @@
+
+.container{
+    display: flex;
+}
+.divTextBox{
+    width: 80%;
+    margin: auto;
+    margin-top: 50px;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 10px 100px;
+    background-color: #F0F7FD;
+    border-radius: 10px;
+}
+
+.divTextBox h1{
+    font-size: 40px;
+}
+
+.divTextBox p{
+    font-size: 20px;
+}
