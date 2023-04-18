@@ -17,9 +17,15 @@
             <a href="../mainZenit.html" id="link"> <img src="../imagens/logo-1.png" alt="Logo Zenit" id="imgHeaderLogo">
             </a>
         </div>
-        <a href="../HTML/Calculador.html"><h4 id="liCalGanhos">Calcular Ganhos</h4></a>
-        <a href="../HTML/nossoProduto.html"><h4 id="liNossoProduto">Nosso Produto</h4></a>
-        <a href="../HTML/QuemSomos.html"><h4 id="liQuemSomos">Quem Somos</h4></a>
+        <a href="../HTML/Calculador.html">
+            <h4 id="liCalGanhos">Calcular Ganhos</h4>
+        </a>
+        <a href="../HTML/nossoProduto.html">
+            <h4 id="liNossoProduto">Nosso Produto</h4>
+        </a>
+        <a href="../HTML/QuemSomos.html">
+            <h4 id="liQuemSomos">Quem Somos</h4>
+        </a>
         <div class="divPerfil">
             <img id="imgHeader" src="../imagens/icon-user-transparente.png" alt="">
             <h4>Perfil</h4>
@@ -35,29 +41,41 @@
 
     </div>
 
-    <div class="divContainerGrafico">
-        <div id="transformadoresTotais" style="display: block;">
-            <h1>Visão geral dos transformadores</h1>
 
-            <div class="grafico">
-                <canvas id="graficoVisaoAmpla" width="800px" ></canvas>
+    <div id="telaModal">
+        <div class="divContainerGrafico">
+            <div id="transformadoresTotais" style="display: block;">
+                <h1>Visão geral dos transformadores</h1>
+
+                <div class="grafico">
+                    <canvas id="graficoVisaoAmpla" width="800px"></canvas>
+                </div>
             </div>
-        </div>
+            <div id="metricas">cc</div>
 
-        <div id="transformadorUm" style="display: none;">
-            <h1>Transformador 1</h1>
+            <div id="transformadorUm" style="display: none;">
+                <h1>Transformador 1</h1>
 
-            <div class="grafico">
-                <canvas id="graficoVisaoDetalhada" width="800px"></canvas>
+                <div class="grafico">
+                    <canvas id="graficoVisaoDetalhada" width="800px"></canvas>
+                </div>
             </div>
-        </div>
 
-        <button onclick="mostrarTransformadorUm()" id="buttonVisaoIndividual">Visão transformador 1</button>
-        <button onclick="mostrarVisaoGeral()" style="display: none;" id="buttonVisaoGeral">Visão geral dos transformadores</button>
-        <!-- <span class="buttonGrafico">
-                <button onclick="expVisaoAmpla()">Visão ampla</button>
-                <button onclick="expTransformador()">Transformador 1</button>
-            </span> -->
+            
+            <button onclick="mostrarTransformadorUm()" id="buttonVisaoIndividual">Visão transformador 1</button>
+            <button onclick="mostrarVisaoGeral()" style="display: none;" id="buttonVisaoGeral">Visão geral dos
+                transformadores</button>
+                <!-- <span class="buttonGrafico">
+                    <button onclick="expVisaoAmpla()">Visão ampla</button>
+                    <button onclick="expTransformador()">Transformador 1</button>
+                </span> -->
+            </div>
+        <div id="divKPI">
+            <div id="miniKPI"></div>
+            <div id="miniKPI"></div>
+            <div id="miniKPI"></div>
+            <div id="miniKPI"></div>
+        </div>
     </div>
 
     <div class="divFooter">
@@ -81,7 +99,7 @@
 </html>
 <script>
 
-    function mostrarTransformadorUm(){
+    function mostrarTransformadorUm() {
         transformadorUm.style = 'width: 800px;';
         transformadoresTotais.style = 'width: 0;';
         transformadorUm.style.display = 'block';
@@ -90,7 +108,7 @@
         buttonVisaoGeral.style.display = 'block';
     }
 
-    function mostrarVisaoGeral(){
+    function mostrarVisaoGeral() {
         transformadorUm.style = 'width: 0;';
         transformadoresTotais.style = 'width: 800px;';
         transformadorUm.style.display = 'none';
@@ -98,7 +116,7 @@
         buttonVisaoIndividual.style.display = 'block';
         buttonVisaoGeral.style.display = 'none';
     }
-    
+
     const visaoAmpla = document.getElementById('graficoVisaoAmpla');
     const visaoDetalhada = document.getElementById('graficoVisaoDetalhada');
 
