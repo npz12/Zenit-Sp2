@@ -60,22 +60,46 @@
                 </div>
             </div>
             
-            <div id="metricas">cc</div>
+            <!-- <div id="metricas">cc</div> -->
             
-            <button onclick="mostrarTransformadorUm()" id="buttonVisaoIndividual">Visão transformador 1</button>
-            <button onclick="mostrarVisaoGeral()" style="display: none;" id="buttonVisaoGeral">Visão geral dos
+            <button onclick="mostrarTransformadorUm()" id="buttonVisaoIndividual" class="buttonGrafico">Visão transformador 1</button>
+            <button onclick="mostrarVisaoGeral()" style="display: none;" id="buttonVisaoGeral" class="buttonGrafico">Visão geral dos
                 transformadores</button>
                 <!-- <span class="buttonGrafico">
                     <button onclick="expVisaoAmpla()">Visão ampla</button>
                     <button onclick="expTransformador()">Transformador 1</button>
                 </span> -->
             </div>
-        <div id="divKPI">
-            <div id="miniKPI"></div>
-            <div id="miniKPI"></div>
-            <div id="miniKPI"></div>
-            <div id="miniKPI"></div>
+        <div class="divKPI">
+            <div class="miniKPI">
+                <canvas id="graficoKpiGeral" width="200px"></canvas>
+            </div>
+
+            <div class="miniKPI">
+
+            </div>
+
+            <div class="miniKPI">
+
+            </div>
+
+
         </div>
+
+        <!-- <div class="divKPI" style="display: none;">
+            <div class="miniKPI">
+                <canvas id="graficoKpiIndividual" width="200px"></canvas>
+            </div>
+            <div class="miniKPI">
+
+            </div>
+            <div class="miniKPI">
+
+            </div>
+            <div class="miniKPI">
+
+            </div>
+        </div> -->
     </div>
 
     <div class="divFooter">
@@ -102,10 +126,15 @@
     function mostrarTransformadorUm() {
         transformadorUm.style = 'width: 800px;';
         transformadoresTotais.style = 'width: 0;';
-        transformadorUm.style.display += 'block';
+        transformadorUm.style.display = 'block';
         transformadoresTotais.style = 'display: none;';
         buttonVisaoGeral.style.display = 'block';
         buttonVisaoIndividual.style.display = 'none';
+        // kpiGraficoGeral.style = 'width: 0;';
+        // kpiGraficoIndividual.style = 'width: 200px';
+        // kpiGraficoIndividual.style = 'height: 200px';
+        // kpiGraficoGeral.style = 'display: none';
+        // kpiGraficoIndividual.style = 'display: flex';
     }
 
     function mostrarVisaoGeral() {
@@ -115,12 +144,21 @@
         transformadoresTotais.display += 'block';
         buttonVisaoGeral.style.display = 'none';
         buttonVisaoIndividual.style.display = 'block';
+        // kpiGraficoGeral.style = 'width: 200px;';
+        // kpiGraficoGeral.style = 'height: 200px;';
+        // kpiGraficoIndividual.style = 'width: 0';
+        // kpiGraficoGeral.style = 'display: flex';
+        // kpiGraficoIndividual.style = 'display: none';
+        
     }
 
     const visaoAmpla = document.getElementById('graficoVisaoAmpla');
     const visaoDetalhada = document.getElementById('graficoVisaoDetalhada');
+    const kpiGeral = document.getElementById('graficoKpiGeral');
+    const kpiIndividual = document.getElementById('graficoKpiIndividual');
+    var dados = [15, 10, 4]
 
-    Chart.defaults.color = "#fff";
+    // Chart.defaults.color = "#fff";
 
     new Chart(visaoAmpla, {
         type: 'bar',
@@ -131,8 +169,8 @@
                 label: 'Temperatura( °C ) 21:00',
                 data: [80, 86, 105, 120, 77, 82, 48, 80, 76, 10, 31, 84, 80],
                 borderWidth: 1,
-                borderColor: "#4472c4",
-                backgroundColor: "#4472c4"
+                // borderColor: "#4472c4",
+                backgroundColor: "#1770B9"
                 //   borderColor: ["#0000ff", "#ffff00", "#ff0000", "#ff0000", "#ffff00", "#ffff00", "#ffff00", "#ffff00", "#0000ff", "#0000ff", "#ffff00", "#0000ff" ],
                 //   backgroundColor: ["#0000ff"]
             },
@@ -247,4 +285,57 @@
             }
         }
     });
+
+    new Chart(kpiGeral, {
+        type: 'pie',
+        data: {
+            labels: ['Ideal', 'Emergência', 'Critico'],
+            datasets: [{
+                // label: 'Ideal',
+                label: 'Temperatura( °C ) 21:00',
+                data: dados,
+                borderWidth: 1,
+                borderColor: "#fff",
+                backgroundColor: ["#44ff44", "#ffff44", "#ff4444"]
+            }]
+        },
+        options: {
+            plugins: {
+                legend: {
+                    labels: {
+                        font: {
+                            size: 10
+                        }
+                    },
+                    title: {
+                        display: true,
+                        text: 'Indicadores'
+                    },
+                }
+            },
+            scales: {
+                // y: {
+                //     grid: {
+                //         display: false,
+                //     },
+                //     beginAtZero: false,
+                //     title: {
+                //         display: false,
+                //         text: 'Temperatura'
+                //     }
+                // },
+                // x: {
+                //     grid: {
+                //         display: false
+                //     },
+                //     title: {
+                //         display: true,
+                //         text: 'Identificão do transformador'
+                //     }
+                // }
+            }
+        }
+    });
+
+        
 </script>

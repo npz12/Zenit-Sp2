@@ -6,19 +6,19 @@
     align-items: center;
     margin: 20px;
 }
-#divKPI {
+.divKPI {
     display: flex;
-    width: 20%;
+    width: 200px;
     flex-direction: column;
     margin-top: 50px;
     gap: 10px
     ;
 }
-#miniKPI {
+.miniKPI {
     display: flex;
-    width: 100%;
-    height: 90px;
-    border: solid aqua 2px;
+    width: 200px;
+    height: 200px;
+    border: solid #5cabeb 1px;
     border-radius: 20px;    
 }
 #metricas {
@@ -42,9 +42,18 @@
 
 }
 
-.buttonGrafico button:hover{
-    transform: scale(1.1);
-    transition: 1s;
+.buttonGrafico{
+    /* border: 2px solid #5cabeb; */
+    border: none ;
+    background-color: #5cabeb;
+    padding: 10px;
+    border-radius: 30px;
+    font-weight: bold;
+}
+
+.buttonGrafico:hover{
+    transform: scale(1.03);
+    transition: 0.5s;
 }
 .divContainerGrafico h1 {
     font-family: Arial, Helvetica, sans-serif;
