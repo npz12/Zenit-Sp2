@@ -21,7 +21,7 @@
         <a href="../HTML/nossoProduto.html"><h4 id="liNossoProduto">Nosso Produto</h4></a>
         <a href="../HTML/QuemSomos.html"><h4 id="liQuemSomos">Quem Somos</h4></a>
         <div class="divPerfil">
-            <img id="imgHeader" src="imagens/icon-user-transparente.png" alt="">
+            <img id="imgHeader" src="../imagens/icon-user-transparente.png" alt="">
             <h4>Perfil</h4>
             <!-- <h4 id="liPerfil"><a href='../HTML/login.html'>Log In</a></h4>
             <h4>|</h4>
@@ -36,14 +36,24 @@
     </div>
 
     <div class="divContainerGrafico">
-        <h1>Visão geral dos transformadores</h1>
-        <div class="grafico" id="transformadoresTotais">
-            <canvas id="graficoVisaoAmpla" width="800px"></canvas>
+        <div id="transformadoresTotais" style="display: block;">
+            <h1>Visão geral dos transformadores</h1>
+
+            <div class="grafico">
+                <canvas id="graficoVisaoAmpla" width="800px" ></canvas>
+            </div>
         </div>
-        <h1>Transformador 1</h1>
-        <div class="grafico" id="transformadorUm">
-            <canvas id="graficoVisaoDetalhada" width="800px"></canvas>
+
+        <div id="transformadorUm" style="display: none;">
+            <h1>Transformador 1</h1>
+
+            <div class="grafico">
+                <canvas id="graficoVisaoDetalhada" width="800px"></canvas>
+            </div>
         </div>
+
+        <button onclick="mostrarTransformadorUm()" id="buttonVisaoIndividual">Visão transformador 1</button>
+        <button onclick="mostrarVisaoGeral()" style="display: none;" id="buttonVisaoGeral">Visão geral dos transformadores</button>
         <!-- <span class="buttonGrafico">
                 <button onclick="expVisaoAmpla()">Visão ampla</button>
                 <button onclick="expTransformador()">Transformador 1</button>
@@ -70,6 +80,25 @@
 
 </html>
 <script>
+
+    function mostrarTransformadorUm(){
+        transformadorUm.style = 'width: 800px;';
+        transformadoresTotais.style = 'width: 0;';
+        transformadorUm.style.display = 'block';
+        transformadoresTotais.display = 'none';
+        buttonVisaoIndividual.style.display = 'none';
+        buttonVisaoGeral.style.display = 'block';
+    }
+
+    function mostrarVisaoGeral(){
+        transformadorUm.style = 'width: 0;';
+        transformadoresTotais.style = 'width: 800px;';
+        transformadorUm.style.display = 'none';
+        transformadoresTotais.display = 'block';
+        buttonVisaoIndividual.style.display = 'block';
+        buttonVisaoGeral.style.display = 'none';
+    }
+    
     const visaoAmpla = document.getElementById('graficoVisaoAmpla');
     const visaoDetalhada = document.getElementById('graficoVisaoDetalhada');
 
