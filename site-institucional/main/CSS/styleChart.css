@@ -10,16 +10,16 @@
     display: flex;
     width: 200px;
     flex-direction: column;
-    margin-top: 50px;
-    gap: 10px
-    ;
+    /* margin-top: 50px; */
+    gap: 5px;
 }
 .miniKPI {
     display: flex;
     width: 200px;
     height: 200px;
-    border: solid #5cabeb 1px;
-    border-radius: 20px;    
+    background-color: #e0e3e5;
+    /* border: solid #5cabeb 1px; */
+    border-radius: 20px;
 }
 #metricas {
     align-items: center;
@@ -30,9 +30,12 @@
 
 }
 .grafico{
-    background: rgb(83,83,83);
-    background: radial-gradient(circle, rgba(83,83,83,1) 0%, rgba(0,0,0,1) 100%);
-    margin: 10px;
+    /* background: rgb(83,83,83);
+    background: radial-gradient(circle, rgba(83,83,83,1) 0%, rgba(0,0,0,1) 100%); */
+    border: 1px solid;
+    border-radius: 20px;
+    background-color: #e0e3e5;
+    /* margin: 10px; */
 }
 .divContainerGrafico {
     display: flex;
@@ -49,6 +52,7 @@
     padding: 10px;
     border-radius: 30px;
     font-weight: bold;
+    margin: 5px;
 }
 
 .buttonGrafico:hover{

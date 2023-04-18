@@ -44,32 +44,33 @@
 
     <div id="telaModal">
         <div class="divContainerGrafico">
-            <div id="transformadoresTotais" style="display: block;">
-                <h1>Visão geral dos transformadores</h1>
 
+            <div id="transformadoresTotais" style="display: block;">
+                <!-- <h1>Visão geral dos transformadores</h1> -->
                 <div class="grafico">
                     <canvas id="graficoVisaoAmpla" width="800px"></canvas>
                 </div>
             </div>
-            
+
             <div id="transformadorUm" style="display: none;">
-                <h1>Transformador 1</h1>
-                
+                <!-- <h1>Transformador 1</h1> -->
                 <div class="grafico">
                     <canvas id="graficoVisaoDetalhada" width="800px"></canvas>
                 </div>
             </div>
-            
+
             <!-- <div id="metricas">cc</div> -->
-            
-            <button onclick="mostrarTransformadorUm()" id="buttonVisaoIndividual" class="buttonGrafico">Visão transformador 1</button>
-            <button onclick="mostrarVisaoGeral()" style="display: none;" id="buttonVisaoGeral" class="buttonGrafico">Visão geral dos
+
+            <button onclick="mostrarTransformadorUm()" id="buttonVisaoIndividual" class="buttonGrafico">Visão
+                transformador 1</button>
+            <button onclick="mostrarVisaoGeral()" style="display: none;" id="buttonVisaoGeral"
+                class="buttonGrafico">Visão geral dos
                 transformadores</button>
-                <!-- <span class="buttonGrafico">
+            <!-- <span class="buttonGrafico">
                     <button onclick="expVisaoAmpla()">Visão ampla</button>
                     <button onclick="expTransformador()">Transformador 1</button>
                 </span> -->
-            </div>
+        </div>
         <div class="divKPI">
             <div class="miniKPI">
                 <canvas id="graficoKpiGeral" width="200px"></canvas>
@@ -85,21 +86,6 @@
 
 
         </div>
-
-        <!-- <div class="divKPI" style="display: none;">
-            <div class="miniKPI">
-                <canvas id="graficoKpiIndividual" width="200px"></canvas>
-            </div>
-            <div class="miniKPI">
-
-            </div>
-            <div class="miniKPI">
-
-            </div>
-            <div class="miniKPI">
-
-            </div>
-        </div> -->
     </div>
 
     <div class="divFooter">
@@ -130,62 +116,54 @@
         transformadoresTotais.style = 'display: none;';
         buttonVisaoGeral.style.display = 'block';
         buttonVisaoIndividual.style.display = 'none';
-        // kpiGraficoGeral.style = 'width: 0;';
-        // kpiGraficoIndividual.style = 'width: 200px';
-        // kpiGraficoIndividual.style = 'height: 200px';
-        // kpiGraficoGeral.style = 'display: none';
-        // kpiGraficoIndividual.style = 'display: flex';
+
     }
 
     function mostrarVisaoGeral() {
         transformadorUm.style = 'width: 0;';
         transformadoresTotais.style = 'width: 800px;';
-        transformadorUm.style.display += 'none';
-        transformadoresTotais.display += 'block';
+        transformadorUm.style.display = 'none';
+        transformadoresTotais.display = 'block';
         buttonVisaoGeral.style.display = 'none';
         buttonVisaoIndividual.style.display = 'block';
-        // kpiGraficoGeral.style = 'width: 200px;';
-        // kpiGraficoGeral.style = 'height: 200px;';
-        // kpiGraficoIndividual.style = 'width: 0';
-        // kpiGraficoGeral.style = 'display: flex';
-        // kpiGraficoIndividual.style = 'display: none';
-        
+
     }
 
     const visaoAmpla = document.getElementById('graficoVisaoAmpla');
     const visaoDetalhada = document.getElementById('graficoVisaoDetalhada');
     const kpiGeral = document.getElementById('graficoKpiGeral');
     const kpiIndividual = document.getElementById('graficoKpiIndividual');
-    var dados = [15, 10, 4]
+    var ideal = 7;
+    var alerta = 4;
+    var critico = 2;
+    var dados = [ideal, alerta, critico];
+    var dadosLM35 = [80, 86, 105, 120, 77, 82, 48, 80, 76, 10, 31, 84, 80]
+    // for(var i = 0; i < 3; i++){
+    //     for(var j = 0; j < 13; j++){
+    //         if(i = 0 && (j >= 45 && j <= 80)){
+    //             ideal++;
+    //         }
+    //         if(i = 1 && (j >= 20 && j < 45) || (j > 80 && j < 100)){
+    //             alerta++;
+    //         }
+    //         if(i = 2 && (j >= 100 || j < 20)){
+    //             critico++;
+    //         }
+    //     }
+    // }
 
-    // Chart.defaults.color = "#fff";
+    Chart.defaults.color = "#000";
 
     new Chart(visaoAmpla, {
         type: 'bar',
         data: {
             labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13'],
             datasets: [{
-                // label: 'Ideal',
                 label: 'Temperatura( °C ) 21:00',
-                data: [80, 86, 105, 120, 77, 82, 48, 80, 76, 10, 31, 84, 80],
+                data: dadosLM35,
                 borderWidth: 1,
-                // borderColor: "#4472c4",
                 backgroundColor: "#1770B9"
-                //   borderColor: ["#0000ff", "#ffff00", "#ff0000", "#ff0000", "#ffff00", "#ffff00", "#ffff00", "#ffff00", "#0000ff", "#0000ff", "#ffff00", "#0000ff" ],
-                //   backgroundColor: ["#0000ff"]
             },
-                // {
-                //     label: 'Alerta',
-                //   borderWidth: 5,
-                //   borderColor: ["#ffff00"],
-                //   backgroundColor: ["#ffff00"]
-                // },
-                // {
-                //     label: 'Emergência',
-                //   borderWidth: 5,
-                //   borderColor: ["#ff0000"],
-                //   backgroundColor: ["#ff0000"]
-                // }
             ]
         },
         options: {
@@ -195,7 +173,14 @@
                         font: {
                             size: 25
                         }
-                    }
+                    },
+                    title: {
+                        font: {
+                            size: 40
+                        },
+                        display: true,
+                        text: 'Visão geral dos transformadores',
+                    },
                 }
             },
             scales: {
@@ -233,24 +218,7 @@
                 borderWidth: 5,
                 borderColor: "#4472c4",
                 backgroundColor: "#4472c4"
-
-                //   borderColor: ["#00f", "#ff0", "#f00", "#f00", "#00f", "#ff0", "#00f", "#ff0", "#00f", "#f00", "#ff0", "#ff0", "#00f" ],
-                //   backgroundColor: ["#0000ff"]
-
-            },
-                // {
-                //     label: 'Alerta',
-                //   borderWidth: 5,
-                //   borderColor: ["#ffff00"],
-                //   backgroundColor: ["#ffff00"]
-                // },
-                // {
-                //     label: 'Emergência',
-                //   borderWidth: 5,
-                //   borderColor: ["#ff0000"],
-                //   backgroundColor: ["#ff0000"]
-                // }
-            ]
+            },]
         },
         options: {
             plugins: {
@@ -275,7 +243,8 @@
                 },
                 x: {
                     grid: {
-                        display: false
+                        display: true,
+                        color: '#636363'
                     },
                     title: {
                         display: true,
@@ -289,7 +258,7 @@
     new Chart(kpiGeral, {
         type: 'pie',
         data: {
-            labels: ['Ideal', 'Emergência', 'Critico'],
+            labels: [`Ideal(${dados[0]})`, `Emergência(${dados[1]})`, `Critico(${dados[2]})`],
             datasets: [{
                 // label: 'Ideal',
                 label: 'Temperatura( °C ) 21:00',
@@ -337,5 +306,5 @@
         }
     });
 
-        
+
 </script>
