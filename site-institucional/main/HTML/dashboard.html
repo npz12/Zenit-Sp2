@@ -43,6 +43,7 @@
 
 
     <div id="telaModal">
+        
         <div class="divContainerGrafico">
 
             <div id="transformadoresTotais" style="display: block;">
@@ -77,14 +78,12 @@
             </div>
 
             <div class="miniKPI">
-
+                
             </div>
 
             <div class="miniKPI">
 
             </div>
-
-
         </div>
     </div>
 
@@ -110,20 +109,16 @@
 <script>
 
     function mostrarTransformadorUm() {
-        transformadorUm.style = 'width: 800px;';
-        transformadoresTotais.style = 'width: 0;';
-        transformadorUm.style.display = 'block';
-        transformadoresTotais.style = 'display: none;';
+        transformadorUm.style = 'width: 800px; display: block;';
+        transformadoresTotais.style = 'width: 0; display: none;';
         buttonVisaoGeral.style.display = 'block';
         buttonVisaoIndividual.style.display = 'none';
 
     }
 
     function mostrarVisaoGeral() {
-        transformadorUm.style = 'width: 0;';
-        transformadoresTotais.style = 'width: 800px;';
-        transformadorUm.style.display = 'none';
-        transformadoresTotais.display = 'block';
+        transformadorUm.style = 'width: 0; display: none;';
+        transformadoresTotais.style = 'width: 800px; display: block;';
         buttonVisaoGeral.style.display = 'none';
         buttonVisaoIndividual.style.display = 'block';
 
@@ -133,24 +128,42 @@
     const visaoDetalhada = document.getElementById('graficoVisaoDetalhada');
     const kpiGeral = document.getElementById('graficoKpiGeral');
     const kpiIndividual = document.getElementById('graficoKpiIndividual');
-    var ideal = 7;
-    var alerta = 4;
-    var critico = 2;
-    var dados = [ideal, alerta, critico];
+
+    var ideal = 0;
+    var alerta = 0;
+    var critico = 0;
+    
+    var listaIdeal = [];
+    var listaAlerta = [];
+    var listaCritico = [];
     var dadosLM35 = [80, 86, 105, 120, 77, 82, 48, 80, 76, 10, 31, 84, 80]
-    // for(var i = 0; i < 3; i++){
-    //     for(var j = 0; j < 13; j++){
-    //         if(i = 0 && (j >= 45 && j <= 80)){
-    //             ideal++;
-    //         }
-    //         if(i = 1 && (j >= 20 && j < 45) || (j > 80 && j < 100)){
-    //             alerta++;
-    //         }
-    //         if(i = 2 && (j >= 100 || j < 20)){
-    //             critico++;
-    //         }
-    //     }
-    // }
+    for (var i = 0; i < 3; i++) {
+        
+        for (var j = 0; j < 13; j++) {
+            if (i == 0 && (dadosLM35[j] >= 45 && dadosLM35[j] <= 80)) {
+                listaIdeal[ideal] = j + 1;
+                ideal++;
+                // console.log(`ideal(${i}): ${j} (${dadosLM35[j]})`)
+            }
+            
+            if (i == 1 && (dadosLM35[j] >= 20 && dadosLM35[j] < 45 || dadosLM35[j] > 80 && dadosLM35[j] < 100)) {
+                listaAlerta[alerta] = j + 1;
+                alerta++;
+                // console.log(`alerta(${i}): ${j} (${dadosLM35[j]})`)
+            }
+            
+            if (i == 2 && (dadosLM35[j] >= 100 || dadosLM35[j] < 20)) {
+                listaCritico[critico] = j + 1;
+                critico++;
+                // console.log(`critico(${i}): ${j} (${dadosLM35[j]})`)
+            }
+        }
+        
+    }
+    console.log(`lista ideal: ${listaIdeal} lista alerta: ${listaAlerta} lista critico: ${listaCritico}`)
+
+    var dados = [ideal, alerta, critico];
+
 
     Chart.defaults.color = "#000";
 
@@ -162,7 +175,7 @@
                 label: 'Temperatura( °C ) 21:00',
                 data: dadosLM35,
                 borderWidth: 1,
-                backgroundColor: "#1770B9"
+                backgroundColor: ["#1770B9"]
             },
             ]
         },
@@ -227,7 +240,14 @@
                         font: {
                             size: 25
                         }
-                    }
+                    },
+                    title: {
+                        font: {
+                            size: 40
+                        },
+                        display: true,
+                        text: 'Transformador: 1',
+                    },
                 }
             },
             scales: {
@@ -258,7 +278,7 @@
     new Chart(kpiGeral, {
         type: 'pie',
         data: {
-            labels: [`Ideal(${dados[0]})`, `Emergência(${dados[1]})`, `Critico(${dados[2]})`],
+            labels: [`Ideal(${dados[0]})`, `Alerta(${dados[1]})`, `Critico(${dados[2]})`],
             datasets: [{
                 // label: 'Ideal',
                 label: 'Temperatura( °C ) 21:00',
