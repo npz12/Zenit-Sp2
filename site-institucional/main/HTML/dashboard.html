@@ -51,16 +51,16 @@
                     <canvas id="graficoVisaoAmpla" width="800px"></canvas>
                 </div>
             </div>
-            <div id="metricas">cc</div>
-
+            
             <div id="transformadorUm" style="display: none;">
                 <h1>Transformador 1</h1>
-
+                
                 <div class="grafico">
                     <canvas id="graficoVisaoDetalhada" width="800px"></canvas>
                 </div>
             </div>
-
+            
+            <div id="metricas">cc</div>
             
             <button onclick="mostrarTransformadorUm()" id="buttonVisaoIndividual">Visão transformador 1</button>
             <button onclick="mostrarVisaoGeral()" style="display: none;" id="buttonVisaoGeral">Visão geral dos
@@ -102,19 +102,19 @@
     function mostrarTransformadorUm() {
         transformadorUm.style = 'width: 800px;';
         transformadoresTotais.style = 'width: 0;';
-        transformadorUm.style.display = 'block';
-        transformadoresTotais.display = 'none';
-        buttonVisaoIndividual.style.display = 'none';
+        transformadorUm.style.display += 'block';
+        transformadoresTotais.style = 'display: none;';
         buttonVisaoGeral.style.display = 'block';
+        buttonVisaoIndividual.style.display = 'none';
     }
 
     function mostrarVisaoGeral() {
         transformadorUm.style = 'width: 0;';
         transformadoresTotais.style = 'width: 800px;';
-        transformadorUm.style.display = 'none';
-        transformadoresTotais.display = 'block';
-        buttonVisaoIndividual.style.display = 'block';
+        transformadorUm.style.display += 'none';
+        transformadoresTotais.display += 'block';
         buttonVisaoGeral.style.display = 'none';
+        buttonVisaoIndividual.style.display = 'block';
     }
 
     const visaoAmpla = document.getElementById('graficoVisaoAmpla');
