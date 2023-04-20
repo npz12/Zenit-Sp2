@@ -49,8 +49,8 @@
                             <input type="text" id="poste">
                         </div>
                         <div class="interaction">
-                            <p>Digite a quantidade de carros afetados(máximo 3 por transformador)</p>
-                            <input type="text" id="carros">
+                            <p>Digite a quantidade de carros afetados</p>
+                            <input placeholder="(máximo 3 por transformador)" type="text" id="carros">
                         </div>
                         <div class="interaction">
                             <p>Digite a quantidade de pessoas afetadas</p>
@@ -76,8 +76,8 @@
                     <div class="interaction">
                         <h2>Cálcule o <u>prejuízo</u> que a Zenit evitará a você dono de empresa!</h2>
                         <h4>Utilize esta calculadora caso o transformador se localizava em uma empresa</h4>
-                        <p>Sua Empresa é grande (mais de 100 funcionários)?(s/n)</p>
-                        <input id="empresaSize">
+                        <p>Sua Empresa é grande </p>
+                        <input placeholder="(mais de 100 funcionários)?(s/n)" id="empresaSize">
                     </div>
                     <div class="interaction">
                         <p>Quantos transformádores trifásicos à óleo possúi? </p>
@@ -87,7 +87,7 @@
                         <p>Qual o faturamento mensal da sua empresa</p>
                         <input id="faturamento">
                     </div>
-                    <button class="calcular" onclick="calculando()">Calcula</button>
+                    <button class="calcular" onclick="calculando()">Calcular</button>
                     <div>
                         <p id="message"></p>
                     </div>
@@ -131,7 +131,7 @@
             if (carros.value <= 3) {
 
                 var preju = (50000 * carros.value) + (feridos.value * 55000) + (poste.value * 30000);
-                msg.innerHTML = `<br><p>Podemos evitar cerca de R$ ${preju} em prejuízo</p>`
+                msg.innerHTML = `<br><b>Podemos evitar cerca de R$ ${preju} em prejuízo</b>`
             }
             if (carros.value > 3) {
                 alert(`O máximo de carros que um transformador de poste médio pode atingir é de 3`);
@@ -147,14 +147,14 @@
         if (qntdTransf.value <= 0) {
             alert('O número de transformadores tem que ser maior que 0')
         }
-        if (empresaSize != 's' && empresaSize != 'n') {
+        if (empresaSize.value != 's' && empresaSize.value != 'n') {
             alert('O campo empresa deve ser preenchido com o tamanho de empresa(s/n)');
         }
 
 
         else {
             var fatMensal = faturamento.value / 30
-            if (empresaSize === 's') {
+            if (empresaSize.value === 's') {
                 var precoTrasnf = 50000;
                 var preju = (Number(precoTrasnf) * Number(qntdTransf.value)) + Number(fatMensal)
                 message.innerHTML = `<b> Podemos evitar até R$ ${preju.toFixed(2)} em percas caso ocorra alguma falha no transformador<b>`
@@ -163,9 +163,6 @@
                 var precoTransfor = 10000;
                 var preju = precoTransfor * Number(qntdTransf.value) + fatMensal
                 message.innerHTML = `<b> Podemos evitar até R$ ${preju.toFixed(2)} em percas caso ocorra alguma falha no transformador<b>`
-            }
-            else {
-                alert('Valor inválido no campo informando o tamanho da empresa')
             }
         }
 
