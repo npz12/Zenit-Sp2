@@ -201,7 +201,9 @@ body {
     border-left: solid 2px #acdcfc;
     padding-left: 60px;
     margin-right: 20px;
-}
+    display: flex;
+    flex-direction: column;
+    }
 .divColuna p{
     width: 20ch;
     overflow: auto;
