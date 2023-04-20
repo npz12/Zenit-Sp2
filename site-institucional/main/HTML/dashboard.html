@@ -77,12 +77,14 @@
             <div class="miniKPI">
                 <canvas id="graficoKpiGeral" width="200px"></canvas>
             </div>
-            <div class="miniKPI">
-                <canvas id="graficoF"></canvas>                
+            <div class="miniKPI" id="caixaUm">
+                <span id="kpiCritico">0</span>
+                <p>Critico</p>          
             </div>
             
-            <div class="miniKPI">
-                <canvas id="graficoH"></canvas>
+            <div class="miniKPI" id="caixaDois">
+                <span id="kpiIdeal">0</span>
+                <p>Ideal</p>
             </div>
         </div>
     </div>
@@ -133,34 +135,38 @@
     var alerta = 0;
     var critico = 0;
     
-    var listaIdeal = [];
-    var listaAlerta = [];
-    var listaCritico = [];
+    // var listaIdeal = [];
+    // var listaAlerta = [];
+    // var listaCritico = [];
+    
     var dadosLM35 = [80, 86, 105, 120, 77, 82, 48, 80, 76, 10, 31, 84, 80]
     for (var i = 0; i < 3; i++) {
         
         for (var j = 0; j < 13; j++) {
             if (i == 0 && (dadosLM35[j] >= 45 && dadosLM35[j] <= 80)) {
-                listaIdeal[ideal] = j + 1;
+                // listaIdeal[ideal] = j + 1;
                 ideal++;
                 // console.log(`ideal(${i}): ${j} (${dadosLM35[j]})`)
             }
             
             if (i == 1 && (dadosLM35[j] >= 20 && dadosLM35[j] < 45 || dadosLM35[j] > 80 && dadosLM35[j] < 100)) {
-                listaAlerta[alerta] = j + 1;
+                // listaAlerta[alerta] = j + 1;
                 alerta++;
                 // console.log(`alerta(${i}): ${j} (${dadosLM35[j]})`)
             }
             
             if (i == 2 && (dadosLM35[j] >= 100 || dadosLM35[j] < 20)) {
-                listaCritico[critico] = j + 1;
+                // listaCritico[critico] = j + 1;
                 critico++;
                 // console.log(`critico(${i}): ${j} (${dadosLM35[j]})`)
             }
         }
         
     }
-    console.log(`lista ideal: ${listaIdeal} lista alerta: ${listaAlerta} lista critico: ${listaCritico}`)
+    // console.log(`lista ideal: ${listaIdeal} lista alerta: ${listaAlerta} lista critico: ${listaCritico}`)
+
+    kpiCritico.innerHTML = critico;
+    kpiIdeal.innerHTML = ideal;
 
     var dados = [ideal, alerta, critico];
 

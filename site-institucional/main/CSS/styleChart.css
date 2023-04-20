@@ -69,3 +69,38 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+#caixaUm{
+    background-color: #ff4444;
+    color: white;
+    font-weight: bold;
+    font-size: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/* #caixaUm span{
+    margin-top: 5px;
+    margin-bottom: 0;
+} */
+#caixaUm p{
+    font-size: 20px;
+    margin: 0;
+}
+
+#caixaDois{
+    background-color: #44ff44;
+    color: white;
+    font-weight: bold;
+    font-size: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/* #caixaDois span{
+    margin-top: 5px;
+    margin-bottom: 0;
+} */
+#caixaDois p{
+    font-size: 20px;
+    margin: 0;
+}
