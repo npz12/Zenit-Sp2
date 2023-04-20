@@ -18,9 +18,15 @@
             <a href="../mainZenit.html" id="link"> <img src="../imagens/logo-1.png" alt="Logo Zenit" id="imgHeaderLogo">
             </a>
         </div>
-        <a href="../HTML/Calculador.html"><h4 id="liCalGanhos">Calcular Ganhos</h4></a>
-        <a href="../HTML/nossoProduto.html"><h4 id="liNossoProduto">Nosso Produto</h4></a>
-        <a href="../HTML/QuemSomos.html"><h4 id="liQuemSomos">Quem Somos</h4></a>
+        <a href="../HTML/Calculador.html">
+            <h4 id="liCalGanhos">Calcular Ganhos</h4>
+        </a>
+        <a href="../HTML/nossoProduto.html">
+            <h4 id="liNossoProduto">Nosso Produto</h4>
+        </a>
+        <a href="../HTML/QuemSomos.html">
+            <h4 id="liQuemSomos">Quem Somos</h4>
+        </a>
         <div class="divPerfil">
             <!-- <img id="imgHeader"
                 src="imagens/icon-user-transparente.png"
@@ -43,9 +49,9 @@
         <h1 class="h1Titulo">SIGN-UP</h1>
         <input type="text" placeholder="Nome da Empresa" id="iptNome">
         <span class="mensagem-de-erro">
-            <span id="span_erro_caractere_especial_nome">*Não deve conter caractere especial</span></span>
+            <span id="span_erro_caractere_especial_nome">*Nome não deve conter caractere <br> especial</span>
         </span>
-
+        
         <input type="text" placeholder="Email" id="iptEmail">
 
         <input type="text" placeholder="Telefone" id="iptTelefone">
@@ -87,36 +93,36 @@
 
 </html>
 <script>
-    function cadastro() {
-        var nome = iptNome.value;
-        var email = iptEmail.value;
-        var tel = iptTelefone.value;
-        var cnpj = iptCNPJ.value;
-        var senha = iptSenha.value;
-        var erro = false;
+    // function cadastro() {
+    //     var nome = iptNome.value;
+    //     var email = iptEmail.value;
+    //     var tel = iptTelefone.value;
+    //     var cnpj = iptCNPJ.value;
+    //     var senha = iptSenha.value;
+    //     var erro = false;
 
-        if (nome == '') {
-            alert('Nome inválido')
-            erro = true
-        }
-        if (tel.length > 9 || tel.length < 9 || tel == '') {
-            alert('O telefone está incorreto!')
-            erro = true
-        }
-        if (cnpj.length > 14 || cnpj.length < 14 || cnpj == '') {
-            alert('O CNPJ está inválido!')
-            erro = true
-        }
-        if (senha.length < 8 || senha == '') {
-            alert('A senha está muito curta')
-            erro = true
-        }
-        if (email == '' || email.indexOf('@') == -1) {
-            alert('Insira um email válido')
-            erro = true
-        }
-        if (erro == false) {
-            alert('Cadastrado com sucesso')
-        }
-    }
+    //     if (nome == '') {
+    //         alert('Nome inválido')
+    //         erro = true
+    //     }
+    //     if (tel.length > 9 || tel.length < 9 || tel == '') {
+    //         alert('O telefone está incorreto!')
+    //         erro = true
+    //     }
+    //     if (cnpj.length > 14 || cnpj.length < 14 || cnpj == '') {
+    //         alert('O CNPJ está inválido!')
+    //         erro = true
+    //     }
+    //     if (senha.length < 8 || senha == '') {
+    //         alert('A senha está muito curta')
+    //         erro = true
+    //     }
+    //     if (email == '' || email.indexOf('@') == -1) {
+    //         alert('Insira um email válido')
+    //         erro = true
+    //     }
+    //     if (erro == false) {
+    //         alert('Cadastrado com sucesso')
+    //     }
+    // }
 </script>

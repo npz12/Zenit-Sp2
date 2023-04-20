@@ -45,15 +45,14 @@ function cadastrar() {
         if (caractereEspecialNomeValido && emailValido && confirmacaoValida && tamanhoSenhaValido && caractereEspecialSenhaValido && numeroSenhaValido) {
             
 
-            // span_erro_caractere_nome.style = 'color:black';
-            // span_erro_caractere_especial_nome.style = 'color:black;'
-            // span_erro_numero_nome.style = 'color:black;'
-            // span_erro_caractere_senha.style = 'color:black;'
-            // span_erro_caractere_especial_senha.style = 'color:black;'
-            // span_erro_numero_senha.style = 'color:black;'
+            span_erro_caractere_especial_nome.style = 'border-color:black';
+            span_erro_caractere_especial_nome.style = 'border-color:black;'
+            span_erro_caractere_senha.style = 'border-color:black;'
+            span_erro_caractere_especial_senha.style = 'border-color:black;'
+            span_erro_numero_senha.style = 'border-color:black;'
             // tela_registro.style = 'display: none;';
             // tela_sucesso.style = 'display: flex;';
-
+            alert('Cadastro da empresa realizado com sucesso!')
             emailRegistrado = email;
             senhaRegistrado = senha;
 
