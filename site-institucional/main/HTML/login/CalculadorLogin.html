@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="PT-br">
+    
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Zenit Calculadora</title>
+        <link rel="stylesheet" href="../../styleMain.css">
+        <link rel="stylesheet" href="../../CSS/stylePub.css">
+    </head>
+    
+    <body>
+        <div class="divHeader">
+            <div class="divLogo">
+                <a href="main.html" id="link"> <img src="../../imagens/logo-1.png" alt="Logo Zenit" id="imgHeaderLogo">
+                </a>
+            </div>
+            <a href="CalculadorLogin.html"><h4 id="liCalGanhos">Calcular Ganhos</h4></a>
+            <a href="nossoProdutoLogin.html"><h4 id="liNossoProduto">Nosso Produto</h4></a>
+            <a href="QuemSomosLogin.html"><h4 id="liQuemSomos">Quem Somos</h4></a>
+            <a href="../dashboard.html"><h4 id="liDashboard">Dashboard</h4></a>
+            <div class="divPerfil">
+                <img id="imgHeader" src="../../imagens/icon-user-transparente.png" alt=""> 
+                <h4 id="liPerfil">Perfil</h4>
+                <a href="../../mainZenit.html"><h4 id="liPerfil">Logout</h4></a>
+                <!-- <h4 id="liPerfil"><a href='./HTML/login.html'>Log In</a></h4>
+                <h4>|</h4>
+                <h4 id="liPerfil"><a href='./HTML/cadastro.html'>Cadastro</a></h4> -->
+            </div>
+    
+            <!-- <div class="divBarraPesquisa">
+                &#8981;
+                <input type="text" id="iptBarraPesquisa" placeholder="Buscar">
+            </div> -->
+    
+        </div>
+        
+
+    </div>
+
+        <div class="contentContainer">
+            <div class="container">
+                <div class="base">
+                    <h2>Calcule o <u>Prejuízo</u> que a Zenit irá evitar à você servidor público ou para você síndico
+                    </h2>
+
+                    <h4>Caso o transformador foi de poste ou afeta uma área residencial/condomínio utilize esta
+                        calculadora!
+                        </h3>
+                        <div class="interaction">
+                            <p>Digite a quantidade de transformadores de poste que explodiram</p>
+                            <input type="text" id="poste">
+                        </div>
+                        <div class="interaction">
+                            <p>Digite a quantidade de carros afetados</p>
+                            <input placeholder="(máximo 3 por transformador)" type="text" id="carros">
+                        </div>
+                        <div class="interaction">
+                            <p>Digite a quantidade de pessoas afetadas</p>
+                            <input type="text" id="feridos">
+                        </div>
+                        <button class="calcular" onclick="Calcular()">Calcular</button>
+
+                        <div id="msg"></div>
+                </div>
+            </div>
+            <!-- <div class="menu"> conteúdo a ser inserido em navbar lateral!!
+                <p>O preço de <b>R$ 30000</b> do transformador foi retirado da média de preços de transformadores
+                    trifásicos a óleo com até 112,5 KVA de potência nominal</p>
+                <p>A quantidade de carros atingidos ao máximo foi feito baseado em parâmetros de um transformador de
+                    poste</p>
+                <p>Foi levado em consideração para o preço dos carros a tabela fipe de hatchs populares e chegado na
+                    méia de <b>R$ 50000</b> para um hatch seminovo(menos de cem mil KM)</p>
+                <p>Foi levado em consideração para o número de pessoas afetadas um caso onde a pessoa recebeu <b>R$
+                        55000</p>
+            </div> -->
+            <div class="container">
+                <div class="base">
+                    <div class="interaction">
+                        <h2>Cálcule o <u>prejuízo</u> que a Zenit evitará a você dono de empresa!</h2>
+                        <h4>Utilize esta calculadora caso o transformador se localizava em uma empresa</h4>
+                        <p>Sua Empresa é grande </p>
+                        <input placeholder="(mais de 100 funcionários)?(s/n)" id="empresaSize">
+                    </div>
+                    <div class="interaction">
+                        <p>Quantos transformádores trifásicos à óleo possúi? </p>
+                        <input id="qntdTransf">
+                    </div>
+                    <div class="interaction">
+                        <p>Qual o faturamento mensal da sua empresa</p>
+                        <input id="faturamento">
+                    </div>
+                    <button class="calcular" onclick="calculando()">Calcular</button>
+                    <div>
+                        <p id="message"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="divFooter">
+            <div class="content">
+                <img src="../../imagens/logo-1.png" alt="Logo Footer" id="imgFooterLogo">
+                <div class="divColuna">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In qui tempore aut voluptate obcaecati
+                        exercitationem nihil, aspernatur</p>
+                </div>
+                <div class="divColuna">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In qui tempore aut voluptate obcaecati
+                        exercitationem nihil, aspernatur</p>
+                </div>
+                <div class="divColuna">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In qui tempore aut voluptate obcaecati
+                        exercitationem nihil, aspernatur</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    function Calcular() {
+        if (carros.value < 0) {
+            alert("O número de carros deve ser maior ou igual a zero");
+        }
+        if (poste.value <= 0) {
+            alert(`Deve haver no mínimo um poste danificado`)
+        }
+        if (feridos.value < 0) {
+            alert("O número de feridos deve ser maior ou igual a zero");
+        }
+        else {
+            if (carros.value <= 3) {
+
+                var preju = (50000 * carros.value) + (feridos.value * 55000) + (poste.value * 30000);
+                msg.innerHTML = `<br><b>Podemos evitar cerca de R$ ${preju} em prejuízo</b>`
+            }
+            if (carros.value > 3) {
+                alert(`O máximo de carros que um transformador de poste médio pode atingir é de 3`);
+            }
+        }
+
+    }
+    function calculando() {
+        // Divisão do faturamento por dia
+        if (faturamento.value < 10000) {
+            alert('O faturamento da empresa deve ser maior do que 10000')
+        }
+        if (qntdTransf.value <= 0) {
+            alert('O número de transformadores tem que ser maior que 0')
+        }
+        if (empresaSize.value != 's' && empresaSize.value != 'n') {
+            alert('O campo empresa deve ser preenchido com o tamanho de empresa(s/n)');
+        }
+
+
+        else {
+            var fatMensal = faturamento.value / 30
+            if (empresaSize.value === 's') {
+                var precoTrasnf = 50000;
+                var preju = (Number(precoTrasnf) * Number(qntdTransf.value)) + Number(fatMensal)
+                message.innerHTML = `<b> Podemos evitar até R$ ${preju.toFixed(2)} em percas caso ocorra alguma falha no transformador<b>`
+            } else if (empresaSize.value === 'n') {
+
+                var precoTransfor = 10000;
+                var preju = precoTransfor * Number(qntdTransf.value) + fatMensal
+                message.innerHTML = `<b> Podemos evitar até R$ ${preju.toFixed(2)} em percas caso ocorra alguma falha no transformador<b>`
+            }
+        }
+
+    }
+</script>

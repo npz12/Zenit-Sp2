@@ -124,6 +124,8 @@ function logar(){
     var emailRegistradoValido = email == emailRegistrado;
     if (senhaRegistradoValido && emailRegistradoValido){
         alert('logado com sucesso');
+        window.open('login/main.html');
+        window.close('login.html');
     } else{
         alert('Email ou senha incorreto')
     }
