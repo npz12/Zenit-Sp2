@@ -213,6 +213,10 @@ body {
     transition: 1s;
     }
     
+#iconsFooter{
+    transition: 1s;
+}
+
 #iconsFooter:hover{
     scale: 1.1;
     transform: scale(1.1);
@@ -255,8 +259,16 @@ body {
     width: 20ch;
     overflow: auto;
 }
-    
 
+.divColuna a{
+    display: flex;
+    transition: 1s;
+}
+
+.divColuna a:hover{
+    text-decoration: underline;
+}
+    
 #imgFooterLogo {
     width: 200px;
     margin: 40px;
