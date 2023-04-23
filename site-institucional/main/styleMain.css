@@ -207,14 +207,15 @@ body {
 
 .divColunaRedes {
     width: 15%;
-    align-items: center;
     display: flex;
     justify-content: space-evenly;
     padding-top: 30px;
+    transition: 1s;
     }
     
 #iconsFooter:hover{
     scale: 1.1;
+    transform: scale(1.1);
 }
 
 
@@ -223,11 +224,31 @@ body {
     width: 15px;
     height: 15px;
 }
+  
+/* COLUNAS DO FOOTER */
 
-#listaFooterFaleConosco{
+#listaFooterHome{
+    display: flex;
     list-style: none;
     padding: 0;
-    padding-bottom: 10px;
+    flex-direction: column;
+    gap: 5px;
+}
+
+#listaFooterFaleConosco{
+    display: flex;
+    list-style: none;
+    padding: 0;
+    flex-direction: column;
+    gap: 5px;
+}
+
+#listaFooterSuporte{
+    display: flex;
+    list-style: none;
+    padding: 0;
+    flex-direction: column;
+    gap: 5px;
 }
 
 .divColuna p{
