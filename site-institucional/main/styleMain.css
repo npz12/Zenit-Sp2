@@ -4,6 +4,7 @@ body {
     margin: 0px;
     padding: 0px;
     padding-top: 0px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /*Style Header*/
@@ -16,7 +17,7 @@ body {
     align-items: center;
     justify-content: space-around;
     border-bottom: solid 3px #98bfdc;
-    font-family: 'Playfair Display';
+    /* font-family: 'Playfair Display'; */
     font-weight: 800;
 }
 
@@ -142,7 +143,7 @@ body {
 #h1AreaAtu {
     margin: 0;
     margin-top: 10px;
-    font-family: 'Playfair Display'
+    /* font-family: 'Playfair Display' */
 }
 
 /*Style DivMiniContainer*/
@@ -159,7 +160,7 @@ body {
     transition: 1s border;
     transition: 0.5s background-color;
     transition: 1s;
-    font-family: 'Playfair Display'
+    /* font-family: 'Playfair Display' */
 }
 
 .divMiniContainer:hover {

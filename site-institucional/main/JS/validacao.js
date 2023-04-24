@@ -17,6 +17,8 @@ function cadastrar() {
 
     var nomePreenchido = nome != '';
     var emailPreenchido = email != '';
+    var telPreenchido = tel != '' && tel.length == 11;
+    var cnpjPreenchido = cnpj != '' && cnpj.length == 14;
     var senhaPreenchido = senha != '';
     var confirmarSenhaPreenchido = confirmarSenha != '';
 
@@ -37,14 +39,15 @@ function cadastrar() {
     var numeroSenhaValido = senha.includes('0') || senha.includes('1') || senha.includes('2') || senha.includes('3') || senha.includes('4') || senha.includes('5') || senha.includes('6') || senha.includes('7') || senha.includes('8') || senha.includes('9');
 
 
-    if (nomePreenchido && emailPreenchido && senhaPreenchido && confirmarSenhaPreenchido) {
-        iptNome.style = 'border: 1px solid black;'
-        iptEmail.style = 'border: 1px solid black;'
-        iptSenha.style = 'border: 1px solid black;'
-        iptConfirmarSenha.style = 'border: 1px solid black;'
+    if (nomePreenchido && emailPreenchido && senhaPreenchido && confirmarSenhaPreenchido && telPreenchido && cnpjPreenchido) {
+        iptNome.style = 'border: 1px solid black;';
+        iptEmail.style = 'border: 1px solid black;';
+        iptTelefone.style = 'border: 1px solid black;';
+        iptCNPJ.style = 'border: 1px solid black;';
+        iptSenha.style = 'border: 1px solid black;';
+        iptConfirmarSenha.style = 'border: 1px solid black;';
         if (caractereEspecialNomeValido && emailValido && confirmacaoValida && tamanhoSenhaValido && caractereEspecialSenhaValido && numeroSenhaValido) {
             
-
             span_erro_caractere_especial_nome.style = 'border-color:black';
             span_erro_caractere_especial_nome.style = 'border-color:black;'
             span_erro_caractere_senha.style = 'border-color:black;'
@@ -52,9 +55,9 @@ function cadastrar() {
             span_erro_numero_senha.style = 'border-color:black;'
             // tela_registro.style = 'display: none;';
             // tela_sucesso.style = 'display: flex;';
-            alert('Cadastro da empresa realizado com sucesso!')
-            emailRegistrado = email;
-            senhaRegistrado = senha;
+            alert('Cadastro da empresa realizado com sucesso! Entraremos em contato pelo email')
+            // emailRegistrado = email;
+            // senhaRegistrado = senha;
 
         } else {
             
@@ -62,7 +65,6 @@ function cadastrar() {
                 span_erro_caractere_especial_nome.style = 'color:red;'
             } else {
                 span_erro_caractere_especial_nome.style = 'color:black;'
-
             }
             
             if (!emailValido) {
@@ -100,6 +102,16 @@ function cadastrar() {
             iptEmail.style = 'border: 1px solid red;'
         } else{
             iptEmail.style = 'border: 1px solid black;'
+        }
+        if (!telPreenchido) {
+            iptTelefone.style = 'border: 1px solid red;'
+        } else{
+            iptTelefone.style = 'border: 1px solid black;'
+        }
+        if (!cnpjPreenchido) {
+            iptCNPJ.style = 'border: 1px solid red;'
+        } else{
+            iptCNPJ.style = 'border: 1px solid black;'
         }
         if (!senhaPreenchido) {
             iptSenha.style = 'border: 1px solid red;'
