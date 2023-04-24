@@ -65,10 +65,8 @@ body {
 
 #imgHeaderLogo {
     display: flex;
-    width: 40%;
-    height: 40%;
+    width: 200px;
     justify-content: center;
-    transform: 2s (1.4);
 
 }
 
@@ -104,13 +102,14 @@ body {
 
 /*Style Modal*/
 .divModal {
+    display: flex;
+    justify-content: center;
     width: 100%;
-    font-family: 'Playfair Display'
+    border-bottom: solid 1px #5cabeb;
 }
 
 #imgLogo {
-    width: 100%;
-    border-bottom: solid 1px #5cabeb;
+    width: 400px;
 }
 
 /*Style Modal 2*/
@@ -272,7 +271,6 @@ body {
 #imgFooterLogo {
     width: 200px;
     margin: 40px;
-    height: 12.5vh;
 }
 
 #zenitFooter{
