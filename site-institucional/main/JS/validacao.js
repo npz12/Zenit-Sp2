@@ -131,14 +131,25 @@ function cadastrar() {
     console.log(`Nome especial ${caractereEspecialNomeValido} email ${emailValido} confirmacao ${confirmacaoValida} tamanho senha ${tamanhoSenhaValido} especial ${caractereEspecialSenhaValido} numeros ${numeroSenhaValido}`)
 }
 
-function logar(){
-    var senhaRegistradoValido = senha == senhaRegistrado;
-    var emailRegistradoValido = email == emailRegistrado;
-    if (senhaRegistradoValido && emailRegistradoValido){
+function logar() {
+    var senhaRegistradoValido = iptSenhaRegistrado.value;
+    var emailRegistradoValido = iptEmailRegistrado.value;
+    var emailValido1 = emailRegistradoValido.includes('@');
+    var emailValido2 = emailRegistradoValido.includes('.');
+    var tamanhoSenhaValido = senhaRegistradoValido.length >= 8;
+    // verifica se a senha contem ao menos um caractere especial
+    var caractereEspecialSenhaValido = senhaRegistradoValido.includes('!') || senhaRegistradoValido.includes('@') || senhaRegistradoValido.includes('#') || senhaRegistradoValido.includes('$') || senhaRegistradoValido.includes('%') || senhaRegistradoValido.includes('&') || senhaRegistradoValido.includes('*') || senhaRegistradoValido.includes('(') || senhaRegistradoValido.includes(')');
+
+    // verifica se a senhaRegistradoValido contem ao menos um numero
+    var numeroSenhaValido = senhaRegistradoValido.includes('0') || senhaRegistradoValido.includes('1') || senhaRegistradoValido.includes('2') || senhaRegistradoValido.includes('3') || senhaRegistradoValido.includes('4') || senhaRegistradoValido.includes('5') || senhaRegistradoValido.includes('6') || senhaRegistradoValido.includes('7') || senhaRegistradoValido.includes('8') || senhaRegistradoValido.includes('9');
+
+
+
+    if (emailValido1 && emailValido2  && tamanhoSenhaValido  && caractereEspecialSenhaValido  && numeroSenhaValido ) {
         alert('logado com sucesso');
         window.open('login/main.html');
         window.close('login.html');
-    } else{
+    } else {
         alert('Email ou senha incorreto')
     }
 }
