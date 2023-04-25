@@ -188,22 +188,26 @@
 
     // VI = visao individual
     var dadosVI = [80, 90, 100, 95, 87, 82, 88, 80, 76, 70, 81, 83, 84];
-        
+    
+    // 
+    var dadosKpi = [0,0,0];
     for (var i = 0; i < 13; i++) {
         if (dadosVG[i] >= 45 && dadosVG[i] <= 80) {
-            ideal++;
+            dadosKpi[0]++;
         }
         
         if (dadosVG[i] >= 20 && dadosVG[i] < 45 || dadosVG[i] > 80 && dadosVG[i] < 100){
-            alerta++;
+            dadosKpi[1]++;
         }
         
         if (dadosVG[i] >= 100 || dadosVG[i] < 20) {
-            critico++;
+            dadosKpi[2]++;
         }
 
     }
 
+
+    // calculando menor temperatura, maior temperatura e temperatura media
     for (var i = 0 ; i < 13 ; i++){
         if(dadosVI[i] < menorTemp){
             menorTemp = dadosVI[i]
@@ -220,10 +224,8 @@
     kpiMenor.innerHTML = menorTemp;
     kpiMedia.innerHTML = tempMedia.toFixed(0);
 
-    kpiCritico.innerHTML = critico;
-    kpiAlerta.innerHTML = alerta;
-
-    var dados = [ideal, alerta, critico];
+    kpiAlerta.innerHTML = dadosKpi[1];
+    kpiCritico.innerHTML = dadosKpi[2];
 
 
     Chart.defaults.color = "#000";
@@ -339,11 +341,11 @@
     new Chart(kpiGeral, {
         type: 'pie',
         data: {
-            labels: [`Ideal(${dados[0]})`, `Alerta(${dados[1]})`, `Critico(${dados[2]})`],
+            labels: [`Ideal(${dadosKpi[0]})`, `Alerta(${dadosKpi[1]})`, `Critico(${dadosKpi[2]})`],
             datasets: [{
                 // label: 'Ideal',
                 label: 'Temperatura( °C ) 21:00',
-                data: dados,
+                data: dadosKpi,
                 borderWidth: 1,
                 borderColor: "#fff",
                 backgroundColor: ["#44ff44", "#ffff44", "#ff4444"]
