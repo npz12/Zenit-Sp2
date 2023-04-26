@@ -97,7 +97,7 @@
         display: flex;
         width: 500px;
         height: 300px;
-        margin: 50px;
+        margin: auto;
         background-color: #5cabeb;
         border-radius: 50px;
         align-items: center;

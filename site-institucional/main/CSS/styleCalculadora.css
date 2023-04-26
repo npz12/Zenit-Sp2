@@ -3,25 +3,19 @@
     padding: 0;
     height: 10vh;
 }
-h2 , h4{
-    font-family: 'Playfair Display';
-    margin-left: 1vw;
-}
+
 .container{
     background-color: rgb(224, 227, 229);
-    display: flex;
     flex-direction: column;
     width: 45vw;
     border-radius: 12px ;
     margin-top: 4vh;
 }
 .base{
-    padding: 3vw;
-    
+    padding: 3vw;   
+    display: table;
 }
-.base h3, p, b {
-    font-family: 'Playfair Display';
-}
+
 .base input{
     border-radius: 9px;
     border: none;
