@@ -59,7 +59,7 @@ body {
 
 }
 
-#liPerfil {
+.liHeader {
     display: flex;
     margin: 20px;
 }
@@ -72,24 +72,9 @@ body {
 }
 
 /*Animação header*/
-#liCalGanhos:hover {
-    text-decoration: underline;
-    transform: scale(1.1);
-}
 
-#liNossoProduto:hover {
-    text-decoration: underline;
-    transform: scale(1.1);
 
-}
-
-#liQuemSomos:hover {
-    text-decoration: underline;
-    transform: scale(1.1);
-
-}
-
-#liPerfil:hover {
+.liHeader:hover {
     text-decoration: underline;
     transform: scale(1.1);
 }
@@ -133,14 +118,14 @@ body {
     gap: 50px;
 }
 
-#imgTransformador {
+.imgTransformador {
     width: 30%;
     align-items: center;
 
 
 }
 
-#h1AreaAtu {
+.h1AreaAtu {
     margin: 0;
     margin-top: 10px;
     /* font-family: 'Playfair Display' */
