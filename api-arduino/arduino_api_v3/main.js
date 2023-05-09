@@ -17,8 +17,8 @@ const serial = async (
         {
             host: 'localhost',
             port: 3306,
-            user: 'znrd',
-            password: '#Gf54728147827',
+            user: 'zenitUser',
+            password: 'Zenit@123',
             database: 'metricas'
         }
     ).promise();
