@@ -38,6 +38,7 @@ body {
     flex-direction: row;
     align-items: center;
     gap: 1px;
+    
 }
 
 #imgHeader{
@@ -82,6 +83,7 @@ body {
 .divPerfil:hover {
     text-decoration: underline;
     transform: scale(1.1);
+    
 }
 
 
@@ -198,11 +200,11 @@ body {
     transition: 1s;
     }
     
-#iconsFooter{
+.iconsFooter{
     transition: 1s;
 }
 
-#iconsFooter:hover{
+.iconsFooter:hover{
     scale: 1.1;
     transform: scale(1.1);
 }
