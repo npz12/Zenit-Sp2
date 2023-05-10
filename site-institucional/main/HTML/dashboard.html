@@ -298,7 +298,7 @@
 
 
 
-    new Chart(visaoDetalhada, {
+    var graficoDetalhado = new Chart(visaoDetalhada, {
         type: 'line',
         data: {
             labels: ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00'],
@@ -391,12 +391,14 @@
         let minute = date.getMinutes();
         let second = date.getSeconds();
 
-        graficoGeral.data.datasets[0].label = `Temperatura( °C ) ${hour}:${minute}:${second}`;
+        graficoGeral.data.datasets[0].label = `Temperatura( °C ) ${arredondar(hour)}:${arredondar(minute)}:${arredondar(second)}`;
+        graficoDetalhado.data.datasets[0].label = `Temperatura( °C ) ${arredondar(day)}/${arredondar(month)}/${arredondar(year)}`
         graficoGeral.update();
+        graficoDetalhado.update();
 
 
     }
 
     setInterval(tempo(), 1000);
-    
+
 </script>
