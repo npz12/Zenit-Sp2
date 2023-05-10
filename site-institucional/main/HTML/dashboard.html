@@ -32,7 +32,9 @@
         <div class="divPerfil">
             <img id="imgHeader" src="../imagens/icon-user-transparente.png" alt="">
             <h4>Perfil</h4>
-            <a href="../mainZenit.html"><h4 id="liPerfil">Logout</h4></a>
+            <a href="../mainZenit.html">
+                <h4 id="liPerfil">Logout</h4>
+            </a>
 
             <!-- <h4 id="liPerfil"><a href='../HTML/login.html'>Log In</a></h4>
             <h4>|</h4>
@@ -46,9 +48,9 @@
 
     </div>
 
-    
+
     <div id="telaModal">
-            
+
         <div class="divContainerGrafico">
 
             <div id="transformadoresTotais" style="display: block;">
@@ -74,24 +76,24 @@
 
         </div>
         <div class="divKPI" id="divKpiGeral">
-            
+
             <div class="miniKPI">
                 <canvas id="graficoKpiGeral" width="200px"></canvas>
             </div>
             <div class="miniKPI" id="caixaUm">
                 <span id="kpiCritico">0</span>
-                <p>Critico</p>          
+                <p>Critico</p>
             </div>
-            
+
             <div class="miniKPI" id="caixaDois">
                 <span id="kpiAlerta">0</span>
                 <p>Alerta</p>
             </div>
-            
+
         </div>
 
         <div class="divKPI" id="divKpiIndividual" style="display: none;">
-            
+
             <div class="miniKPI" id="maiorTemperatura">
                 <span id="kpiMaior">0</span>
                 <p>Temperatura mais alta <br> nas ultimas 12 horas</p>
@@ -101,50 +103,55 @@
                 <p>Temperatura mais baixa <br> nas ultimas 12 horas</p>
 
             </div>
-            
+
             <div class="miniKPI" id="mediaTemperatura">
                 <span id="kpiMedia">0</span>
                 <p>Temperatura média <br> nas ultimas 12 horas</p>
             </div>
-            
+
         </div>
     </div>
 
     <div class="divFooter">
         <div class="content">
             <img src="../imagens/logo-1.png" alt="Logo Footer" id="imgFooterLogo">
-            <div class="divColuna">  
-                <h5>INÍCIO</h5>    
+            <div class="divColuna">
+                <h5>INÍCIO</h5>
                 <ul id="listaFooterHome">
                     <li><a href="login/main.html"> Home </a></li>
                     <li><a href="login.html"> Log in </a></li>
                     <li><a href=""> Blog </a></li>
-                    <li><a href="">  </a></li>
-                </ul>    
+                    <li><a href=""> </a></li>
+                </ul>
             </div>
-            <div class="divColuna">  
-                <h5>FALE CONOSCO</h5>    
+            <div class="divColuna">
+                <h5>FALE CONOSCO</h5>
                 <ul id="listaFooterFaleConosco">
                     <li><a href="login/nossoProdutoLogin.html"> Informações da Empresa </a></li>
                     <li><a href=""> Contrate Nosso Serviço </a></li>
                     <li><a href="login/QuemSomosLogin.html"> Sobre nós </a></li>
-                </ul>    
+                </ul>
             </div>
             <div class="divColuna">
-                <h5>SUPORTE</h5> 
+                <h5>SUPORTE</h5>
                 <ul id="listaFooterSuporte">
                     <li><a href=""> FAQ </a></li>
                     <li><a href=""> Central de ajuda </a></li>
                 </ul>
             </div>
             <div class="divColunaRedes">
-                <a href="https://www.instagram.com/"><img src="../imagens/instagram-icon.svg" alt="icon - instagram" id="iconsFooter"></a>
-                <a href="https://www.linkedin.com"><img src="../imagens/linkedin-icon.svg" alt="icon - linkedin" id="iconsFooter"></a>
-                <a href="https://github.com/Zenit-Sp2/Zenit-Sp2.git"><img src="../imagens/github-icon-footer.svg" alt="icon - github" id="iconsFooter"></a>    
+                <a href="https://www.instagram.com/"><img src="../imagens/instagram-icon.svg" alt="icon - instagram"
+                        id="iconsFooter"></a>
+                <a href="https://www.linkedin.com"><img src="../imagens/linkedin-icon.svg" alt="icon - linkedin"
+                        id="iconsFooter"></a>
+                <a href="https://github.com/Zenit-Sp2/Zenit-Sp2.git"><img src="../imagens/github-icon-footer.svg"
+                        alt="icon - github" id="iconsFooter"></a>
             </div>
         </div>
 
-        <div id="zenitFooter"><h4>© 2023 Copyright Zenit</h4></div>
+        <div id="zenitFooter">
+            <h4>© 2023 Copyright Zenit</h4>
+        </div>
 </body>
 
 </html>
@@ -173,7 +180,7 @@
     const visaoAmpla = document.getElementById('graficoVisaoAmpla');
     const visaoDetalhada = document.getElementById('graficoVisaoDetalhada');
     const kpiGeral = document.getElementById('graficoKpiGeral');
-    const kpiIndividual = document.getElementById('graficoKpiIndividual'); 
+    const kpiIndividual = document.getElementById('graficoKpiIndividual');
 
     var ideal = 0;
     var alerta = 0;
@@ -182,24 +189,24 @@
     var menorTemp = 1000;
     var maiorTemp = 0;
     var tempMedia = 0;
-    
+
     // VG = visao geral
     var dadosVG = [80, 86, 105, 120, 77, 82, 48, 80, 76, 10, 31, 84, 80]
 
     // VI = visao individual
     var dadosVI = [80, 90, 100, 95, 87, 82, 88, 80, 76, 70, 81, 83, 84];
-    
+
     // 
-    var dadosKpi = [0,0,0];
+    var dadosKpi = [0, 0, 0];
     for (var i = 0; i < 13; i++) {
         if (dadosVG[i] >= 45 && dadosVG[i] <= 80) {
             dadosKpi[0]++;
         }
-        
-        if (dadosVG[i] >= 20 && dadosVG[i] < 45 || dadosVG[i] > 80 && dadosVG[i] < 100){
+
+        if (dadosVG[i] >= 20 && dadosVG[i] < 45 || dadosVG[i] > 80 && dadosVG[i] < 100) {
             dadosKpi[1]++;
         }
-        
+
         if (dadosVG[i] >= 100 || dadosVG[i] < 20) {
             dadosKpi[2]++;
         }
@@ -208,18 +215,18 @@
 
 
     // calculando menor temperatura, maior temperatura e temperatura media
-    for (var i = 0 ; i < 13 ; i++){
-        if(dadosVI[i] < menorTemp){
+    for (var i = 0; i < 13; i++) {
+        if (dadosVI[i] < menorTemp) {
             menorTemp = dadosVI[i]
         }
-        if(dadosVI[i] > maiorTemp){
+        if (dadosVI[i] > maiorTemp) {
             maiorTemp = dadosVI[i]
         }
         tempMedia += dadosVI[i];
     }
 
     tempMedia = tempMedia / 13;
-    
+
     kpiMaior.innerHTML = maiorTemp;
     kpiMenor.innerHTML = menorTemp;
     kpiMedia.innerHTML = tempMedia.toFixed(0);
@@ -230,12 +237,18 @@
 
     Chart.defaults.color = "#000";
 
-    new Chart(visaoAmpla, {
+
+    function arredondar(dateTimeValue) {
+        return (dateTimeValue < 10) ? '0' + dateTimeValue.toString() : dateTimeValue.toString();
+    }
+
+
+    var graficoGeral = new Chart(visaoAmpla, {
         type: 'bar',
         data: {
             labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13'],
             datasets: [{
-                label: 'Temperatura( °C ) 21:00',
+                label: `Temperatura( °C ) 00:00:00`,
                 data: dadosVG,
                 borderWidth: 1,
                 backgroundColor: ["#1770B9"]
@@ -283,12 +296,14 @@
         }
     });
 
+
+
     new Chart(visaoDetalhada, {
         type: 'line',
         data: {
             labels: ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00'],
             datasets: [{
-                label: 'Temperatura( °C ) 22/11/2022',
+                label: `Temperatura( °C ) 00/00/0000`,
                 // label: 'Ideal',
                 data: dadosVI,
                 borderWidth: 5,
@@ -343,8 +358,6 @@
         data: {
             labels: [`Ideal(${dadosKpi[0]})`, `Alerta(${dadosKpi[1]})`, `Critico(${dadosKpi[2]})`],
             datasets: [{
-                // label: 'Ideal',
-                label: 'Temperatura( °C ) 21:00',
                 data: dadosKpi,
                 borderWidth: 1,
                 borderColor: "#fff",
@@ -365,29 +378,25 @@
                     },
                 }
             },
-            scales: {
-                // y: {
-                //     grid: {
-                //         display: false,
-                //     },
-                //     beginAtZero: false,
-                //     title: {
-                //         display: false,
-                //         text: 'Temperatura'
-                //     }
-                // },
-                // x: {
-                //     grid: {
-                //         display: false
-                //     },
-                //     title: {
-                //         display: true,
-                //         text: 'Identificão do transformador'
-                //     }
-                // }
-            }
+
         }
     });
 
+    function tempo() {
+        const date = new Date();
+        let day = date.getDay();
+        let month = date.getMonth();
+        let year = date.getFullYear();
+        let hour = date.getHours();
+        let minute = date.getMinutes();
+        let second = date.getSeconds();
 
+        graficoGeral.data.datasets[0].label = `Temperatura( °C ) ${hour}:${minute}:${second}`;
+        graficoGeral.update();
+
+
+    }
+
+    setInterval(tempo(), 1000);
+    
 </script>
