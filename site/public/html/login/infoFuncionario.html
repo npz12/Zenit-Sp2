@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zenit Home</title>
+    <title>Gerenciamento de Funcionários</title>
     <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/styleInfoFuncionario.css">
 </head>
 
 <body>
@@ -30,48 +31,29 @@
         <div class="divPerfil">
             <img id="imgHeader" src="../../assets/imgs/icon-user-transparente.png" alt="">
             <a href="perfil.html">
-                <h4 id="liPerfil">Perfil</h4>
+                <h4 id="liPerfil">Perfil |</h4>
             </a>
             <a href="../../index.html">
-                <h4 id="liPerfil">Logout</h4>
+                <h4 id="liPerfil"> Logout</h4>
             </a>
-            <!-- <h4 id="liPerfil"><a href='./HTML/login.html'>Log In</a></h4>
-            <h4>|</h4>
-            <h4 id="liPerfil"><a href='./HTML/cadastro.html'>Cadastro</a></h4> -->
         </div>
-
-        <!-- <div class="divBarraPesquisa">
-            &#8981;
-            <input type="text" id="iptBarraPesquisa" placeholder="Buscar">
-        </div> -->
-
     </div>
-    <div class="divModal">
-        <img src="../../assets/imgs/logo-2.png" alt="Logo Zenit" id="imgLogo">
-    </div>
-    <div class="divModal2">
-        <h1 id="h1AreaAtu">Area de atuação</h1>
-        <p id="h1AreaAtu">Transformadores Trifásicos a óleo</p>
-        <div class="divContainer">
-            <div class="divMiniContainer">
-                <a href="QuemSomosLogin.html">
-                    <h1>Quem Somos</h1>
-                    <img class="imgTransformador" src="../../assets/imgs/transformador-1.png" alt="Transformador">
-                </a>
-            </div>
-            <div class="divMiniContainer">
-                <a href="nossoProdutoLogin.html">
-                    <h1>Nosso Produto</h1>
-                    <img class="imgTransformador" src="../../assets/imgs/transformador-2.png" alt="Transformador">
-                </a>
-            </div>
-            <div class="divMiniContainer">
-                <a href="CalculadorLogin.html">
-                    <h1>Calcular Ganhos</h1>
-                    <img class="imgTransformador" src="../../assets/imgs/transformador-3.png" alt="Transformador">
-                </a>
-            </div>
-
+    <div class="container">
+        <div class="ID"><b>ID</b>
+            <p>1</p>
+            <p>2</p>
+        </div>
+        <div class="Nome"><b>Nome</b>
+            <p>Estevão Ferreira</p>
+            <p>Jorge Augusto</p>
+        </div>
+        <div class="email"><b>E-mail</b>
+            <p>estevao.Ferreira@gmail.com</p>
+            <p>jorge.augusto@gmail.com</p>
+        </div>
+        <div class="buttons"><br>
+            <button class="delButton">Deletar</button>
+            <button class="delButton">Deletar</button>
         </div>
     </div>
 
@@ -81,8 +63,8 @@
             <div class="divColuna">
                 <h5>INÍCIO</h5>
                 <ul id="listaFooterHome">
-                    <li><a href="main.html"> Home </a></li>
-                    <li><a href="../login.html"> Log in </a></li>
+                    <li><a href="../mainZenit.html"> Home </a></li>
+                    <li><a href="login.html"> Log in </a></li>
                     <li><a href=""> Blog </a></li>
                     <li><a href=""> </a></li>
                 </ul>
@@ -90,9 +72,9 @@
             <div class="divColuna">
                 <h5>FALE CONOSCO</h5>
                 <ul id="listaFooterFaleConosco">
-                    <li><a href="nossoProdutoLogin.html"> Informações da Empresa </a></li>
+                    <li><a href="nossoProduto.html"> Informações da Empresa </a></li>
                     <li><a href=""> Contrate Nosso Serviço </a></li>
-                    <li><a href="QuemSomosLogin.html"> Sobre nós </a></li>
+                    <li><a href="QuemSomos.html"> Sobre nós </a></li>
                 </ul>
             </div>
             <div class="divColuna">
@@ -103,19 +85,15 @@
                 </ul>
             </div>
             <div class="divColunaRedes">
-                <a href="https://www.instagram.com/"><img src="../../assets/imgs/instagram-icon.svg" alt="icon - instagram"
-                        class="iconsFooter"></a>
+                <a href="https://www.instagram.com/"><img src="../../assets/imgs/instagram-icon.svg"
+                        alt="icon - instagram" class="iconsFooter"></a>
                 <a href="https://www.linkedin.com"><img src="../../assets/imgs/linkedin-icon.svg" alt="icon - linkedin"
                         class="iconsFooter"></a>
                 <a href="https://github.com/Zenit-Sp2/Zenit-Sp2.git"><img src="../../assets/imgs/github-icon-footer.svg"
                         alt="icon - github" class="iconsFooter"></a>
             </div>
         </div>
-
-        <div id="zenitFooter">
-            <h4>© 2023 Copyright Zenit</h4>
-        </div>
-
+    </div>
 </body>
 
 </html>
