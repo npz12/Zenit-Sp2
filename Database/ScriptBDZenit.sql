@@ -1,14 +1,19 @@
+CREATE USER 'zenitUser'@'localhost' IDENTIFIED BY 'Zenit@123';
 create database  zenit;
 
 use zenit;
+GRANT ALL PRIVILEGES ON zenit.* TO 'zenitUser'@'localhost';
 
 create table empresa(
     idEmpresa int primary key auto_increment ,
     nomeEmpresa varchar(45) not null,
+    emailEmpresa VARCHAR (45) not null,
+    senhaEmpresa VARCHAR(45) not null,
     CNPJ char(14) not null ,
-    contatoEmpresa varchar(45)
+    telEmpresa varchar(45)
 	)
 ;
+SELECT * FROM empresa;
 
 
 create table endereco (
