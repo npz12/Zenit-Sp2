@@ -136,6 +136,8 @@
         var nomeVar = nome_input.value;
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
+        var telVar = iptTelefone.value;
+        var cnpjVar = iptCNPJ.value;
         var confirmacaoSenhaVar = confirmacao_senha_input.value;
 
         if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
@@ -160,6 +162,8 @@
                 // Agora vá para o arquivo routes/usuario.js
                 nomeServer: nomeVar,
                 emailServer: emailVar,
+                telServer: telVar,
+                cnpjServer: cnpjVar,
                 senhaServer: senhaVar
             })
         }).then(function (resposta) {
