@@ -6,11 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerenciamento de Funcionários</title>
-    <link rel="stylesheet" href=".././css/style.css">
-    <link rel="stylesheet" href=".././css/styleInfoFuncionario.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/styleInfoFuncionario.css">
 </head>
 
-<body>
+<body onload="listarFuncionario()">
     <div class="divHeader">
         <div class="divLogo">
             <a href="main.html" id="link"> <img src="../../assets/imgs/logo-1.png" alt="Logo Zenit" id="imgHeaderLogo">
@@ -39,21 +39,20 @@
         </div>
     </div>
     <div class="container">
-        <div class="ID"><b>ID</b>
-            <p>1</p>
-            <p>2</p>
+        
+        <div class="Nome"><b>Nome</b><br>
+            <h3 id="nomeFunc"></h3>
         </div>
-        <div class="Nome"><b>Nome</b>
-            <p>Estevão Ferreira</p>
-            <p>Jorge Augusto</p>
-        </div>
-        <div class="email"><b>E-mail</b>
-            <p>estevao.Ferreira@gmail.com</p>
-            <p>jorge.augusto@gmail.com</p>
+        <div class="email" ><b>E-mail</b>
+            <h3 id="emailFunc"></h3>
+
         </div>
         <div class="buttons"><br>
             <button class="delButton">Deletar</button>
             <button class="delButton">Deletar</button>
+        </div>
+        <div id="cadastrarFuncionario">
+            <a href="cadastrarFuncionario.html"><button class="delButton">Cadastrar novo funcionário</button></a>
         </div>
     </div>
 
@@ -97,3 +96,24 @@
 </body>
 
 </html>
+<script>
+    function listarFuncionario() {
+        fetch("/avisos/listarFuncionario").then(function (resposta) {
+            if (resposta.ok) {
+                resposta.json().then(function (resposta) {
+                    for (let i = 0; i < resposta.length; i++) {
+                        var publicacao = resposta[i];
+                        nomeFunc.innerHTML += `${publicacao.nomeFuncionario}<br>`
+                        emailFunc.innerHTML += `${publicacao.emailFuncionario}<br>`
+
+
+
+                    }
+                })
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+
+        })
+    }
+</script>

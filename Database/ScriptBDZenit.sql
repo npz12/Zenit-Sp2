@@ -54,15 +54,15 @@ create table dados (
     )
 ;
 
-create table usuario (
+create table funcionario (
     fkEmpresa int ,
     foreign key (fkEmpresa) references empresa (idEmpresa),
     -- idUsuario int primary key auto_increment,
-    idUsuario int,
-    primary key(fkEmpresa, idUsuario),
-    nomeUsuario varchar(45) ,
-    senhaUsuario varchar(45) ,
-    emailUsuario varchar(45) 
+    idFuncionario int,
+    primary key(fkEmpresa, idFuncionario),
+    nomeFuncionario varchar(45) ,
+    senhaFuncionario varchar(45) ,
+    emailFuncionario varchar(45) 
     -- fkEmpresa int,
     -- foreign key (fkEmpresa) references empresa (idEmpresa),
     -- fkGerente int,

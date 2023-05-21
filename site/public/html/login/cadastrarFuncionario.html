@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/styleCadastro.css">
+    <link rel="icon" href="/">
+    <script src="../../js/funcoes.js"></script>
+    <!-- <script src="./js/validacao.js"></script> -->
+    <title>Cadastro Funcionario</title>
+</head>
+
+<body>
+    <div class="divHeader">
+        <div class="divLogo">
+            <a href="../mainZenit.html" id="link"> <img src="../../assets/imgs/logo-1.png" alt="Logo Zenit" id="imgHeaderLogo">
+            </a>
+        </div>
+        <a href="./simulador.html">
+            <h4 class="liHeader">Calcular Ganhos</h4>
+        </a>
+        <a href="./nossoProduto.html">
+            <h4 class="liHeader">Nosso Produto</h4>
+        </a>
+        <a href="./QuemSomos.html">
+            <h4 class="liHeader">Quem Somos</h4>
+        </a>
+        <div class="divPerfil">
+            <!-- <img id="imgHeader"
+                src/assets/imgs/icon-user-transparente.png"
+                alt=""> -->
+            <h4 id="liPerfil"><a href='./login.html'>Log In</a></h4>
+            <h4>|</h4>
+            <h4 id="liPerfil"><a href='./cadastro.html'>Cadastro</a></h4>
+        </div>
+
+        <!-- <div class="divBarraPesquisa">
+            &#8981;
+            <input type="text" id="iptBarraPesquisa" placeholder="Buscar">
+        </div> -->
+
+    </div>
+    <div class="divTitulo">
+        <h1>Cadastro</h1>
+    </div>
+    <div class="divCadastro" id="telaCadastro">
+        <h1 class="h1Titulo">SIGN-UP</h1>
+        <input type="text" placeholder="Nome do Funcionario" id="nome_input">
+        <span class="mensagem-de-erro">
+            <span id="span_erro_caractere_especial_nome">*Nome não deve conter caractere <br> especial</span>
+        </span>
+
+        <input type="text" placeholder="Email" id="email_input">
+ 
+        <input type="text" placeholder="Senha" id="senha_input">
+        <span class="mensagem-de-erro">
+            <span id="span_erro_caractere_senha">*Minimo 8 caracteres</span><br>
+            <span id="span_erro_numero_senha">*Deve ter ao menos um numero</span><br>
+            <span id="span_erro_caractere_especial_senha">*Deve ter ao menos um <br>caracter especial</span>
+        </span>
+
+        <input type="password" placeholder="Confirmar senha" id="confirmacao_senha_input">
+
+        <button class="btnCadastro" onclick="cadastrar()">Cadastrar</button>
+
+       
+    </div>
+    <div class="divCadastro" id="telaSucesso" style="display: none;">
+        <div class="h1Titulo">Funcionario cadastrado com sucesso!</div>
+
+    </div>
+
+    <div class="divFooter">
+        <div class="content">
+            <img src="../../assets/imgs/logo-1.png" alt="Logo Footer" id="imgFooterLogo">
+            <div class="divColuna">  
+                <h5>INÍCIO</h5>    
+                <ul id="listaFooterHome">
+                    <li><a href="../mainZenit.html"> Home </a></li>
+                    <li><a href="login.html"> Log in </a></li>
+                    <li><a href=""> Blog </a></li>
+                    <li><a href="">  </a></li>
+                </ul>    
+            </div>
+            <div class="divColuna">  
+                <h5>FALE CONOSCO</h5>    
+                <ul id="listaFooterFaleConosco">
+                    <li><a href="nossoProduto.html"> Informações da Empresa </a></li>
+                    <li><a href=""> Contrate Nosso Serviço </a></li>
+                    <li><a href=QuemSomos.html"> Sobre nós </a></li>
+                </ul>    
+            </div>
+            <div class="divColuna">
+                <h5>SUPORTE</h5> 
+                <ul id="listaFooterSuporte">
+                    <li><a href=""> FAQ </a></li>
+                    <li><a href=""> Central de ajuda </a></li>
+                </ul>
+            </div>
+            <div class="divColunaRedes">
+                <a href="https://www.instagram.com/"><img src="../../assets/imgs/instagram-icon.svg" alt="icon - instagram" class="iconsFooter"></a>
+                <a href="https://www.linkedin.com"><img src="../../assets/imgs/linkedin-icon.svg" alt="icon - linkedin" class="iconsFooter"></a>
+                <a href="https://github.com/Zenit-Sp2/Zenit-Sp2.git"><img src="../../assets/imgs/github-icon-footer.svg" alt="icon - github" class="iconsFooter"></a>    
+            </div>
+        </div>
+
+        <div id="zenitFooter"><h4>© 2023 Copyright Zenit</h4></div>
+        <div id="div_aguardar" class="loading-div">
+            <img src="../../assets/circle-loading.gif" id="loading-gif">
+        </div>
+
+        <div id="div_erros_login"></div>
+        <div class="alerta_erro">
+            <div class="card_erro" id="cardErro">
+                <span id="mensagem_erro"></span>
+            </div>
+        </div>
+</body>
+
+</html>
+
+<script>
+    function cadastrar() {
+
+
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        var nomeVar = nome_input.value;
+        var emailVar = email_input.value;
+        var senhaVar = senha_input.value;
+        var confirmacaoSenhaVar = confirmacao_senha_input.value;
+
+        if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+
+            return false;
+        }
+        else {
+
+        }
+
+        // Enviando o valor da nova input
+        fetch("/usuarios/cadastrarFuncionario", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                nomeServer: nomeVar,
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                
+
+                mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+                setTimeout(() => {
+                    window.location = "infoFuncionario.html";
+                }, "2000")
+
+                limparFormulario();
+                
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            finalizarAguardar();
+        });
+
+        return false;
+    }
+
+    function sumirMensagem() {
+        cardErro.style.display = "none"
+    }
+
+</script>

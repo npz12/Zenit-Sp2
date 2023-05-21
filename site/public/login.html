@@ -40,9 +40,9 @@
     </div>
     <div class="divCadastro">
         <h1 class="h1Titulo">SIGN-IN</h1>
-        <input type="text" placeholder="Email" id="iptEmailRegistrado">
-        <input type="text" placeholder="Senha" id="iptSenhaRegistrado">
-        <button class="btnCadastro" onclick="logar()">Login</button>
+        <input type="text" placeholder="email" id="email_input">
+        <input type="text" placeholder="Senha" id="senha_input">
+        <button class="btnCadastro" onclick="entrar()">Login</button>
         <h3>Ainda não possui uma conta?</h3>
         <a href="cadastro.html">SIGN-UP</a>
 
@@ -86,23 +86,75 @@
 </body>
 
 </html>
- <!-- <script>
+ <script>
 
-    function cadastro(){
-        var erro = false
-        var email = iptEmail.value;
-        var senha = iptSenha.value;
+   function entrar() {
+       
 
-        if (senha.length < 8 || senha ==''){
-            alert('A senha está muito curta')
-            erro = true
+        var emailVar = email_input.value;
+        var senhaVar = senha_input.value;
+        sessionStorage.SALVAR_EMAIL = emailVar;
+
+        if (emailVar == "" || senhaVar == "") {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+       
+            return false;
         }
-        if (email == '' || email.indexOf('@') == -1){
-            alert('Insira um email válido')
-            erro = true
+        else {
+        
         }
-        if(erro == false){
-            alert('Login realizado com sucesso!')
-        }
+
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar);
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    sessionStorage.EMAIL_USUARIO = json.emailServer;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.id;
+
+                    setTimeout(function () {
+                        window.location = "html/login/main.html";
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+        
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
     }
-</script> -->
+
+    function sumirMensagem() {
+        cardErro.style.display = "none"
+    }
+</script>

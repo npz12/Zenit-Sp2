@@ -147,7 +147,7 @@ function logar() {
 
     if (emailValido1 && emailValido2  && tamanhoSenhaValido  && caractereEspecialSenhaValido  && numeroSenhaValido ) {
         alert('logado com sucesso');
-        window.open('login/main.html');
+        window.open('html/login/main.html');
         window.close('login.html');
     } else {
         alert('Email ou senha incorreto')

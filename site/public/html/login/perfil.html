@@ -6,11 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil</title>
-    <link rel="stylesheet" href=".././css/style.css">
-    <link rel="stylesheet" href=".././css/styleProfile.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/styleProfile.css">
 </head>
 
-<body>
+<body onload="listar()">
     <div class="divHeader">
         <div class="divLogo">
             <a href="main.html" id="link"> <img src="../../assets/imgs/logo-1.png" alt="Logo Zenit" id="imgHeaderLogo">
@@ -41,7 +41,7 @@
     <!--Final Header-->
     <div class="container">
         <div class="mainInfo">
-            <h2 class="nome">Zenit Elétrica</h2>
+            <h2 class="nome" id="nome"></h2>
         </div>
         <div class="mainContent">
             <div class="mainColumn1">
@@ -52,11 +52,12 @@
                 <span class="profileText">Quantidade de funcionários: </span>
             </div>
             <div class="mainColumn1">
-                <span id="CNPJAtual" class="profileText">25.371.387/0001-13 </span>
-                <span id="nmrAtual" class="profileText">11 9773-8432</span>
-                <span id="emailAtual" class="profileText">ZenitEletrica@zenit.com.br</span>
+                <span id="CNPJAtual" class="profileText"> </span>
+                <span id="nmrAtual" class="profileText"></span>
+                <span id="emailAtual" class="profileText"></span>
                 <span id="qntdSensorAtual" class="profileText">23</span>
-                <span id="qntdFuncionarioAtual" class="profileText">124 <a href="infoFuncionario.html" class="link">Gerenciar</a>
+                <span id="qntdFuncionarioAtual" class="profileText">124 <a href="infoFuncionario.html"
+                        class="link">Gerenciar</a>
             </div>
         </div>
 
@@ -105,3 +106,27 @@
 </body>
 
 </html>
+<script>
+    function listar(){
+        var email = sessionStorage.SALVAR_EMAIL;
+    fetch("/avisos/listar").then(function (resposta) {
+        if(resposta.ok){
+            resposta.json().then(function (resposta) {
+                for (let i = 0; i < resposta.length; i++) {
+                        var publicacao = resposta[i];
+                        nome.innerHTML = `${publicacao.nomeEmpresa}`
+                        CNPJAtual.innerHTML = `${publicacao.CNPJ}`
+                        nmrAtual.innerHTML = `${publicacao.telEmpresa}`
+                        emailAtual.innerHTML = `${publicacao.emailEmpresa}`
+
+
+
+            }
+        })
+        }
+    }).catch(function (resposta) {
+        console.error(resposta);
+
+    })
+}
+</script>
