@@ -110,7 +110,7 @@
     function listar(){
         var emailEmpresa= sessionStorage.SALVAR_EMAIL
 
-        fetch("/avisos/listar/emailEmpresa").then(function (resposta) {
+        fetch(`/avisos/listar/${emailEmpresa}`).then(function (resposta) {
             if(resposta.ok){
             resposta.json().then(function (resposta) {
                 for (let i = 0; i < resposta.length; i++) {

@@ -8,7 +8,7 @@ function listar(emailEmpresa) {
         u.emailEmpresa,
         u.CNPJ,
         u.telEmpresa
-    FROM empresa u WHERE emailEmpresa = ${emailEmpresa};
+    FROM empresa u WHERE emailEmpresa = '${emailEmpresa}';
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
