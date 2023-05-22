@@ -108,9 +108,10 @@
 </html>
 <script>
     function listar(){
-        var email = sessionStorage.SALVAR_EMAIL;
-    fetch("/avisos/listar").then(function (resposta) {
-        if(resposta.ok){
+        var emailEmpresa= sessionStorage.SALVAR_EMAIL
+
+        fetch("/avisos/listar/emailEmpresa").then(function (resposta) {
+            if(resposta.ok){
             resposta.json().then(function (resposta) {
                 for (let i = 0; i < resposta.length; i++) {
                         var publicacao = resposta[i];

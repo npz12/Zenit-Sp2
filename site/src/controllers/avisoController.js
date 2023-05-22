@@ -6,9 +6,8 @@ function testar(req, res) {
 }
 
 function listar(req, res) {
-    var email = sessionStorage.SALVAR_EMAIL;
-
-    avisoModel.listar(email).then(function (resultado) {
+    var emailEmpresa = req.params.emailEmpresa;
+    avisoModel.listar(emailEmpresa).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
