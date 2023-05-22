@@ -39,11 +39,11 @@
         </div>
     </div>
     <div class="container">
-        
+
         <div class="Nome"><b>Nome</b><br>
             <h3 id="nomeFunc"></h3>
         </div>
-        <div class="email" ><b>E-mail</b>
+        <div class="email"><b>E-mail</b>
             <h3 id="emailFunc"></h3>
 
         </div>
@@ -100,20 +100,30 @@
     function listarFuncionario() {
         fetch("/avisos/listarFuncionario").then(function (resposta) {
             if (resposta.ok) {
+                if (resposta.status == 204) {
+
+                }
+                
                 resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+
                     for (let i = 0; i < resposta.length; i++) {
                         var publicacao = resposta[i];
                         nomeFunc.innerHTML += `${publicacao.nomeFuncionario}<br>`
                         emailFunc.innerHTML += `${publicacao.emailFuncionario}<br>`
 
 
-
                     }
-                })
+
+                });
+            } else {
+                throw ('Houve um erro na API!');
             }
         }).catch(function (resposta) {
             console.error(resposta);
-
-        })
+            finalizarAguardar();
+        });
     }
+
 </script>

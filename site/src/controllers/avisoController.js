@@ -20,7 +20,7 @@ function listar(req, res) {
     });
 }
 function listarFuncionario(req, res) {
-    
+    var emailFuncionario = req.params.emailFuncionario
     avisoModel.listarFuncionario().then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
