@@ -55,25 +55,40 @@
         <div class="dash">
             <div class="btns-dash">
                 <!-- O gráfico é chamado de acordo com o id (fk_aquario) do banco  -->
-                <button class="btn-chart btn-pink" onclick="exibirAquario(1)" id="btnAquario1">Aquario 1</button>
             </div>
             <div id="graficos">
                 <div id="grafico1" class="display-block">
                     <h3 class="tituloGraficos">
                         <span id="tituloAquario1"></span>
                     </h3>
-                    <div class="graph">
-                        <canvas id="myChartCanvas1"></canvas>
+                    <div class="grafico">
+                        <canvas id="graficoTransformador1" width="800px"></canvas>
                     </div>
                     <div class="label-captura">
-                        <p id="avisoCaptura1" style="color: white"></p>
+                        <p id="avisoCaptura1"></p>
                     </div>
                 </div>
             </div>
+            <button class="btn-chart btn-pink" onclick="exibirAquario(1)" id="btnAquario1">Transformador 1</button>
+        </div>
+        <div class="divKPI" id="divKpiGeral">
+    
+            <div class="miniKPI">
+                <canvas id="graficoKpiGeral" width="200px"></canvas>
+            </div>
+            <div class="miniKPI" id="caixaUm">
+                <span id="kpiCritico">0</span>
+                <p>Critico</p>
+            </div>
+    
+            <div class="miniKPI" id="caixaDois">
+                <span id="kpiAlerta">0</span>
+                <p>Alerta</p>
+            </div>
         </div>
     </div>
-        <!-- <div class="divContainerGrafico"> -->
-
+    <!-- <div class="divContainerGrafico"> -->
+        
             <!-- <div id="transformadoresTotais" style="display: block;">
                 <div class="grafico">
                     <canvas id="graficoVisaoAmpla" width="800px"></canvas>
@@ -82,7 +97,7 @@
 
             <!-- <div id="transformadorUm" style="display: block;">
                 <div class="grafico">
-                    <canvas id="graficoVisaoDetalhada" width="800px"></canvas>
+                    <canvas id="graficoTransformador1" width="800px"></canvas>
                 </div>
             </div> -->
 
@@ -94,22 +109,6 @@
                 transformadores</button> -->
 
         <!-- </div> -->
-        <!-- <div class="divKPI" id="divKpiGeral">
-
-            <div class="miniKPI">
-                <canvas id="graficoKpiGeral" width="200px"></canvas>
-            </div>
-            <div class="miniKPI" id="caixaUm">
-                <span id="kpiCritico">0</span>
-                <p>Critico</p>
-            </div>
-
-            <div class="miniKPI" id="caixaDois">
-                <span id="kpiAlerta">0</span>
-                <p>Alerta</p>
-            </div>
-
-        </div> -->
 
         <!-- <div class="divKPI" id="divKpiIndividual" style="display: block;">
 
@@ -197,7 +196,7 @@
     // }
 
     // const visaoAmpla = document.getElementById('graficoVisaoAmpla');
-    // const visaoDetalhada = document.getElementById('graficoVisaoDetalhada');
+    // const visaoDetalhada = document.getElementById('graficoTransformador1');
     // const kpiGeral = document.getElementById('graficoKpiGeral');
     // const kpiIndividual = document.getElementById('graficoKpiIndividual');
 
@@ -530,7 +529,6 @@
         for (i = 0; i < resposta.length; i++) {
             var registro = resposta[i];
             labels.push(registro.momento_grafico);
-            dados.datasets[0].data.push(registro.umidade);
             dados.datasets[1].data.push(registro.temperatura);
         }
 
@@ -550,7 +548,7 @@
 
         // Adicionando gráfico criado em div na tela
         let myChart = new Chart(
-            document.getElementById(`myChartCanvas${idAquario}`),
+            document.getElementById(`graficoTransformador${idAquario}`),
             config
         );
 
@@ -592,9 +590,6 @@
                         // tirando e colocando valores no gráfico
                         dados.labels.shift(); // apagar o primeiro
                         dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
-
-                        dados.datasets[0].data.shift();  // apagar o primeiro de umidade
-                        dados.datasets[0].data.push(novoRegistro[0].umidade); // incluir uma nova medida de umidade
 
                         dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
                         dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
