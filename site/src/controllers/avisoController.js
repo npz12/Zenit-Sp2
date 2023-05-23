@@ -20,8 +20,8 @@ function listar(req, res) {
     });
 }
 function listarFuncionario(req, res) {
-    var emailFuncionario = req.params.emailFuncionario
-    avisoModel.listarFuncionario().then(function (resultado) {
+    var fkEmpresa = req.params.idEmpresa
+    avisoModel.listarFuncionario(fkEmpresa).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -110,9 +110,9 @@ function publicar(req, res) {
 
 function editar(req, res) {
     var novaDescricao = req.body.descricao;
-    var idAviso = req.params.idAviso;
+    var idUsuario = req.params.idUsuario;
 
-    avisoModel.editar(novaDescricao, idAviso)
+    avisoModel.editar(novaDescricao, idUsuario)
         .then(
             function (resultado) {
                 res.json(resultado);
@@ -129,9 +129,9 @@ function editar(req, res) {
 }
 
 function deletar(req, res) {
-    var idAviso = req.params.idAviso;
+    var idUsuario = req.params.idUsuario;
 
-    avisoModel.deletar(idAviso)
+    avisoModel.deletar(idUsuario)
         .then(
             function (resultado) {
                 res.json(resultado);

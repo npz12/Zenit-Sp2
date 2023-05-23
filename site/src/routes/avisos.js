@@ -10,8 +10,8 @@ router.get("/", function (req, res) {
 router.get("/listar/:emailEmpresa", function (req, res) {
     avisoController.listar(req, res);
 });
-router.get("/listarFuncionario", function (req, res) {
-    avisoController.listar(req, res);
+router.get("/listarFuncionario/:idEmpresa", function (req, res) {
+    avisoController.listarFuncionario(req, res);
 });
 
 router.get("/listar/:idUsuario", function (req, res) {
@@ -26,11 +26,11 @@ router.post("/publicar/:idUsuario", function (req, res) {
     avisoController.publicar(req, res);
 });
 
-router.put("/editar/:idAviso", function (req, res) {
+router.put("/editar/:idUsuario", function (req, res) {
     avisoController.editar(req, res);
 });
 
-router.delete("/deletar/:idAviso", function (req, res) {
+router.delete("/deletar/:idUsuario", function (req, res) {
     avisoController.deletar(req, res);
 });
 

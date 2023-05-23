@@ -99,6 +99,7 @@ function cadastrarFuncionario(req,res){
     var nome = req.body.nomeServer;
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
+    var fkEmpresa = req.body.idServer;
 
     if (nome == undefined) {
         res.status(400).send("Seu nome está undefined!");
@@ -107,7 +108,7 @@ function cadastrarFuncionario(req,res){
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está undefined!");
     } else{
-        usuarioModel.cadastrarFuncionario(nome, email, senha)
+        usuarioModel.cadastrarFuncionario(nome, email, senha, fkEmpresa)
         .then(
             function (resultado) {
                 res.json(resultado);

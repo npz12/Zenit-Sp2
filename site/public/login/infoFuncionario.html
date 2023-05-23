@@ -39,7 +39,9 @@
         </div>
     </div>
     <div class="container">
-
+        <div class ="id"><b>ID</b> 
+            <h3 id="idFunc"></h3>
+        </div>
         <div class="Nome"><b>Nome</b><br>
             <h3 id="nomeFunc"></h3>
         </div>
@@ -47,9 +49,8 @@
             <h3 id="emailFunc"></h3>
 
         </div>
-        <div class="buttons"><br>
-            <button class="delButton">Deletar</button>
-            <button class="delButton">Deletar</button>
+        <div class="buttons" id="botoes"><br>
+            
         </div>
         <div id="cadastrarFuncionario">
             <a href="cadastrarFuncionario.html"><button class="delButton">Cadastrar novo funcionário</button></a>
@@ -97,33 +98,49 @@
 
 </html>
 <script>
-    function listarFuncionario() {
-        fetch("/avisos/listarFuncionario").then(function (resposta) {
-            if (resposta.ok) {
-                if (resposta.status == 204) {
-
-                }
-                
-                resposta.json().then(function (resposta) {
-                    console.log("Dados recebidos: ", JSON.stringify(resposta));
-
-
-                    for (let i = 0; i < resposta.length; i++) {
+    var vetID = [];
+    var vetContador = [];
+    function listarFuncionario(){
+        var idEmpresa = sessionStorage.ID_USUARIO
+        fetch(`/avisos/listarFuncionario/${idEmpresa}`).then(function (resposta) {
+            if(resposta.ok){
+            resposta.json().then(function (resposta) {
+                for (let i = 0; i < resposta.length; i++) {
                         var publicacao = resposta[i];
+                        idFunc.innerHTML += `${publicacao.idUsuario}<br>`
                         nomeFunc.innerHTML += `${publicacao.nomeFuncionario}<br>`
                         emailFunc.innerHTML += `${publicacao.emailFuncionario}<br>`
+                        botoes.innerHTML += `<button class="delButton" onclick="deletar()})">Deletar</button>`
+                        vetID.push(publicacao.idUsuario);
+                        vetContador.push(0);
+            }
+        })
+        }
+    }).catch(function (resposta) {
+        console.error(resposta);
 
+    })
+}
+function deletar(idUsuario) {
+        console.log("Criar função de apagar post escolhido - ID" + idUsuario);
+        fetch(`/avisos/deletar/${idUsuario}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (resposta) {
 
-                    }
-
-                });
+            if (resposta.ok) {
+                window.alert("Post deletado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
+                window.location = ""
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
             } else {
-                throw ('Houve um erro na API!');
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
             }
         }).catch(function (resposta) {
-            console.error(resposta);
-            finalizarAguardar();
+            console.log(`#ERRO: ${resposta}`);
         });
     }
-
+   
 </script>
