@@ -1,0 +1,22 @@
+.container{
+    width: 70vw;
+    height: 40vh;
+    margin:  auto;
+    margin-top: 10vh;
+    display: table;
+    padding-top: 5vh;
+   background-color: rgba(211, 211, 211, 0.604) ;
+    border-radius: 50px;
+    border: solid 2px #5cabeb;
+}
+.profileText{
+    margin-bottom: 2vh;
+    margin-top: 2vh;
+}
+.mainColumn{
+    flex-direction: column;
+    padding-left: 2vw;
+}
+.mainColumn .profileText{
+    margin-left: 2vw;
+}
