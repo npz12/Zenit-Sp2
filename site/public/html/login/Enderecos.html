@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil</title>
+    <title>Meus endereços</title>
     <link rel="stylesheet" href="../../css/style.css">
-    <link rel="stylesheet" href="../../css/styleProfile.css">
+    <link rel="stylesheet" href="../../css/styleAddress.css">
 </head>
-
-<body onload="listar()">
+<body>
     <div class="divHeader">
         <div class="divLogo">
             <a href="main.html" id="link"> <img src="../../assets/imgs/logo-1.png" alt="Logo Zenit" id="imgHeaderLogo">
@@ -38,35 +36,28 @@
             </a>
         </div>
     </div>
-    <!--Final Header-->
+    <!-- Final Header-->
     <div class="container">
-        <div class="mainInfo">
-            <h2 class="nome" id="nome"></h2>
+        <div class="mainInfo"></div>
+        <div class="mainColumn">
+            <span class="profileText">Rua</span>
+            <span class="profileText">Bairro</span>
+            <span class="profileText">Cidade</span>
+            <span class="profileText">CEP</span>
+            <span class="profileText">Número</span>
+            <span class="profileText">Complemento</span>
         </div>
-        <div class="mainContent">
-            <div class="mainColumn">
-                <span class="profileText">CNPJ: </span>
-                <span class="profileText">Telefone: </span>
-                <span class="profileText">e-mail: </span>
-                <span class="profileText">Quantidade de sensores: </span>
-                <span class="profileText">Quantidade de funcionários: </span>
-            </div>
-            <div class="mainColumn1">
-                <span id="CNPJAtual" class="profileText"> </span>
-                <span id="nmrAtual" class="profileText"></span>
-                <span id="emailAtual" class="profileText"></span>
-                <span id="qntdSensorAtual" class="profileText">23</span>
-                <span id="qntdFuncionarioAtual" class="profileText">124 <a href="infoFuncionario.html"
-                        class="link">Gerenciar</a>
-            </div>
+        <div class="mainColumn1">
+            <span id="RuaAtual" class="profileText"></span>
+            <span id="BairroAtual" class="profileText"></span>
+            <span id="CidadeAtual" class="profileText"></span>
+            <span id="CEPAtual" class="profileText"></span>
+            <span id="NumeroAtual" class="profileText"></span>
+            <span id="ComplementoAtual" class="profileText"></span>
         </div>
-
-
-
     </div>
-
-    <!--Inicio Footer -->
-    <div class="divFooter">
+     <!--Inicio Footer -->
+     <div class="divFooter">
         <div class="content">
             <img src="../../assets/imgs/logo-1.png" alt="Logo Footer" id="imgFooterLogo">
             <div class="divColuna">
@@ -104,30 +95,4 @@
         </div>
     </div>
 </body>
-
 </html>
-<script>
-    function listar(){
-        var emailEmpresa= sessionStorage.SALVAR_EMAIL
-
-        fetch(`/avisos/listar/${emailEmpresa}`).then(function (resposta) {
-            if(resposta.ok){
-            resposta.json().then(function (resposta) {
-                for (let i = 0; i < resposta.length; i++) {
-                        var publicacao = resposta[i];
-                        nome.innerHTML = `${publicacao.nomeEmpresa}`
-                        CNPJAtual.innerHTML = `${publicacao.CNPJ}`
-                        nmrAtual.innerHTML = `${publicacao.telEmpresa}`
-                        emailAtual.innerHTML = `${publicacao.emailEmpresa}`
-
-
-
-            }
-        })
-        }
-    }).catch(function (resposta) {
-        console.error(resposta);
-
-    })
-}
-</script>
