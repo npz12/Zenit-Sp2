@@ -19,7 +19,7 @@ const serial = async (
             port: 3306,
             user: 'zenitUser',
             password: 'Zenit@123',
-            database: 'metricas'
+            database: 'zenit'
         }
     ).promise();
 
@@ -53,7 +53,7 @@ const serial = async (
 
         if (HABILITAR_OPERACAO_INSERIR) {
             await poolBancoDados.execute(
-                'INSERT INTO sensores (lm35_temperatura) VALUES (?)',
+                'INSERT INTO medida (lm35_temperatura, momento, fk_aquario) VALUES (?, now(), 1)',
                 [lm35Temperatura]
             );
         }
