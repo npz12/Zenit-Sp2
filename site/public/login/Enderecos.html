@@ -129,7 +129,7 @@
 
 </html>
 <script>
-    function Cadastrar() {
+    function cadastrar() {
         var IdEmpresa = sessionStorage.ID_USUARIO;
         var varRua = inptRua.value;
         var varBairro = inptBairro.value;
@@ -138,7 +138,7 @@
         var varCEP = inptCEP.value;
         var varComplemento = inptComplemento.value;
 
-        if (varRua == '' || varNumero == '' || varCidade == '' || varCEP == '') {
+        if (varRua == undefined || varNumero == '' || varCidade == '' || varCEP == '') {
             cardErro.style.display = "block"
             mensagem_erro.innerHTML = "Verifique se o campo Endereço, Número, Cidade e CEP foram preenchidos";
         }
@@ -170,7 +170,7 @@
                 }
             }).catch(function (resposta) {
                 console.log(`#ERRO: ${resposta}`);
-                finalizarAguardar();
+                
             })
             return false;
         }

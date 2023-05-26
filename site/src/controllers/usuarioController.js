@@ -33,7 +33,7 @@ function entrar(req, res) {
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está indefinida!");
     } else {
-        
+
         usuarioModel.entrar(email, senha)
             .then(
                 function (resultado) {
@@ -76,7 +76,7 @@ function cadastrar(req, res) {
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está undefined!");
     } else {
-        
+
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
         usuarioModel.cadastrar(nome, email, senha, telefone, cnpj)
             .then(
@@ -95,7 +95,7 @@ function cadastrar(req, res) {
             );
     }
 }
-function cadastrarFuncionario(req,res){
+function cadastrarFuncionario(req, res) {
     var nome = req.body.nomeServer;
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
@@ -107,26 +107,26 @@ function cadastrarFuncionario(req,res){
         res.status(400).send("Seu email está undefined!");
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está undefined!");
-    } else{
+    } else {
         usuarioModel.cadastrarFuncionario(nome, email, senha, fkEmpresa)
-        .then(
-            function (resultado) {
-                res.json(resultado);
-            }
-        ).catch(
-            function (erro) {
-                console.log(erro);
-                console.log(
-                    "\nHouve um erro ao realizar o cadastro! Erro: ",
-                    erro.sqlMessage
-                );
-                res.status(500).json(erro.sqlMessage);
-            }
-        );
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
     }
 
 }
-function CadastrarEndereco (){
+function cadastrarEndereco(req, res) {
     var Rua = req.body.RuaServer;
     var bairro = req.body.bairroServer;
     var cidade = req.body.cidadeServer;
@@ -139,26 +139,26 @@ function CadastrarEndereco (){
         res.status(400).send("Sua Rua está undefined!");
     } else if (cidade == undefined) {
         res.status(400).send("Sua cidade está undefined!");
-    } else if(CEP == undefined){
+    } else if (CEP == undefined) {
         res.status(400).send("Seu CEP está undefined!");
-    }else if (numero == undefined){
+    } else if (numero == undefined) {
         res.status(400).send("Seu numero está undefined!");
     }
-    else{
-        usuarioModel.CadastrarEndereco(Rua, bairro, cidade, CEP, numero, complemento,fkEmpresa)
-        .then(function(resultado){
-            res.json(resultado);
-        }
-        ).catch(
-            function(erro){
-                console.log(erro);
-                console.log(
-                    "\nHouve um erro ao realizar o cadastro! Erro: ",
-                    erro.sqlMessage
-                );
-                res.status(500).json(erro.sqlMessage);
+    else {
+        usuarioModel.cadastrarEndereco(Rua, bairro, cidade, CEP, numero, complemento, fkEmpresa)
+            .then(function (resultado) {
+                res.json(resultado);
             }
-        )
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
     }
 }
 
@@ -167,5 +167,6 @@ module.exports = {
     cadastrar,
     cadastrarFuncionario,
     listar,
-    testar
+    testar,
+    cadastrarEndereco
 }
