@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,7 +8,9 @@
     <title>Meus endereços</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/styleAddress.css">
+    <link rel="stylesheet" href="../css/styleCadastro.css">
 </head>
+
 <body>
     <div class="divHeader">
         <div class="divLogo">
@@ -37,6 +40,28 @@
         </div>
     </div>
     <!-- Final Header-->
+    <div class="divCadastro" id="telaCadastro">
+        <h2 class="h1Titulo">Cadastro de endereço</h2>
+        <input type="text" placeholder="Rua" id="inptRua">
+        <span class="mensagem-de-erro">
+            <span id="span_erro_caractere_especial_nome">*Nome não deve conter caracteres <br> especiais e
+                números</span>
+        </span>
+        <input type="text" placeholder="Bairro" id="inptBairro">
+
+        <input type="number" placeholder="Número" id="inptNumero">
+
+        <input type="text" placeholder="Cidade" id="inptCidade">
+
+        <input type="text" placeholder="Complemento" id="inptComplemento">
+
+        <input type="text" placeholder="CEP" id="inptCEP">
+
+        <button class="btnCadastro" onclick="cadastrar()">Cadastrar</button>
+
+
+    </div>
+    <!-- Layout para listar funcionario
     <div class="container">
         <div class="mainInfo"></div>
         <div class="mainColumn">
@@ -56,8 +81,9 @@
             <span id="ComplementoAtual" class="profileText"></span>
         </div>
     </div>
-     <!--Inicio Footer -->
-     <div class="divFooter">
+    -->
+    <!--Inicio Footer -->
+    <div class="divFooter">
         <div class="content">
             <img src="../assets/imgs/logo-1.png" alt="Logo Footer" id="imgFooterLogo">
             <div class="divColuna">
@@ -85,8 +111,8 @@
                 </ul>
             </div>
             <div class="divColunaRedes">
-                <a href="https://www.instagram.com/"><img src="../assets/imgs/instagram-icon.svg"
-                        alt="icon - instagram" class="iconsFooter"></a>
+                <a href="https://www.instagram.com/"><img src="../assets/imgs/instagram-icon.svg" alt="icon - instagram"
+                        class="iconsFooter"></a>
                 <a href="https://www.linkedin.com"><img src="../assets/imgs/linkedin-icon.svg" alt="icon - linkedin"
                         class="iconsFooter"></a>
                 <a href="https://github.com/Zenit-Sp2/Zenit-Sp2.git"><img src="../assets/imgs/github-icon-footer.svg"
@@ -94,5 +120,59 @@
             </div>
         </div>
     </div>
+    <div class="alerta_erro">
+        <div class="card_erro" id="cardErro">
+            <span id="mensagem_erro"></span>
+        </div>
+    </div>
 </body>
+
 </html>
+<script>
+    function Cadastrar() {
+        var IdEmpresa = sessionStorage.ID_USUARIO;
+        var varRua = inptRua.value;
+        var varBairro = inptBairro.value;
+        var varNumero = inptNumero.value;
+        var varCidade = inptCidade.value;
+        var varCEP = inptCEP.value;
+        var varComplemento = inptComplemento.value;
+
+        if (varRua == '' || varNumero == '' || varCidade == '' || varCEP == '') {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "Verifique se o campo Endereço, Número, Cidade e CEP foram preenchidos";
+        }
+        else {
+            fetch("/usuarios/cadastrarEndereco", {
+                method: "POST",
+                headers: {
+                    "Content-type": "application/json"
+                },
+                body: JSON.stringify({
+                    RuaServer: varRua,
+                    BairroServer: varBairro,
+                    NumeroServer: varNumero,
+                    CidadeServer: varCidade,
+                    CEPServer: varCEP,
+                    ComplementoServer: varComplemento,
+                    fkEmpresaServer: IdEmpresa
+                })
+            }).then(function (resposta) {
+                console.log(`resposta:`, resposta);
+                if (resposta.ok) {
+                    mensagem_erro.innerHTML = `Cadastro realizado com sucesso, redirecionando para tela de perfil`;
+                    setTimeout(() => {
+                        window.location = 'perfil.html';
+                    }, 3000)
+                    limparFormulario();
+                } else {
+                    throw (`Houve um erro ao realizar o cadastro!`)
+                }
+            }).catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+                finalizarAguardar();
+            })
+            return false;
+        }
+    }
+</script>

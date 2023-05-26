@@ -20,3 +20,7 @@
 .mainColumn .profileText{
     margin-left: 2vw;
 }
+.divCadastro {
+    height: 70vh !important;
+    margin-top: 8vh !important;
+}

@@ -50,17 +50,20 @@
                 <span class="profileText">e-mail: </span>
                 <span class="profileText">Quantidade de sensores: </span>
                 <span class="profileText">Quantidade de funcionários: </span>
+                <span class="profileText">Endereço: </span>
             </div>
             <div class="mainColumn1">
-                <span id="CNPJAtual" class="profileText"> </span>
-                <span id="nmrAtual" class="profileText"></span>
-                <span id="emailAtual" class="profileText"></span>
-                <span id="qntdSensorAtual" class="profileText">23</span>
-                <span id="qntdFuncionarioAtual" class="profileText">124 <a href="infoFuncionario.html"
-                        class="link">Gerenciar</a>
+                <span id="CNPJAtual" class="profileText">&nbsp</span>
+                <span id="nmrAtual" class="profileText">&nbsp</span>
+                <span id="emailAtual" class="profileText">&nbsp</span>
+                <span id="qntdSensorAtual" class="profileText">&nbsp</span>
+                <span id="qntdFuncionarioAtual" class="profileText"> &nbsp<a href="infoFuncionario.html"
+                        class="link">Gerenciar</a></span>
+                <span id="EnderecoAtual" class="profileText">&nbsp<a href="Enderecos.html" 
+                        class="link">Gerenciar</a></span>
             </div>
         </div>
-
+        <!-- &nbsp é para ocupar o espaço do texto para o estilo ficar correto-->
 
 
     </div>
@@ -94,8 +97,8 @@
                 </ul>
             </div>
             <div class="divColunaRedes">
-                <a href="https://www.instagram.com/"><img src="../assets/imgs/instagram-icon.svg"
-                        alt="icon - instagram" class="iconsFooter"></a>
+                <a href="https://www.instagram.com/"><img src="../assets/imgs/instagram-icon.svg" alt="icon - instagram"
+                        class="iconsFooter"></a>
                 <a href="https://www.linkedin.com"><img src="../assets/imgs/linkedin-icon.svg" alt="icon - linkedin"
                         class="iconsFooter"></a>
                 <a href="https://github.com/Zenit-Sp2/Zenit-Sp2.git"><img src="../assets/imgs/github-icon-footer.svg"
@@ -107,13 +110,13 @@
 
 </html>
 <script>
-    function listar(){
-        var emailEmpresa= sessionStorage.SALVAR_EMAIL
+    function listar() {
+        var emailEmpresa = sessionStorage.SALVAR_EMAIL
 
         fetch(`/avisos/listar/${emailEmpresa}`).then(function (resposta) {
-            if(resposta.ok){
-            resposta.json().then(function (resposta) {
-                for (let i = 0; i < resposta.length; i++) {
+            if (resposta.ok) {
+                resposta.json().then(function (resposta) {
+                    for (let i = 0; i < resposta.length; i++) {
                         var publicacao = resposta[i];
                         nome.innerHTML = `${publicacao.nomeEmpresa}`
                         CNPJAtual.innerHTML = `${publicacao.CNPJ}`
@@ -122,12 +125,12 @@
 
 
 
+                    }
+                })
             }
-        })
-        }
-    }).catch(function (resposta) {
-        console.error(resposta);
+        }).catch(function (resposta) {
+            console.error(resposta);
 
-    })
-}
+        })
+    }
 </script>
