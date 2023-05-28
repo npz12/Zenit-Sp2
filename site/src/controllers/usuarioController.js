@@ -126,7 +126,7 @@ function cadastrarFuncionario(req, res) {
     }
 
 }
-function cadastrarEndereco(req, res) {
+function Endereco(req, res) {
     var Rua = req.body.RuaServer;
     var bairro = req.body.bairroServer;
     var cidade = req.body.cidadeServer;
@@ -145,7 +145,7 @@ function cadastrarEndereco(req, res) {
         res.status(400).send("Seu numero está undefined!");
     }
     else {
-        usuarioModel.cadastrarEndereco(Rua, bairro, cidade, CEP, numero, complemento, fkEmpresa)
+        usuarioModel.Endereco(Rua, bairro, cidade, CEP, numero, complemento, fkEmpresa)
             .then(function (resultado) {
                 res.json(resultado);
             }
@@ -168,5 +168,5 @@ module.exports = {
     cadastrarFuncionario,
     listar,
     testar,
-    cadastrarEndereco
+    Endereco
 }

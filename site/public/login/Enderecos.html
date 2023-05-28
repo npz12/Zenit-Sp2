@@ -138,12 +138,12 @@
         var varCEP = inptCEP.value;
         var varComplemento = inptComplemento.value;
 
-        if (varRua == undefined || varNumero == '' || varCidade == '' || varCEP == '') {
+        if (varRua == '' || varNumero == '' || varCidade == '' || varCEP == '') {
             cardErro.style.display = "block"
             mensagem_erro.innerHTML = "Verifique se o campo Endereço, Número, Cidade e CEP foram preenchidos";
         }
         else {
-            fetch("/usuarios/cadastrarEndereco", {
+            fetch("/usuarios/Endereco", {
                 method: "POST",
                 headers: {
                     "Content-type": "application/json"
@@ -158,7 +158,7 @@
                     fkEmpresaServer: IdEmpresa
                 })
             }).then(function (resposta) {
-                console.log(`resposta:`, resposta);
+                console.log("resposta:", resposta);
                 if (resposta.ok) {
                     mensagem_erro.innerHTML = `Cadastro realizado com sucesso, redirecionando para tela de perfil`;
                     setTimeout(() => {

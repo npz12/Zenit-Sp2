@@ -23,7 +23,7 @@ router.post("/autenticar", function (req, res) {
     usuarioController.entrar(req, res);
 });
 
-router.post("/cadastrarEndereco", function (req, res) {
-    usuarioController.cadastrarEndereco(req, res);
+router.post("/Endereco", function (req, res) {
+    usuarioController.Endereco(req, res);
 });
 module.exports = router;
