@@ -1,3 +1,6 @@
+body{
+    background-color: white !important;
+}
 .container{
     width: 70vw;
     height: 40vh;
@@ -23,4 +26,10 @@
 .divCadastro {
     height: 70vh !important;
     margin-top: 8vh !important;
+}
+#alerta-erro{
+    display: none;
+    background-color: lightgray;
+    border: solid red 1px;
+    width: 5vw;
 }

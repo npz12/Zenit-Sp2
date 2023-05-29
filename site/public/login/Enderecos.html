@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/styleAddress.css">
     <link rel="stylesheet" href="../css/styleCadastro.css">
+    <link rel="stylesheet" href="../css/Zstyle.css">
 </head>
 
 <body>
@@ -40,6 +41,11 @@
         </div>
     </div>
     <!-- Final Header-->
+    <div class="alerta_erro">
+        <div class="card_erro" id="cardErro">
+            <span id="mensagem_erro"></span>
+        </div>
+    </div>
     <div class="divCadastro" id="telaCadastro">
         <h2 class="h1Titulo">Cadastro de endereço</h2>
         <input type="text" placeholder="Rua" id="inptRua">
@@ -120,11 +126,6 @@
             </div>
         </div>
     </div>
-    <div class="alerta_erro">
-        <div class="card_erro" id="cardErro">
-            <span id="mensagem_erro"></span>
-        </div>
-    </div>
 </body>
 
 </html>
@@ -139,11 +140,13 @@
         var varComplemento = inptComplemento.value;
 
         if (varRua == '' || varNumero == '' || varCidade == '' || varCEP == '') {
+
             cardErro.style.display = "block"
+
             mensagem_erro.innerHTML = "Verifique se o campo Endereço, Número, Cidade e CEP foram preenchidos";
         }
         else {
-            fetch("/usuarios/Endereco", {
+            fetch("/usuarios/EmpresaEndereco", {
                 method: "POST",
                 headers: {
                     "Content-type": "application/json"
@@ -163,16 +166,16 @@
                     mensagem_erro.innerHTML = `Cadastro realizado com sucesso, redirecionando para tela de perfil`;
                     setTimeout(() => {
                         window.location = 'perfil.html';
-                    }, 3000)
-                    limparFormulario();
+                    }, 3000);
                 } else {
                     throw (`Houve um erro ao realizar o cadastro!`)
                 }
             }).catch(function (resposta) {
                 console.log(`#ERRO: ${resposta}`);
-                
+
             })
             return false;
         }
+
     }
 </script>

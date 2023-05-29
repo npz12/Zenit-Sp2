@@ -126,15 +126,15 @@ function cadastrarFuncionario(req, res) {
     }
 
 }
-function Endereco(req, res) {
+function EmpresaEndereco(req, res) {
     var Rua = req.body.RuaServer;
-    var bairro = req.body.bairroServer;
-    var cidade = req.body.cidadeServer;
+    var bairro = req.body.BairroServer;
+    var cidade = req.body.CidadeServer;
     var CEP = req.body.CEPServer;
-    var numero = req.body.numeroServer;
-    var complemento = req.body.complementoServer;
+    var numero = req.body.NumeroServer;
+    var complemento = req.body.ComplementoServer;
     var fkEmpresa = req.body.fkEmpresaServer;
-
+    
     if (Rua == undefined) {
         res.status(400).send("Sua Rua está undefined!");
     } else if (cidade == undefined) {
@@ -145,7 +145,7 @@ function Endereco(req, res) {
         res.status(400).send("Seu numero está undefined!");
     }
     else {
-        usuarioModel.Endereco(Rua, bairro, cidade, CEP, numero, complemento, fkEmpresa)
+        usuarioModel.EmpresaEndereco(Rua, bairro, cidade, CEP, numero, complemento, fkEmpresa)
             .then(function (resultado) {
                 res.json(resultado);
             }
@@ -168,5 +168,5 @@ module.exports = {
     cadastrarFuncionario,
     listar,
     testar,
-    Endereco
+    EmpresaEndereco
 }
