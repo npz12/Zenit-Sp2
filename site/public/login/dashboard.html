@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="./styleChart.css">
     <script src="../js/funcoes.js"></script>
+    <script src="./alerta.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
@@ -82,52 +83,72 @@
             </div>
 
             <div class="miniKPI" id="caixaDois">
-                <span id="kpiAlerta">0</span>
-                <p>Alerta</p>
+                <span id="visaoGeral">
+                    <!-- <span id="trans1">Transformador 1</span><br>
+                    <span id="trans2">Transformador 2</span><br>
+                    <span id="trans3">Transformador 3</span><br>
+                    <span id="trans4">Transformador 4</span><br> -->
+                    <div class="card">
+                        <h1>Aquário 1</h1>
+                        <div class="temperatura">
+                            <p id="temp_aquario_1">-°C</p>
+                        </div>
+                        <div class="cor-alerta" id="card_1"></div>
+                    </div>
+                    <div class="card">
+                        <h1>Aquário 1</h1>
+                        <div class="temperatura">
+                            <p id="temp_aquario_2">-°C</p>
+                        </div>
+                        <div class="cor-alerta" id="card_2"></div>
+    
+                    </div>
+                    <div class="card">
+                        <h1>Aquário 1</h1>
+                        <div class="temperatura">
+                            <p id="temp_aquario_3">-°C</p>
+                        </div>
+                        <div class="cor-alerta ideal" id="card_3"></div>
+                    </div>
+                    <div class="card">
+                        <h1>Aquário 1</h1>
+                        <div class="temperatura">
+                            <p id="temp_aquario_4">-°C</p>
+                        </div>
+                        <div class="cor-alerta" id="card_4"></div>
+                    </div>
+                    <!-- <div class="card">
+                        <h1>Transformador 1</h1>
+                        <div class="temperatura">
+                            <p id="trans1">-°C</p>
+                        </div>
+                        <div class="cor-alerta" id="card_1"></div>
+                    </div>
+                    <div class="card">
+                        <h1>Transformador 2</h1>
+                        <div class="temperatura">
+                            <p id="trans2">-°C</p>
+                        </div>
+                        <div class="cor-alerta" id="card_2"></div>
+                    </div>
+                    <div class="card">
+                        <h1>Transformador 2</h1>
+                        <div class="temperatura">
+                            <p id="trans2">-°C</p>
+                        </div>
+                        <div class="cor-alerta" id="card_2"></div>
+                    </div>
+                    <div class="card">
+                        <h1>Transformador 1</h1>
+                        <div class="temperatura">
+                            <p id="trans1">-°C</p>
+                        </div>
+                        <div class="cor-alerta" id="card_1"></div>
+                    </div> -->
+                </span>
             </div>
         </div>
     </div>
-    <!-- <div class="divContainerGrafico"> -->
-
-    <!-- <div id="transformadoresTotais" style="display: block;">
-                <div class="grafico">
-                    <canvas id="graficoVisaoAmpla" width="800px"></canvas>
-                </div>
-            </div> -->
-
-    <!-- <div id="transformadorUm" style="display: block;">
-                <div class="grafico">
-                    <canvas id="graficoTransformador1" width="800px"></canvas>
-                </div>
-            </div> -->
-
-
-    <!-- <button onclick="mostrarTransformadorUm()" id="buttonVisaoIndividual" class="buttonGrafico">Visão
-                transformador 1</button>
-            <button onclick="mostrarVisaoGeral()" style="display: none;" id="buttonVisaoGeral"
-                class="buttonGrafico">Visão geral dos
-                transformadores</button> -->
-
-    <!-- </div> -->
-
-    <!-- <div class="divKPI" id="divKpiIndividual" style="display: block;">
-
-            <div class="miniKPI" id="maiorTemperatura">
-                <span id="kpiMaior">0</span>
-                <p>Temperatura mais alta <br> nas ultimas 12 horas</p>
-            </div>
-            <div class="miniKPI" id="menorTemperatura">
-                <span id="kpiMenor">0</span>
-                <p>Temperatura mais baixa <br> nas ultimas 12 horas</p>
-
-            </div>
-
-            <div class="miniKPI" id="mediaTemperatura">
-                <span id="kpiMedia">0</span>
-                <p>Temperatura média <br> nas ultimas 12 horas</p>
-            </div>
-
-        </div> -->
     </div>
 
     <div class="divFooter">
@@ -175,175 +196,65 @@
 </html>
 <script>
 
-    // function mostrarTransformadorUm() {
-    //     transformadorUm.style = 'width: 800px; display: block;';
-    //     transformadoresTotais.style = 'width: 0; display: none;';
-    //     buttonVisaoGeral.style.display = 'block';
-    //     buttonVisaoIndividual.style.display = 'none';
-    //     divKpiIndividual.style.display = 'flex';
-    //     divKpiGeral.style.display = 'none';
-
-    // }
-
-    // function mostrarVisaoGeral() {
-    //     transformadorUm.style = 'width: 0; display: none;';
-    //     transformadoresTotais.style = 'width: 800px; display: block;';
-    //     buttonVisaoGeral.style.display = 'none';
-    //     buttonVisaoIndividual.style.display = 'block';
-    //     divKpiIndividual.style.display = 'none';
-    //     divKpiGeral.style.display = 'flex';
-
-    // }
-
     // const visaoAmpla = document.getElementById('graficoVisaoAmpla');
     // const visaoDetalhada = document.getElementById('graficoTransformador1');
     const kpiGeral = document.getElementById('graficoKpiGeral');
-    // const kpiIndividual = document.getElementById('graficoKpiIndividual');
-
-    // var ideal = 0;
-    // var alerta = 0;
-    // var critico = 0;
-
-    // var menorTemp = 1000;
-    // var maiorTemp = 0;
-    // var tempMedia = 0;
-
-    // var dadosVG = [80, 86, 105, 120, 77, 82, 48, 80, 76, 10, 31, 84, 80]
-
-    // var dadosVI = [80, 90, 100, 95, 87, 82, 88, 80, 76, 70, 81, 83, 84];
-
-    // for (var i = 0; i < 13; i++) {
-    //     if (dadosVG[i] >= 45 && dadosVG[i] <= 80) {
-    //         dadosKpi[0]++;
-    //     }
-
-    //     if (dadosVG[i] >= 20 && dadosVG[i] < 45 || dadosVG[i] > 80 && dadosVG[i] < 100) {
-    //         dadosKpi[1]++;
-    //     }
-
-    //     if (dadosVG[i] >= 100 || dadosVG[i] < 20) {
-    //         dadosKpi[2]++;
-    //     }
-
-    // }
 
 
-    // calculando menor temperatura, maior temperatura e temperatura media
-    // for (var i = 0; i < 13; i++) {
-    //     if (dadosVI[i] < menorTemp) {
-    //         menorTemp = dadosVI[i]
-    //     }
-    //     if (dadosVI[i] > maiorTemp) {
-    //         maiorTemp = dadosVI[i]
-    //     }
-    //     tempMedia += dadosVI[i];
-    // }
-
-    // tempMedia = tempMedia / 13;
-
-    // kpiMaior.innerHTML = maiorTemp;
-    // kpiMenor.innerHTML = menorTemp;
-    // kpiMedia.innerHTML = tempMedia.toFixed(0);
-
-    // kpiAlerta.innerHTML = dadosKpi[1];
-    // kpiCritico.innerHTML = dadosKpi[2];
-
-
+    
+    
     Chart.defaults.color = "#000";
-
-
+    
+    
     function arredondar(dateTimeValue) {
         return (dateTimeValue < 10) ? '0' + dateTimeValue.toString() : dateTimeValue.toString();
     }
-    // var graficoDetalhado = new Chart(visaoDetalhada, {
-    //     type: 'line',
-    //     data: {
-    // labels: ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00'],
-    //         datasets: [{
-    //             label: `Temperatura( °C ) 00/00/0000`,
-    //             // label: 'Ideal',
-    //             data: dadosVI,
-    //             borderWidth: 5,
-    //             borderColor: "#4472c4",
-    //             backgroundColor: "#4472c4"
-    //         },]
-    //     },
-    //     options: {
-    //         plugins: {
-    //             legend: {
-    //                 labels: {
-    //                     font: {
-    //                         size: 25
-    //                     }
-    //                 },
-    //                 title: {
-    //                     font: {
-    //                         size: 40
-    //                     },
-    //                     display: true,
-    //                     text: 'Transformador: 1',
-    //                 },
-    //             }
-    //         },
-    //         scales: {
-    //             y: {
-    //                 grid: {
-    //                     color: '#636363'
-    //                 },
-    //                 beginAtZero: false,
-    //                 title: {
-    //                     display: true,
-    //                     text: 'Temperatura'
-    //                 }
-    //             },
-    //             x: {
-    //                 grid: {
-    //                     display: true,
-    //                     color: '#636363'
-    //                 },
-    //                 title: {
-    //                     display: true,
-    //                     text: 'Horário'
-    //                 }
-    //             }
-    //         }
-    //     }
-    // });
-
+    
     // setInterval(() => {
-    //     const date = new Date();
-    //     let day = date.getDay();
-    //     let month = date.getMonth();
-    //     let year = date.getFullYear();
-    //     let hour = date.getHours();
-    //     let minute = date.getMinutes();
-    //     let second = date.getSeconds();
-    //     // graficoGeral.data.datasets[0].label = `Temperatura( °C ) ${arredondar(hour)}:${arredondar(minute)}:${arredondar(second)}`;
-    //     graficoDetalhado.data.datasets[0].label = `Temperatura( °C ) ${arredondar(hour)}:${arredondar(minute)}:${arredondar(second)}`;
-    //     // graficoDetalhado.data.datasets[0].label = `Temperatura( °C ) ${arredondar(day)}/${arredondar(month)}/${arredondar(year)}`
-    //     // graficoGeral.update();
-    //     graficoDetalhado.update();
-    // }, 1000);
-    // b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-
+        //     const date = new Date();
+        //     let day = date.getDay();
+        //     let month = date.getMonth();
+        //     let year = date.getFullYear();
+        //     let hour = date.getHours();
+        //     let minute = date.getMinutes();
+        //     let second = date.getSeconds();
+        //     // graficoGeral.data.datasets[0].label = `Temperatura( °C ) ${arredondar(hour)}:${arredondar(minute)}:${arredondar(second)}`;
+        //     graficoDetalhado.data.datasets[0].label = `Temperatura( °C ) ${arredondar(hour)}:${arredondar(minute)}:${arredondar(second)}`;
+        //     // graficoDetalhado.data.datasets[0].label = `Temperatura( °C ) ${arredondar(day)}/${arredondar(month)}/${arredondar(year)}`
+        //     // graficoGeral.update();
+        //     graficoDetalhado.update();
+        // }, 1000);
+        
     let proximaAtualizacao;
 
     window.onload = obterDadosGraficos();
 
+    function atualizacaoPeriodica() {
+        obterdados(1);
+        // obterdados(2);
+        // obterdados(3);
+        // obterdados(4);
+
+        setTimeout(atualizacaoPeriodica, 5000);
+    }
+
     function obterDadosGraficos() {
         obterDadosGrafico(1)
+        // obterDadosGrafico(2)
+        // obterDadosGrafico(3)
+        // obterDadosGrafico(4)
     }
     var dadosKpi = [0, 0, 0];
 
     
-    // function alterarTitulo(idAquario) {
-    //     var tituloAquario = document.getElementById(`tituloAquario${idAquario}`)
-    //     tituloAquario.innerHTML = "Últimas medidas de Temperatura e Umidade do <span style='color: #e6005a'>Aquário " + idAquario + "</span>"
-    // }
-
+    function alterarTitulo(idAquario) {
+            var tituloAquario = document.getElementById(`tituloAquario${idAquario}`)
+            tituloAquario.innerHTML = "Últimas medidas de Temperatura e Umidade do <span style='color: #e6005a'>Aquário " + idAquario + "</span>"
+    }
+    
     function exibirAquario(idAquario) {
         let todosOsGraficos = document.getElementById("graficos")
-
+        
         for (i = 1; i <= todosOsGraficos.childElementCount; i++) {
             // exibindo - ou não - o gráfico
             let elementoAtual = document.getElementById(`grafico${i}`)
@@ -351,7 +262,7 @@
                 elementoAtual.classList.remove("display-block")
             }
             elementoAtual.classList.add("display-none")
-
+            
             // alterando estilo do botão
             let btnAtual = document.getElementById(`btnAquario${i}`)
             if (btnAtual.classList.contains("btn-pink")) {
@@ -359,7 +270,7 @@
             }
             btnAtual.classList.add("btn-white")
         }
-
+        
         // exibindo - ou não - o gráfico
         let graficoExibir = document.getElementById(`grafico${idAquario}`)
         graficoExibir.classList.remove("display-none")
@@ -370,7 +281,7 @@
         btnExibir.classList.remove("btn-white")
         btnExibir.classList.add("btn-pink")
     }
-
+    
     // O gráfico é construído com três funções:
     // 1. obterDadosGrafico -> Traz dados do Banco de Dados para montar o gráfico da primeira vez
     // 2. plotarGrafico -> Monta o gráfico com os dados trazidos e exibe em tela
@@ -379,7 +290,7 @@
     // Esta função *obterDadosGrafico* busca os últimos dados inseridos em tabela de medidas.
     // para, quando carregar o gráfico da primeira vez, já trazer com vários dados.
     // A função *obterDadosGrafico* também invoca a função *plotarGrafico*
-
+    
     //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
     //     Para ajustar o "select", ajuste o comando sql em src/models
     function obterDadosGrafico(idAquario) {
@@ -406,7 +317,7 @@
             console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
         });
     }
-
+    
     // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
     // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
     // A função *plotarGrafico* também invoca a função *atualizarGrafico*
@@ -432,12 +343,12 @@
             };
             
             // console.log('----------------------------------------------')
-        // console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
-        // console.log(resposta)
-        
-        // Inserindo valores recebidos em estrutura para plotar o gráfico
-        for (i = 0; i < resposta.length; i++) {
-            var registro = resposta[i];
+            // console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+            // console.log(resposta)
+            
+            // Inserindo valores recebidos em estrutura para plotar o gráfico
+            for (i = 0; i < resposta.length; i++) {
+                var registro = resposta[i];
             if (registro.temperatura >= 45 && registro.temperatura <= 80) {
                 dadosKpi[0]++;
             }
@@ -453,7 +364,8 @@
             labels.push(registro.momento_grafico);
             dados.datasets[0].data.push(registro.temperatura);
         }
-        
+        // kpiAlerta.innerHTML = dadosKpi[1];
+        kpiCritico.innerHTML = dadosKpi[2];
         // console.log('----------------------------------------------')
         // console.log('O gráfico será plotado com os respectivos valores:')
         // console.log('Labels:')
@@ -487,7 +399,7 @@
                         },
                     }
                 },
-    
+                
             }
         });
         // Criando estrutura para plotar gráfico - config
@@ -500,37 +412,37 @@
         let myChart = new Chart(
             document.getElementById(`graficoTransformador${idAquario}`),
             config
-        );
-
-        setTimeout(() => atualizarGrafico(idAquario, dados, myChart, kpi), 2000);
-    }
-
-
-    // Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
-    // buscando a última medida inserida em tabela contendo as capturas, 
-
-    //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
-    //     Para ajustar o "select", ajuste o comando sql em src/models
-    function atualizarGrafico(idAquario, dados, myChart, kpi) {
-
-
-
-        fetch(`/medidas/tempo-real/${idAquario}`, { cache: 'no-store' }).then(function (response) {
-            if (response.ok) {
-                response.json().then(function (novoRegistro) {
-
-                    // console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
-                    // console.log(`Dados atuais do gráfico:`);
-                    // console.log(dados);
-
-                    let avisoCaptura = document.getElementById(`avisoCaptura${idAquario}`)
-                    avisoCaptura.innerHTML = ""
-
-
-                    if (novoRegistro[0].momento_grafico == dados.labels[dados.labels.length - 1]) {
-                        // console.log("---------------------------------------------------------------")
-                        // console.log("Como não há dados novos para captura, o gráfico não atualizará.")
-                        avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
+            );
+            
+            setTimeout(() => atualizarGrafico(idAquario, dados, myChart, kpi), 2000);
+        }
+        
+        
+        // Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
+        // buscando a última medida inserida em tabela contendo as capturas, 
+        
+        //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
+        //     Para ajustar o "select", ajuste o comando sql em src/models
+        function atualizarGrafico(idAquario, dados, myChart, kpi) {
+            
+            
+            
+            fetch(`/medidas/tempo-real/${idAquario}`, { cache: 'no-store' }).then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (novoRegistro) {
+                        
+                        // console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                        // console.log(`Dados atuais do gráfico:`);
+                        // console.log(dados);
+                        
+                        let avisoCaptura = document.getElementById(`avisoCaptura${idAquario}`)
+                        avisoCaptura.innerHTML = ""
+                        
+                    
+                        if (novoRegistro[0].momento_grafico == dados.labels[dados.labels.length - 1]) {
+                            // console.log("---------------------------------------------------------------")
+                            // console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+                            avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
                         // console.log(dados.datasets[0].data.length)
                         // console.log("Horário do novo dado capturado:")
                         // console.log(novoRegistro[0].momento_grafico)
@@ -541,7 +453,7 @@
                         // tirando e colocando valores no gráfico
                         dados.labels.shift(); // apagar o primeiro
                         dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
-
+                        
                         dados.datasets[0].data.shift();  // apagar o primeiro de temperatura
                         dados.datasets[0].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
                         if (novoRegistro[0].temperatura >= 45 && novoRegistro[0].temperatura <= 80) {
@@ -555,10 +467,12 @@
                         if (novoRegistro[0].temperatura >= 100 || novoRegistro[0].temperatura < 20) {
                             dadosKpi[2]++;
                         }
+                        // kpiAlerta.innerHTML = dadosKpi[1];
+                        kpiCritico.innerHTML = dadosKpi[2];
                         myChart.update();
                         kpi.update();
                     }
-
+                    
                     // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
                     proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados, myChart, kpi), 2000);
                 });
@@ -568,9 +482,63 @@
                 proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados, myChart, kpi), 2000);
             }
         })
-            .catch(function (error) {
-                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
             });
-
-    }
-</script>
+            
+        }
+        // var graficoDetalhado = new Chart(visaoDetalhada, {
+            //     type: 'line',
+            //     data: {
+                // labels: ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00'],
+                //         datasets: [{
+                    //             label: `Temperatura( °C ) 00/00/0000`,
+        //             // label: 'Ideal',
+        //             data: dadosVI,
+        //             borderWidth: 5,
+        //             borderColor: "#4472c4",
+        //             backgroundColor: "#4472c4"
+        //         },]
+        //     },
+        //     options: {
+        //         plugins: {
+        //             legend: {
+        //                 labels: {
+        //                     font: {
+            //                         size: 25
+            //                     }
+            //                 },
+            //                 title: {
+                //                     font: {
+                    //                         size: 40
+                    //                     },
+                    //                     display: true,
+                    //                     text: 'Transformador: 1',
+                    //                 },
+                    //             }
+                    //         },
+                    //         scales: {
+                        //             y: {
+                            //                 grid: {
+                                //                     color: '#636363'
+                                //                 },
+                                //                 beginAtZero: false,
+                                //                 title: {
+                                    //                     display: true,
+                                    //                     text: 'Temperatura'
+                                    //                 }
+                                    //             },
+                                    //             x: {
+                                        //                 grid: {
+                                            //                     display: true,
+        //                     color: '#636363'
+        //                 },
+        //                 title: {
+        //                     display: true,
+        //                     text: 'Horário'
+        //                 }
+        //             }
+        //         }
+        //     }
+        // });
+    </script>

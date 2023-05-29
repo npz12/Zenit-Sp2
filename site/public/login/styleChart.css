@@ -83,16 +83,19 @@
     margin: 0;
 }
 
-#caixaDois{
+/* #caixaDois{
     background-color: #ffff44;
     color: #4e4e4e;
 
+} */
+#caixaDois{
+    overflow-y: auto;    
+}
+#visaoGeral{
+    font-size: 10px;
+    margin: 15px;
 }
 
-#caixaDois p{
-    font-size: 20px;
-    margin: 0;
-}
 
 #maiorTemperatura{
     background-color: #ff4444;
