@@ -30,7 +30,7 @@ router.put("/editar/:idUsuario", function (req, res) {
     avisoController.editar(req, res);
 });
 
-router.delete("/deletar/:idUsuario", function (req, res) {
+router.delete("/deletar/:idFuncionario", function (req, res) {
     avisoController.deletar(req, res);
 });
 

@@ -58,9 +58,8 @@ create table funcionario (
     fkEmpresa int ,
     foreign key (fkEmpresa) references empresa (idEmpresa),
     -- idUsuario int primary key auto_increment,
-    idFuncionario int,
+    idFuncionario int primary key auto_increment,
     primary key(fkEmpresa, idFuncionario),
-    nomeFuncionario varchar(45) ,
     senhaFuncionario varchar(45) ,
     emailFuncionario varchar(45) 
     -- fkEmpresa int,
