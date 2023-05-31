@@ -91,14 +91,14 @@
                     <div class="card">
                         <h1>Aquário 1</h1>
                         <div class="temperatura">
-                            <p id="temp_aquario_1">-°C</p>
+                            <p id="temp_transf_1">-°C</p>
                         </div>
                         <div class="cor-alerta" id="card_1"></div>
                     </div>
                     <div class="card">
                         <h1>Aquário 1</h1>
                         <div class="temperatura">
-                            <p id="temp_aquario_2">-°C</p>
+                            <p id="temp_transf_2">-°C</p>
                         </div>
                         <div class="cor-alerta" id="card_2"></div>
 
@@ -106,45 +106,17 @@
                     <div class="card">
                         <h1>Aquário 1</h1>
                         <div class="temperatura">
-                            <p id="temp_aquario_3">-°C</p>
+                            <p id="temp_transf_3">-°C</p>
                         </div>
                         <div class="cor-alerta ideal" id="card_3"></div>
                     </div>
                     <div class="card">
                         <h1>Aquário 1</h1>
                         <div class="temperatura">
-                            <p id="temp_aquario_4">-°C</p>
+                            <p id="temp_transf_4">-°C</p>
                         </div>
                         <div class="cor-alerta" id="card_4"></div>
                     </div>
-                    <!-- <div class="card">
-                        <h1>Transformador 1</h1>
-                        <div class="temperatura">
-                            <p id="trans1">-°C</p>
-                        </div>
-                        <div class="cor-alerta" id="card_1"></div>
-                    </div>
-                    <div class="card">
-                        <h1>Transformador 2</h1>
-                        <div class="temperatura">
-                            <p id="trans2">-°C</p>
-                        </div>
-                        <div class="cor-alerta" id="card_2"></div>
-                    </div>
-                    <div class="card">
-                        <h1>Transformador 2</h1>
-                        <div class="temperatura">
-                            <p id="trans2">-°C</p>
-                        </div>
-                        <div class="cor-alerta" id="card_2"></div>
-                    </div>
-                    <div class="card">
-                        <h1>Transformador 1</h1>
-                        <div class="temperatura">
-                            <p id="trans1">-°C</p>
-                        </div>
-                        <div class="cor-alerta" id="card_1"></div>
-                    </div> -->
                 </span>
             </div>
         </div>
@@ -219,21 +191,6 @@
     function arredondar(dateTimeValue) {
         return (dateTimeValue < 10) ? '0' + dateTimeValue.toString() : dateTimeValue.toString();
     }
-
-    // setInterval(() => {
-    //     const date = new Date();
-    //     let day = date.getDay();
-    //     let month = date.getMonth();
-    //     let year = date.getFullYear();
-    //     let hour = date.getHours();
-    //     let minute = date.getMinutes();
-    //     let second = date.getSeconds();
-    //     // graficoGeral.data.datasets[0].label = `Temperatura( °C ) ${arredondar(hour)}:${arredondar(minute)}:${arredondar(second)}`;
-    //     graficoDetalhado.data.datasets[0].label = `Temperatura( °C ) ${arredondar(hour)}:${arredondar(minute)}:${arredondar(second)}`;
-    //     // graficoDetalhado.data.datasets[0].label = `Temperatura( °C ) ${arredondar(day)}/${arredondar(month)}/${arredondar(year)}`
-    //     // graficoGeral.update();
-    //     graficoDetalhado.update();
-    // }, 1000);
 
     let proximaAtualizacao;
 
@@ -323,6 +280,8 @@
     // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
     // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
     // A função *plotarGrafico* também invoca a função *atualizarGrafico*
+
+    let registros = [];
     function plotarGrafico(resposta, idAquario) {
 
         // console.log('iniciando plotagem do gráfico...');
@@ -353,15 +312,16 @@
             var registro = resposta[i];
             if (registro.temperatura >= 45 && registro.temperatura <= 80) {
                 dadosKpi[0]++;
+                registro.push('ideal')
             }
             if (registro.temperatura >= 20 && registro.temperatura < 45 || registro.temperatura > 80 && registro.temperatura < 100) {
                 dadosKpi[1]++;
-                console.log('b')
+                registro.push('alerta')
             }
 
             if (registro.temperatura >= 100 || registro.temperatura < 20) {
                 dadosKpi[2]++;
-                console.log('d')
+                registro.push('critico')
             }
             labels.push(registro.momento_grafico);
             dados.datasets[0].data.push(registro.temperatura);
@@ -458,17 +418,31 @@
 
                         dados.datasets[0].data.shift();  // apagar o primeiro de temperatura
                         dados.datasets[0].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
+
+                        if(registros[0] == 'ideal'){
+                            dadosKpi[0]--;
+                        }else if(registros[0] == 'alerta'){
+                            dadosKpi[1]--;
+                        }else if(registros[0] == 'critico'){
+                            dadosKpi[2]--;
+                        }
+                        registros.shift();
+
                         if (novoRegistro[0].temperatura >= 45 && novoRegistro[0].temperatura <= 80) {
                             dadosKpi[0]++;
+                            registros.push('ideal');
                         }
                         if (novoRegistro[0].temperatura >= 20 && novoRegistro[0].temperatura < 45 || novoRegistro[0].temperatura > 80 && novoRegistro[0].temperatura < 100) {
                             dadosKpi[1]++;
+                            registros.push('alerta');
                             // console.log()
                         }
 
                         if (novoRegistro[0].temperatura >= 100 || novoRegistro[0].temperatura < 20) {
                             dadosKpi[2]++;
+                            registros.push('critico');
                         }
+
                         // kpiAlerta.innerHTML = dadosKpi[1];
                         kpiCritico.innerHTML = dadosKpi[2];
                         myChart.update();

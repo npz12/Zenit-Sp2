@@ -71,16 +71,16 @@ function alertar(resposta, idAquario) {
     var card;
 
     if (idAquario == 1) {
-        temp_aquario_1.innerHTML = temp + "°C";
+        temp_transf_1.innerHTML = temp + "°C";
         card = card_1
     } else if (idAquario == 2) {
-        temp_aquario_2.innerHTML = temp + "°C";
+        temp_transf_2.innerHTML = temp + "°C";
         card = card_2
     } else if (idAquario == 3) {
-        temp_aquario_3.innerHTML = temp + "°C";
+        temp_transf_3.innerHTML = temp + "°C";
         card = card_3
     } else if (idAquario == 4) {
-        temp_aquario_4.innerHTML = temp + "°C";
+        temp_transf_4.innerHTML = temp + "°C";
         card = card_4
     }
 
