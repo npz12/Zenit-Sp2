@@ -1,14 +1,30 @@
 var database = require("../database/config");
 
-function listar(emailEmpresa) {
+function listar(idEmpresa) {
     console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
     var instrucao = `
     SELECT 
         u.nomeEmpresa,
         u.emailEmpresa,
         u.CNPJ,
-        u.telEmpresa
-    FROM empresa u WHERE emailEmpresa = '${emailEmpresa}';
+        u.telEmpresa,
+        (SELECT count(idFuncionario) FROM funcionario WHERE fkEmpresa='${idEmpresa}') as qntdFuncionario
+    FROM empresa u WHERE idEmpresa = '${idEmpresa}';
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+function listarPorFk(idEmpresa, emailFunc) {
+    console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+    var instrucao = `
+    SELECT 
+        u.nomeEmpresa,
+        u.emailEmpresa,
+        u.CNPJ,
+        u.telEmpresa,
+        (SELECT count(idFuncionario) FROM funcionario WHERE fkEmpresa='${idEmpresa}') as qntdFuncionario,
+        (SELECT nomeFuncionario FROM funcionario WHERE emailFuncionario = '${emailFunc}') as nomeFuncionario
+    FROM empresa u WHERE idEmpresa = '${idEmpresa}';
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -98,6 +114,7 @@ function deletar(idFuncionario) {
 
 module.exports = {
     listar,
+    listarPorFk,
     listarFuncionario,
     listarPorUsuario,
     pesquisarDescricao,

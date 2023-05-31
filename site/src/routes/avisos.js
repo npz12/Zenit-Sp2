@@ -7,8 +7,11 @@ router.get("/", function (req, res) {
     avisoController.testar(req, res);
 });
 
-router.get("/listar/:emailEmpresa", function (req, res) {
+router.get("/listar/:idEmpresa", function (req, res) {
     avisoController.listar(req, res);
+});
+router.get("/listar/:idEmpresa/:emailFunc", function (req, res) {
+    avisoController.listarPorFk(req, res);
 });
 router.get("/listarFuncionario/:idEmpresa", function (req, res) {
     avisoController.listarFuncionario(req, res);

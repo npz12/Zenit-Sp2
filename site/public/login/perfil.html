@@ -42,6 +42,7 @@
     <div class="container">
         <div class="mainInfo">
             <h2 class="nome" id="nome"></h2>
+            <h3 class="nome" id="nomeFuncionario" style="display: none;"></h3>
         </div>
         <div class="mainContent">
             <div class="mainColumn1">
@@ -57,10 +58,11 @@
                 <span id="nmrAtual" class="profileText">&nbsp</span>
                 <span id="emailAtual" class="profileText">&nbsp</span>
                 <span id="qntdSensorAtual" class="profileText">&nbsp</span>
-                <span id="qntdFuncionarioAtual" class="profileText"> &nbsp<a href="infoFuncionario.html"
-                        class="link">Gerenciar</a></span>
-                <span id="EnderecoAtual" class="profileText">&nbsp<a href="Enderecos.html" 
-                        class="link">Gerenciar</a></span>
+                <span id="qntdFuncionarioAtual" class="profileText"> &nbsp
+                    <a href="infoFuncionario.html" class="link" id="btnFuncionario">Gerenciar Funcionarios</a>
+                </span>
+                <span id="EnderecoAtual" class="profileText">&nbsp<a href="Enderecos.html" class="link"
+                        id="btnEndereco">Gerenciar Endereços</a></span>
             </div>
         </div>
         <!-- &nbsp é para ocupar o espaço do texto para o estilo ficar correto-->
@@ -110,27 +112,66 @@
 
 </html>
 <script>
+    if (sessionStorage.FUNCIONARIO_PERMISSAO == 1) {
+        btnFuncionario.style.display = 'none';
+        btnEndereco.style.display = 'none';
+
+    } else {
+        btnFuncionario.style.display = 'block';
+        btnEndereco.style.display = 'block';
+    }
     function listar() {
-        var emailEmpresa = sessionStorage.SALVAR_EMAIL
+        var idEmpresa = sessionStorage.ID_EMPRESA
+        var emailFunc = sessionStorage.SALVAR_EMAIL
 
-        fetch(`/avisos/listar/${emailEmpresa}`).then(function (resposta) {
-            if (resposta.ok) {
-                resposta.json().then(function (resposta) {
-                    for (let i = 0; i < resposta.length; i++) {
-                        var publicacao = resposta[i];
-                        nome.innerHTML = `${publicacao.nomeEmpresa}`
-                        CNPJAtual.innerHTML = `${publicacao.CNPJ}`
-                        nmrAtual.innerHTML = `${publicacao.telEmpresa}`
-                        emailAtual.innerHTML = `${publicacao.emailEmpresa}`
+        if (sessionStorage.FUNCIONARIO_PERMISSAO == 1) {
+            nomeFuncionario.style.display = 'block';
+            fetch(`/avisos/listar/${idEmpresa}/${emailFunc}`).then(function (resposta) {
+                if (resposta.ok) {
+                    resposta.json().then(function (resposta) {
+                        for (let i = 0; i < resposta.length; i++) {
+                            var publicacao = resposta[i];
+                            nome.innerHTML = `${publicacao.nomeEmpresa}`
+                            nomeFuncionario.innerHTML = `${publicacao.nomeFuncionario}`
+                            CNPJAtual.innerHTML = `${publicacao.CNPJ}`
+                            nmrAtual.innerHTML = `${publicacao.telEmpresa}`
+                            emailAtual.innerHTML = `${publicacao.emailEmpresa}`
+                            qntdFuncionarioAtual.innerHTML = `${publicacao.qntdFuncionario}`
 
 
 
-                    }
-                })
-            }
-        }).catch(function (resposta) {
-            console.error(resposta);
+                        }
+                    })
+                }
+            }).catch(function (resposta) {
+                console.error(resposta);
 
-        })
+            })
+
+        } else {
+
+
+
+            fetch(`/avisos/listar/${idEmpresa}`).then(function (resposta) {
+                if (resposta.ok) {
+                    resposta.json().then(function (resposta) {
+                        for (let i = 0; i < resposta.length; i++) {
+                            var publicacao = resposta[i];
+                            nome.innerHTML = `${publicacao.nomeEmpresa}`
+                            CNPJAtual.innerHTML = `${publicacao.CNPJ}`
+                            nmrAtual.innerHTML = `${publicacao.telEmpresa}`
+                            emailAtual.innerHTML = `${publicacao.emailEmpresa}`
+                            qntdFuncionarioAtual.innerHTML = `${publicacao.qntdFuncionario}`
+
+
+
+                        }
+                    })
+                }
+            }).catch(function (resposta) {
+                console.error(resposta);
+
+            })
+        }
     }
 </script>

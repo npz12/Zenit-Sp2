@@ -14,12 +14,19 @@
 <body>
     <div class="divHeader">
         <div class="divLogo">
-            <a href="../mainZenit.html" id="link"> <img src="./assets/imgs/logo-1.png" alt="Logo Zenit" id="imgHeaderLogo">
+            <a href="../mainZenit.html" id="link"> <img src="./assets/imgs/logo-1.png" alt="Logo Zenit"
+                    id="imgHeaderLogo">
             </a>
         </div>
-        <a href="./simulador.html"><h4 id="liCalGanhos">Calcular Ganhos</h4></a>
-        <a href="./nossoProduto.html"><h4 id="liNossoProduto">Nosso Produto</h4></a>
-        <a href="./QuemSomos.html"><h4 id="liQuemSomos">Quem Somos</h4></a>
+        <a href="./simulador.html">
+            <h4 id="liCalGanhos">Calcular Ganhos</h4>
+        </a>
+        <a href="./nossoProduto.html">
+            <h4 id="liNossoProduto">Nosso Produto</h4>
+        </a>
+        <a href="./QuemSomos.html">
+            <h4 id="liQuemSomos">Quem Somos</h4>
+        </a>
         <div class="divPerfil">
             <!-- <img id="imgHeader"
                 src="imagens/icon-user-transparente.png"
@@ -42,6 +49,9 @@
         <h1 class="h1Titulo">SIGN-IN</h1>
         <input type="text" placeholder="email" id="email_input">
         <input type="text" placeholder="Senha" id="senha_input">
+        <div id="checkbox">
+            Funcionario? <input type="checkbox" id="checkBoxFuncionario">
+        </div>
         <button class="btnCadastro" onclick="entrar()">Login</button>
         <h3>Ainda não possui uma conta?</h3>
         <a href="cadastro.html">SIGN-UP</a>
@@ -51,106 +61,166 @@
     <div class="divFooter">
         <div class="content">
             <img src="./assets/imgs/logo-1.png" alt="Logo Footer" id="imgFooterLogo">
-            <div class="divColuna">  
-                <h5>INÍCIO</h5>    
+            <div class="divColuna">
+                <h5>INÍCIO</h5>
                 <ul id="listaFooterHome">
                     <li><a href="../mainZenit.html"> Home </a></li>
                     <li><a href="login.html"> Log in </a></li>
                     <li><a href=""> Blog </a></li>
-                    <li><a href="">  </a></li>
-                </ul>    
+                    <li><a href=""> </a></li>
+                </ul>
             </div>
-            <div class="divColuna">  
-                <h5>FALE CONOSCO</h5>    
+            <div class="divColuna">
+                <h5>FALE CONOSCO</h5>
                 <ul id="listaFooterFaleConosco">
                     <li><a href="nossoProduto.html"> Informações da Empresa </a></li>
                     <li><a href=""> Contrate Nosso Serviço </a></li>
                     <li><a href="QuemSomos.html"> Sobre nós </a></li>
-                </ul>    
+                </ul>
             </div>
             <div class="divColuna">
-                <h5>SUPORTE</h5> 
+                <h5>SUPORTE</h5>
                 <ul id="listaFooterSuporte">
                     <li><a href=""> FAQ </a></li>
                     <li><a href=""> Central de ajuda </a></li>
                 </ul>
             </div>
             <div class="divColunaRedes">
-                <a href="https://www.instagram.com/"><img src="./assets/imgs/instagram-icon.svg" alt="icon - instagram" class="iconsFooter"></a>
-                <a href="https://www.linkedin.com"><img src="./assets/imgs/linkedin-icon.svg" alt="icon - linkedin" class="iconsFooter"></a>
-                <a href="https://github.com/Zenit-Sp2/Zenit-Sp2.git"><img src="./assets/imgs/github-icon-footer.svg" alt="icon - github" class="iconsFooter"></a>    
+                <a href="https://www.instagram.com/"><img src="./assets/imgs/instagram-icon.svg" alt="icon - instagram"
+                        class="iconsFooter"></a>
+                <a href="https://www.linkedin.com"><img src="./assets/imgs/linkedin-icon.svg" alt="icon - linkedin"
+                        class="iconsFooter"></a>
+                <a href="https://github.com/Zenit-Sp2/Zenit-Sp2.git"><img src="./assets/imgs/github-icon-footer.svg"
+                        alt="icon - github" class="iconsFooter"></a>
             </div>
         </div>
 
-        <div id="zenitFooter"><h4>© 2023 Copyright Zenit</h4></div>
+        <div id="zenitFooter">
+            <h4>© 2023 Copyright Zenit</h4>
+        </div>
 </body>
 
 </html>
- <script>
+<script>
 
-   function entrar() {
-       
+    function entrar() {
+
 
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
         sessionStorage.SALVAR_EMAIL = emailVar;
+        var checkbox = checkBoxFuncionario.checked
 
         if (emailVar == "" || senhaVar == "") {
             cardErro.style.display = "block"
             mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-       
+
             return false;
         }
         else {
-        
+
         }
+        if (checkbox == true) {
+            sessionStorage.FUNCIONARIO_PERMISSAO = 1;
+            console.log('verificado')
+            console.log("FORM LOGIN: ", emailVar);
+            console.log("FORM SENHA: ", senhaVar);
 
-        console.log("FORM LOGIN: ", emailVar);
-        console.log("FORM SENHA: ", senhaVar);
+            fetch("/usuarios/autenticarFuncionario", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    emailFuncServer: emailVar,
+                    senhaFuncServer: senhaVar
+                })
+            }).then(function (resposta) {
+                console.log("ESTOU NO THEN DO entrar()!")
 
-        fetch("/usuarios/autenticar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                emailServer: emailVar,
-                senhaServer: senhaVar
+                if (resposta.ok) {
+                    console.log(resposta);
+
+                    resposta.json().then(json => {
+                        console.log(json);
+                        console.log(JSON.stringify(json));
+                        sessionStorage.ID_EMPRESA = json.fkEmpresa;
+
+
+
+                        setTimeout(function () {
+                            window.location = "/login/main.html";
+                        }, 1000); // apenas para exibir o loading
+
+                    });
+
+                } else {
+
+                    console.log("Houve um erro ao tentar realizar o login!");
+
+                    resposta.text().then(texto => {
+                        console.error(texto);
+
+                    });
+                }
+
+            }).catch(function (erro) {
+                console.log(erro);
             })
-        }).then(function (resposta) {
-            console.log("ESTOU NO THEN DO entrar()!")
 
-            if (resposta.ok) {
-                console.log(resposta);
+            return false;
+        } else {
+            sessionStorage.FUNCIONARIO_PERMISSAO = 2;
+            console.log('nao foi verificado')
 
-                resposta.json().then(json => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
-                    sessionStorage.ID_EMPRESA = json.idEmpresa;
-    
-                    
 
-                    setTimeout(function () {
-                        window.location = "/login/main.html";
-                    }, 1000); // apenas para exibir o loading
+            console.log("FORM LOGIN: ", emailVar);
+            console.log("FORM SENHA: ", senhaVar);
 
-                });
+            fetch("/usuarios/autenticar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    emailServer: emailVar,
+                    senhaServer: senhaVar
+                })
+            }).then(function (resposta) {
+                console.log("ESTOU NO THEN DO entrar()!")
 
-            } else {
+                if (resposta.ok) {
+                    console.log(resposta);
 
-                console.log("Houve um erro ao tentar realizar o login!");
+                    resposta.json().then(json => {
+                        console.log(json);
+                        console.log(JSON.stringify(json));
+                        sessionStorage.ID_EMPRESA = json.idEmpresa;
 
-                resposta.text().then(texto => {
-                    console.error(texto);
-        
-                });
-            }
 
-        }).catch(function (erro) {
-            console.log(erro);
-        })
 
-        return false;
+                        setTimeout(function () {
+                            window.location = "/login/main.html";
+                        }, 1000); // apenas para exibir o loading
+
+                    });
+
+                } else {
+
+                    console.log("Houve um erro ao tentar realizar o login!");
+
+                    resposta.text().then(texto => {
+                        console.error(texto);
+
+                    });
+                }
+
+            }).catch(function (erro) {
+                console.log(erro);
+            })
+
+            return false;
+        }
     }
 
     function sumirMensagem() {
