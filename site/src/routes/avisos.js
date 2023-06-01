@@ -36,5 +36,7 @@ router.put("/editar/:idUsuario", function (req, res) {
 router.delete("/deletar/:idFuncionario", function (req, res) {
     avisoController.deletar(req, res);
 });
-
+router.get("/verificarEndereco/:idEmpresa", function(req, res){
+    avisoController.verificarEndereco(req, res);
+});
 module.exports = router;

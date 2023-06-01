@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Endereço</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/styleAddress.css">
+    <link rel="stylesheet" href="../css/styleCadastro.css">
+    <link rel="stylesheet" href="../css/Zstyle.css">
+</head>
+<body onload="info()">
+    <div class="divHeader">
+        <div class="divLogo">
+            <a href="main.html" id="link"> <img src="../assets/imgs/logo-1.png" alt="Logo Zenit" id="imgHeaderLogo">
+            </a>
+        </div>
+        <a href="CalculadorLogin.html">
+            <h4 class="liHeader">Calcular Ganhos</h4>
+        </a>
+        <a href="nossoProdutoLogin.html">
+            <h4 class="liHeader">Nosso Produto</h4>
+        </a>
+        <a href="QuemSomosLogin.html">
+            <h4 class="liHeader">Quem Somos</h4>
+        </a>
+        <a href="../dashboard.html">
+            <h4 class="liHeader">Dashboard</h4>
+        </a>
+        <div class="divPerfil">
+            <img id="imgHeader" src="../assets/imgs/icon-user-transparente.png" alt="">
+            <a href="perfil.html">
+                <h4 id="liPerfil">Perfil |</h4>
+            </a>
+            <a href="../index.html">
+                <h4 id="liPerfil"> Logout</h4>
+            </a>
+        </div>
+    </div>
+    <!--Fim do header-->
+    <div class="alerta_erro">
+        <div class="card_erro" id="cardErro">
+            <span id="mensagem_erro"></span>
+        </div>
+    </div>
+    <div class="divCadastro" id="telaCadastro">
+        <h2 class="h1Titulo">Cadastro de endereço</h2>
+        <input type="text" placeholder="Rua" id="inptRua">
+        <span class="mensagem-de-erro">
+            <span id="span_erro_caractere_especial_nome">*Nome não deve conter caracteres <br> especiais e
+                números</span>
+        </span>
+        <input type="text" placeholder="Bairro" id="inptBairro">
+
+        <input type="number" placeholder="Número" id="inptNumero">
+
+        <input type="text" placeholder="Cidade" id="inptCidade">
+
+        <input type="text" placeholder="Complemento" id="inptComplemento">
+
+        <input type="text" placeholder="CEP" id="inptCEP">
+
+        <button class="btnCadastro" onclick="cadastrar()">Cadastrar</button>
+
+
+    </div>
+</body>
+</html>
+<script>
+    function info(){
+        inptRua.value = sessionStorage.ruaAtual;
+        inptBairro.value = sessionStorage.bairroAtual;
+        inptCidade.value = sessionStorage.cidadeAtual;
+        inptnumero.value = sessionStorage.complementoAtual;
+        inptCEP.value = sessionStorage.CEPAtual;
+    }
+</script>

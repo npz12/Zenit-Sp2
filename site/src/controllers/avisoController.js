@@ -1,3 +1,4 @@
+const e = require("express");
 var avisoModel = require("../models/avisoModel");
 
 function testar(req, res) {
@@ -160,6 +161,23 @@ function deletar(req, res) {
         );
 }
 
+function verificarEndereco(req, res){
+    var idEmpresa = req.params.idEmpresa;
+
+    avisoModel.verificarEndereco(idEmpresa)
+    .then(
+        function(resultado){
+            res.json(resultado)
+        }
+    )
+    .catch(
+        function(erro){
+            console.log(erro);
+            console.log("Nenhum cadastro encontrado")
+            
+        }
+    )
+}
 module.exports = {
     testar,
     listar,
@@ -169,5 +187,6 @@ module.exports = {
     pesquisarDescricao,
     publicar,
     editar,
-    deletar
+    deletar,
+    verificarEndereco
 }

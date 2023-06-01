@@ -59,10 +59,10 @@
                 <span id="emailAtual" class="profileText">&nbsp</span>
                 <span id="qntdSensorAtual" class="profileText">&nbsp</span>
                 <span id="qntdFuncionarioAtual" class="profileText"> &nbsp
-                    <a href="infoFuncionario.html" class="link" id="btnFuncionario">Gerenciar Funcionarios</a>
+                    <a  class="link" id="btnFuncionario">Gerenciar Funcionarios</a>
                 </span>
-                <span id="EnderecoAtual" class="profileText">&nbsp<a href="Enderecos.html" class="link"
-                        id="btnEndereco">Gerenciar Endereços</a></span>
+                <span id="EnderecoAtual" class="profileText">&nbsp<button onclick="verificar()" class="link"
+                        id="btnEndereco">Gerenciar Endereços</button></span>
             </div>
         </div>
         <!-- &nbsp é para ocupar o espaço do texto para o estilo ficar correto-->
@@ -162,7 +162,7 @@
                             nmrAtual.innerHTML = `${publicacao.telEmpresa}`
                             emailAtual.innerHTML = `${publicacao.emailEmpresa}`
                             qntdFuncionarioAtual.innerHTML = `${publicacao.qntdFuncionario}`
-
+                            
 
 
                         }
@@ -174,4 +174,26 @@
             })
         }
     }
+    function verificar(){
+        var idEmpresa = sessionStorage.ID_EMPRESA
+        fetch(`avisos/verificarEndereco/${idEmpresa}`)
+        .then(function (resposta){
+            if(resposta.ok){
+                resposta.json().then(function(resposta){
+                    var publicacao = reposta;
+                   sessionStorage.ruaAtual = `${publicacao.ruaEmpresa}`
+                   sessionStorage.bairroAtual = `${publicacao.bairroEmpresa}`
+                   sessionStorage.cidadeAtual = `${publicacao.cidadeEmpresa}`
+                   sessionStorage.CEPAtual = `${publicacao.CEPEmpresa}`
+                   sessionStorage.numeroAtual = `${publicacao.numeroEmpresa}`
+
+                   window.location = `editarEndereco.html`
+                })
+            }
+        }).catch(function (resposta){
+            console.error(reposta)
+            window.location = 'enderecoNovo.html'
+        })
+    }
+
 </script>
