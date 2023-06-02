@@ -4,12 +4,12 @@ function buscarUltimasMedidas(req, res) {
 
     const limite_linhas = 12;
 
-    var idAquario = req.params.idAquario;
+    var idTransformador = req.params.idTransformador;
     var idEmpresa = req.params.idEmpresa;
 
     console.log(`Recuperando as ultimas ${limite_linhas} medidas`);
 
-    medidaModel.buscarUltimasMedidas(idAquario, limite_linhas, idEmpresa).then(function (resultado) {
+    medidaModel.buscarUltimasMedidas(idTransformador, limite_linhas, idEmpresa).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -25,12 +25,12 @@ function buscarUltimasMedidas(req, res) {
 
 function buscarMedidasEmTempoReal(req, res) {
 
-    var idAquario = req.params.idAquario;
+    var idTransformador = req.params.idTransformador;
     var idEmpresa = req.params.idEmpresa;
 
     console.log(`Recuperando medidas em tempo real`);
 
-    medidaModel.buscarMedidasEmTempoReal(idAquario, idEmpresa).then(function (resultado) {
+    medidaModel.buscarMedidasEmTempoReal(idTransformador, idEmpresa).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {

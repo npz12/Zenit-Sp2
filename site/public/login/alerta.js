@@ -1,13 +1,13 @@
 var alertas = [];
-function obterdados(idAquario) {
-    fetch(`/medidas/tempo-real/${idAquario}`)
+function obterdados(idTransformador) {
+    fetch(`/medidas/tempo-real/${idTransformador}/${fkEmpresa}`)
         .then(resposta => {
             if (resposta.ok) {
                 resposta.json().then(resposta => {
 
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
 
-                    alertar(resposta, idAquario);
+                    alertar(resposta, idTransformador);
                 });
             } else {
 
@@ -20,11 +20,11 @@ function obterdados(idAquario) {
 
 }
 
-function alertar(resposta, idAquario) {
+function alertar(resposta, idTransformador) {
     var temp = resposta[0].temperatura;
     console.log('alertando')
 
-    console.log(idAquario === resposta[0].fk_transformador)
+    console.log(idTransformador === resposta[0].fk_transformador)
     
     var grauDeAviso ='';
 
@@ -43,43 +43,43 @@ function alertar(resposta, idAquario) {
         classe_temperatura = 'cor-alerta perigo-quente';
         grauDeAviso = 'perigo quente'
         grauDeAvisoCor = 'cor-alerta perigo-quente'
-        // exibirAlerta(temp, idAquario, grauDeAviso, grauDeAvisoCor)
+        // exibirAlerta(temp, idTransformador, grauDeAviso, grauDeAvisoCor)
     }
     else if (temp < limites.muito_quente && temp >= limites.quente) {
         classe_temperatura = 'cor-alerta alerta-quente';
         grauDeAviso = 'alerta quente'
         grauDeAvisoCor = 'cor-alerta alerta-quente'
-        // exibirAlerta(temp, idAquario, grauDeAviso, grauDeAvisoCor)
+        // exibirAlerta(temp, idTransformador, grauDeAviso, grauDeAvisoCor)
     }
     else if (temp < limites.quente && temp > limites.frio) {
         classe_temperatura = 'cor-alerta ideal';
-        removerAlerta(idAquario);
+        removerAlerta(idTransformador);
     }
     else if (temp <= limites.frio && temp > limites.muito_frio) {
         classe_temperatura = 'cor-alerta alerta-frio';
         grauDeAviso = 'alerta frio'
         grauDeAvisoCor = 'cor-alerta alerta-frio'
-        // exibirAlerta(temp, idAquario, grauDeAviso, grauDeAvisoCor)
+        // exibirAlerta(temp, idTransformador, grauDeAviso, grauDeAvisoCor)
     }
     else if (temp <= limites.muito_frio) {
         classe_temperatura = 'cor-alerta perigo-frio';
         grauDeAviso = 'perigo frio'
         grauDeAvisoCor = 'cor-alerta perigo-frio'
-        // exibirAlerta(temp, idAquario, grauDeAviso, grauDeAvisoCor)
+        // exibirAlerta(temp, idTransformador, grauDeAviso, grauDeAvisoCor)
     }
 
     var card;
 
-    if (idAquario == 1) {
+    if (idTransformador == 1) {
         temp_transf_1.innerHTML = temp + "°C";
         card = card_1
-    } else if (idAquario == 2) {
+    } else if (idTransformador == 2) {
         temp_transf_2.innerHTML = temp + "°C";
         card = card_2
-    } else if (idAquario == 3) {
+    } else if (idTransformador == 3) {
         temp_transf_3.innerHTML = temp + "°C";
         card = card_3
-    } else if (idAquario == 4) {
+    } else if (idTransformador == 4) {
         temp_transf_4.innerHTML = temp + "°C";
         card = card_4
     }
@@ -87,13 +87,13 @@ function alertar(resposta, idAquario) {
     card.className = classe_temperatura;
 }
 
-// function exibirAlerta(temp, idAquario, grauDeAviso, grauDeAvisoCor) {
-//     var indice = alertas.findIndex(item => item.idAquario == idAquario);
+// function exibirAlerta(temp, idTransformador, grauDeAviso, grauDeAvisoCor) {
+//     var indice = alertas.findIndex(item => item.idTransformador == idTransformador);
 
 //     if (indice >= 0) {
-//         alertas[indice] = { idAquario, temp, grauDeAviso, grauDeAvisoCor }
+//         alertas[indice] = { idTransformador, temp, grauDeAviso, grauDeAvisoCor }
 //     } else {
-//         alertas.push({ idAquario, temp, grauDeAviso, grauDeAvisoCor });
+//         alertas.push({ idTransformador, temp, grauDeAviso, grauDeAvisoCor });
 //     }
 
 //     exibirCards();
@@ -102,8 +102,8 @@ function alertar(resposta, idAquario) {
 // // que pode ser inserido clicando com o seu teclado em alt+255 ou pelo código adicionado acima.
 // }
 
-// function removerAlerta(idAquario) {
-//     alertas = alertas.filter(item => item.idAquario != idAquario);
+// function removerAlerta(idTransformador) {
+//     alertas = alertas.filter(item => item.idTransformador != idTransformador);
 //     exibirCards();
 // }
  
@@ -116,11 +116,11 @@ function alertar(resposta, idAquario) {
 //     }
 // }
 
-// function transformarEmDiv({ idAquario, temp, grauDeAviso, grauDeAvisoCor }) {
+// function transformarEmDiv({ idTransformador, temp, grauDeAviso, grauDeAvisoCor }) {
 //     return `<div class="mensagem-alarme">
 //     <div class="informacao">
 //     <div class="${grauDeAvisoCor}">&#12644;</div> 
-//      <h3>Aquário ${idAquario} está em estado de ${grauDeAviso}!</h3>
+//      <h3>Aquário ${idTransformador} está em estado de ${grauDeAviso}!</h3>
 //     <small>Temperatura ${temp}.</small>   
 //     </div>
 //     <div class="alarme-sino"></div>

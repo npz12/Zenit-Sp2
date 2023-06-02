@@ -53,7 +53,7 @@ const serial = async (
 
         if (HABILITAR_OPERACAO_INSERIR) {
             await poolBancoDados.execute(
-                'INSERT INTO medida (lm35_temperatura, momento, fk_transformador) VALUES (?, now(), 1)',
+                'INSERT INTO medida (lm35, momento, fk_transformador) VALUES (?, now(), 1)',
                 [lm35Temperatura]
             );
         }

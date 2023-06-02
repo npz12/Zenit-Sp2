@@ -38,7 +38,7 @@ create table medida (
 	dht11_umidade DECIMAL,
 	dht11_temperatura DECIMAL,
 	luminosidade DECIMAL,
-	lm35_temperatura DECIMAL,
+	lm35 DECIMAL,
 	chave TINYINT,
 	momento DATETIME,
 	fk_transformador INT,
@@ -77,7 +77,7 @@ comando para sql server - banco remoto - ambiente de produção
 -- 	dht11_umidade DECIMAL,
 -- 	dht11_temperatura DECIMAL,
 -- 	luminosidade DECIMAL,
--- 	lm35_temperatura DECIMAL,
+-- 	lm35 DECIMAL,
 -- 	chave TINYINT,
 -- 	momento DATETIME,
 -- 	fk_transformador INT FOREIGN KEY REFERENCES aquario(id)
