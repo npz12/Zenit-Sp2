@@ -54,13 +54,19 @@
 
     <div id="telaModal">
         <div class="dash">
+            <div id="alerta">
+            </div>
             <div class="btns-dash">
-                <!-- O gráfico é chamado de acordo com o id (fk_aquario) do banco  -->
+                <!-- O gráfico é chamado de acordo com o id (fk_transformador) do banco  -->
+                <button class="btn-chart btn-pink" onclick="exibirTransf(1)" id="btnTransf1">Transformador 1</button>
+                <button class="btn-chart btn-white" onclick="exibirTransf(2)" id="btnTransf2">Transformador 2</button>
+                <button class="btn-chart btn-white" onclick="exibirTransf(3)" id="btnTransf3">Transformador 3</button>
+                <button class="btn-chart btn-white" onclick="exibirTransf(4)" id="btnTransf4">Transformador 4</button>
             </div>
             <div id="graficos">
                 <div id="grafico1" class="display-block">
                     <h3 class="tituloGraficos">
-                        <span id="tituloAquario1"></span>
+                        <span id="tituloTransf1"></span>
                     </h3>
                     <div class="grafico">
                         <canvas id="graficoTransformador1" width="800px"></canvas>
@@ -70,7 +76,6 @@
                     </div>
                 </div>
             </div>
-            <button class="btn-chart btn-pink" onclick="exibirAquario(1)" id="btnAquario1">Transformador 1</button>
         </div>
         <div class="divKPI" id="divKpiGeral">
 
@@ -84,19 +89,15 @@
 
             <div class="miniKPI" id="caixaDois">
                 <span id="visaoGeral">
-                    <!-- <span id="trans1">Transformador 1</span><br>
-                    <span id="trans2">Transformador 2</span><br>
-                    <span id="trans3">Transformador 3</span><br>
-                    <span id="trans4">Transformador 4</span><br> -->
                     <div class="card">
-                        <h1>Aquário 1</h1>
+                        <h1>Transformador 1</h1>
                         <div class="temperatura">
                             <p id="temp_transf_1">-°C</p>
                         </div>
                         <div class="cor-alerta" id="card_1"></div>
                     </div>
                     <div class="card">
-                        <h1>Aquário 1</h1>
+                        <h1>Transformador 1</h1>
                         <div class="temperatura">
                             <p id="temp_transf_2">-°C</p>
                         </div>
@@ -104,14 +105,14 @@
 
                     </div>
                     <div class="card">
-                        <h1>Aquário 1</h1>
+                        <h1>Transformador 1</h1>
                         <div class="temperatura">
                             <p id="temp_transf_3">-°C</p>
                         </div>
                         <div class="cor-alerta ideal" id="card_3"></div>
                     </div>
                     <div class="card">
-                        <h1>Aquário 1</h1>
+                        <h1>Transformador 1</h1>
                         <div class="temperatura">
                             <p id="temp_transf_4">-°C</p>
                         </div>
@@ -168,12 +169,10 @@
 </html>
 <script>
     function atualizacaoPeriodica() {
-        console.log('aaaaaaaaaaaaaaaaaaa')
         obterdados(1);
-        // obterdados(2);
-        // obterdados(3);
-        // obterdados(4);
-
+        obterdados(2);
+        obterdados(3);
+        obterdados(4);
         setTimeout(atualizacaoPeriodica, 5000);
     }
     atualizacaoPeriodica()
@@ -199,19 +198,19 @@
 
     function obterDadosGraficos() {
         obterDadosGrafico(1)
-        // obterDadosGrafico(2)
-        // obterDadosGrafico(3)
-        // obterDadosGrafico(4)
+        obterDadosGrafico(2)
+        obterDadosGrafico(3)
+        obterDadosGrafico(4)
     }
     var dadosKpi = [0, 0, 0];
 
 
-    function alterarTitulo(idAquario) {
-        var tituloAquario = document.getElementById(`tituloAquario${idAquario}`)
-        tituloAquario.innerHTML = "Últimas medidas de Temperatura e Umidade do <span style='color: #e6005a'>Aquário " + idAquario + "</span>"
+    function alterarTitulo(idTransformador) {
+        var tituloTransf = document.getElementById(`tituloTransf${idTransformador}`)
+        tituloTransf.innerHTML = "Últimas medidas de Temperatura e Umidade do <span style='color: #e6005a'>Transformador " + idTransformador + "</span>"
     }
 
-    function exibirAquario(idAquario) {
+    function exibirTransf(idTransformador) {
         let todosOsGraficos = document.getElementById("graficos")
 
         for (i = 1; i <= todosOsGraficos.childElementCount; i++) {
@@ -223,7 +222,7 @@
             elementoAtual.classList.add("display-none")
 
             // alterando estilo do botão
-            let btnAtual = document.getElementById(`btnAquario${i}`)
+            let btnAtual = document.getElementById(`btnTransf${i}`)
             if (btnAtual.classList.contains("btn-pink")) {
                 btnAtual.classList.remove("btn-pink")
             }
@@ -231,12 +230,12 @@
         }
 
         // exibindo - ou não - o gráfico
-        let graficoExibir = document.getElementById(`grafico${idAquario}`)
+        let graficoExibir = document.getElementById(`grafico${idTransformador}`)
         graficoExibir.classList.remove("display-none")
         graficoExibir.classList.add("display-block")
 
         // alterando estilo do botão
-        let btnExibir = document.getElementById(`btnAquario${idAquario}`)
+        let btnExibir = document.getElementById(`btnTransf${idTransformador}`)
         btnExibir.classList.remove("btn-white")
         btnExibir.classList.add("btn-pink")
     }
@@ -252,21 +251,21 @@
 
     //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
     //     Para ajustar o "select", ajuste o comando sql em src/models
-    function obterDadosGrafico(idAquario) {
+    function obterDadosGrafico(idTransformador) {
 
-        // alterarTitulo(idAquario)
+        // alterarTitulo(idTransformador)
 
         if (proximaAtualizacao != undefined) {
             clearTimeout(proximaAtualizacao);
         }
 
-        fetch(`/medidas/ultimas/${idAquario}`, { cache: 'no-store' }).then(function (response) {
+        fetch(`/medidas/ultimas/${idTransformador}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
                     // console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                     resposta.reverse();
 
-                    plotarGrafico(resposta, idAquario);
+                    plotarGrafico(resposta, idTransformador);
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
@@ -275,17 +274,17 @@
             .catch(function (error) {
                 console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
             });
-    }
-
-    // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
+        }
+        
+        // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
     // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
     // A função *plotarGrafico* também invoca a função *atualizarGrafico*
 
     let registros = [];
-    function plotarGrafico(resposta, idAquario) {
+    function plotarGrafico(resposta, idTransformador) {
 
         // console.log('iniciando plotagem do gráfico...');
-
+        
         // Criando estrutura para plotar gráfico - labels
         let labels = [];
 
@@ -312,20 +311,21 @@
             var registro = resposta[i];
             if (registro.temperatura >= 45 && registro.temperatura <= 80) {
                 dadosKpi[0]++;
-                registro.push('ideal')
+                registros.push('ideal')
             }
-            if (registro.temperatura >= 20 && registro.temperatura < 45 || registro.temperatura > 80 && registro.temperatura < 100) {
+             if (registro.temperatura >= 20 && registro.temperatura < 45 || registro.temperatura > 80 && registro.temperatura < 100) {
                 dadosKpi[1]++;
-                registro.push('alerta')
+                registros.push('alerta')
             }
 
-            if (registro.temperatura >= 100 || registro.temperatura < 20) {
+             if (registro.temperatura >= 100 || registro.temperatura < 20) {
                 dadosKpi[2]++;
-                registro.push('critico')
+                registros.push('critico')
             }
             labels.push(registro.momento_grafico);
             dados.datasets[0].data.push(registro.temperatura);
         }
+
         // kpiAlerta.innerHTML = dadosKpi[1];
         kpiCritico.innerHTML = dadosKpi[2];
         // console.log('----------------------------------------------')
@@ -335,7 +335,6 @@
         // console.log('Dados:')
         // console.log(dados.datasets)
         // console.log('----------------------------------------------')
-
         let kpi = new Chart(kpiGeral, {
             type: 'pie',
             data: {
@@ -372,11 +371,11 @@
 
         // Adicionando gráfico criado em div na tela
         let myChart = new Chart(
-            document.getElementById(`graficoTransformador${idAquario}`),
+            document.getElementById(`graficoTransformador${idTransformador}`),
             config
         );
 
-        setTimeout(() => atualizarGrafico(idAquario, dados, myChart, kpi), 2000);
+        setTimeout(() => atualizarGrafico(idTransformador, dados, myChart, kpi), 2000);
     }
 
 
@@ -385,11 +384,11 @@
 
     //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
     //     Para ajustar o "select", ajuste o comando sql em src/models
-    function atualizarGrafico(idAquario, dados, myChart, kpi) {
+    function atualizarGrafico(idTransformador, dados, myChart, kpi) {
 
 
 
-        fetch(`/medidas/tempo-real/${idAquario}`, { cache: 'no-store' }).then(function (response) {
+        fetch(`/medidas/tempo-real/${idTransformador}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (novoRegistro) {
 
@@ -397,7 +396,7 @@
                     // console.log(`Dados atuais do gráfico:`);
                     // console.log(dados);
 
-                    let avisoCaptura = document.getElementById(`avisoCaptura${idAquario}`)
+                    let avisoCaptura = document.getElementById(`avisoCaptura${idTransformador}`)
                     avisoCaptura.innerHTML = ""
 
 
@@ -450,12 +449,12 @@
                     }
 
                     // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados, myChart, kpi), 2000);
+                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idTransformador, dados, myChart, kpi), 2000);
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
                 // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados, myChart, kpi), 2000);
+                proximaAtualizacao = setTimeout(() => atualizarGrafico(idTransformador, dados, myChart, kpi), 2000);
             }
         })
             .catch(function (error) {
@@ -517,4 +516,5 @@
         //         }
         //     }
         // });
+
 </script>
