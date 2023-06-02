@@ -162,9 +162,9 @@ function deletar(req, res) {
 }
 
 function verificarEndereco(req, res){
-    var idEmpresa = req.params.idEmpresa;
+    var fkEmpresa = req.params.fkEmpresa;
 
-    avisoModel.verificarEndereco(idEmpresa)
+    avisoModel.verificarEndereco(fkEmpresa)
     .then(
         function(resultado){
             res.json(resultado)
@@ -174,7 +174,8 @@ function verificarEndereco(req, res){
         function(erro){
             console.log(erro);
             console.log("Nenhum cadastro encontrado")
-            
+            console.log("Houve um erro ao consultar endereços: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
         }
     )
 }

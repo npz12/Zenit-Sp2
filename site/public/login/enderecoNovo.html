@@ -130,7 +130,7 @@
 
 </html>
 <script>
-    var IdEmpresa = sessionStorage.ID_EMPRESA;
+    var fkEmpresa = sessionStorage.ID_EMPRESA;
     function cadastrar() {
         
         var varRua = inptRua.value;
@@ -159,7 +159,7 @@
                     CidadeServer: varCidade,
                     CEPServer: varCEP,
                     ComplementoServer: varComplemento,
-                    fkEmpresaServer: IdEmpresa
+                    fkEmpresaServer: fkEmpresa
                 })
             }).then(function (resposta) {
                 console.log("resposta:", resposta);

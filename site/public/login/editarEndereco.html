@@ -69,10 +69,14 @@
 </html>
 <script>
     function info(){
-        inptRua.value = sessionStorage.ruaAtual;
-        inptBairro.value = sessionStorage.bairroAtual;
-        inptCidade.value = sessionStorage.cidadeAtual;
-        inptnumero.value = sessionStorage.complementoAtual;
-        inptCEP.value = sessionStorage.CEPAtual;
+
+        inptRua = sessionStorage.ruaAtual;
+        inptBairro = sessionStorage.bairroAtual;
+        inptCidade = sessionStorage.cidadeAtual;
+        inptnumero = Number(sessionStorage.numeroAtual);
+        inptComplemento = sessionStorage.complementoAtual;
+        inptCEP = sessionStorage.CEPAtual;
+
+        
     }
 </script>

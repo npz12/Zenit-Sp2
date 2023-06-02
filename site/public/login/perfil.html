@@ -175,18 +175,17 @@
         }
     }
     function verificar(){
-        var idEmpresa = sessionStorage.ID_EMPRESA
-        fetch(`avisos/verificarEndereco/${idEmpresa}`)
+        var fkEmpresa = sessionStorage.ID_EMPRESA
+        fetch(`/avisos/verificarEndereco/${fkEmpresa}`)
         .then(function (resposta){
             if(resposta.ok){
-                resposta.json().then(function(resposta){
-                    var publicacao = reposta;
-                   sessionStorage.ruaAtual = `${publicacao.ruaEmpresa}`
-                   sessionStorage.bairroAtual = `${publicacao.bairroEmpresa}`
-                   sessionStorage.cidadeAtual = `${publicacao.cidadeEmpresa}`
-                   sessionStorage.CEPAtual = `${publicacao.CEPEmpresa}`
-                   sessionStorage.numeroAtual = `${publicacao.numeroEmpresa}`
-
+                resposta.json().then(json =>{
+                    var publicacao = resposta;
+                   sessionStorage.setItem('RuaAtual',json.ruaEmpresa );
+                   sessionStorage.setItem('bairroAtual',json.bairroEmpresa);
+                   sessionStorage.cidadeAtual = json.cidadeEmpresa;
+                   sessionStorage.CEPAtual =  json.CEPEmpresa;
+                   sessionStorage.numeroAtual = json.numeroEmpresa;
                    window.location = `editarEndereco.html`
                 })
             }

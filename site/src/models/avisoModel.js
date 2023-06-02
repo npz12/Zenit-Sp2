@@ -112,9 +112,9 @@ function deletar(idFuncionario) {
     return database.executar(instrucao);
 }
 
-function verificarEndereco(idEmpresa){
+function verificarEndereco(fkEmpresa){
     var instrucao = `
-    SELECT * FROM endereco WHERE fkEmpresa = ${idEmpresa};`;
+    SELECT * FROM endereco WHERE fkEmpresa = ${fkEmpresa};`;
     return database.executar(instrucao);
 }
 module.exports = {
