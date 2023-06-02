@@ -45,7 +45,7 @@
         </div>
     </div>
     <div class="divCadastro" id="telaCadastro">
-        <h2 class="h1Titulo">Cadastro de endereço</h2>
+        <h2 class="h1Titulo">Alterar endereço</h2>
         <input type="text" placeholder="Rua" id="inptRua">
         <span class="mensagem-de-erro">
             <span id="span_erro_caractere_especial_nome">*Nome não deve conter caracteres <br> especiais e
@@ -61,7 +61,7 @@
 
         <input type="text" placeholder="CEP" id="inptCEP">
 
-        <button class="btnCadastro" onclick="cadastrar()">Cadastrar</button>
+        <button class="btnCadastro" onclick="editar()">Editar</button>
 
 
     </div>
@@ -69,14 +69,48 @@
 </html>
 <script>
     function info(){
+        inptRua.value = sessionStorage.RuaAtual;
+        inptBairro.value = sessionStorage.BairroAtual;
+        inptCidade.value = sessionStorage.CidadeAtual;
+        inptNumero.value = sessionStorage.NumeroAtual;
+        inptComplemento.value = sessionStorage.ComplementoAtual;
+        inptCEP.value = sessionStorage.CEPAtual;
+    }
+    function editar(){
+        var varRua = inptRua.value;
+        var varBairro = inptBairro.value;
+        var varNumero = inptNumero.value;
+        var varCidade = inptCidade.value;
+        var varCEP = inptCEP.value;
+        var varComplemento = inptComplemento.value;
+        var fkEmpresa = sessionStorage.ID_EMPRESA;
+        fetch(`/usuarios/EditarEnderecoEmpresa/${fkEmpresa}`,{
+            method : "POST",
+                headers: {
+                    "Content-type": "application/json"
+                },
+                body: JSON.stringify({
+                    RuaServer : varRua,
+                    BairroServer : varBairro,
+                    NumeroServer : varNumero,
+                    CidadeServer : varCidade,
+                    CEPServer : varCEP,
+                    ComplementoServer : varComplemento,
+                })
+        }).then(function(resposta){
+            console.log(resposta);
+            if(resposta.ok){
+                mensagem_erro.innerHTML = `Cadastro realizado com sucesso, redirecionando para tela de perfil`;
+                    setTimeout(() => {
+                        window.location = 'perfil.html';
+                    }, 3000);
+            }else{
+                throw(`Houve um erro ao realizar o cadastro`)
+            }
+        }).catch(function(resposta){
+            console.log(`#ERRO: ${resposta}`);
+        })
+        return false;
 
-        inptRua = sessionStorage.ruaAtual;
-        inptBairro = sessionStorage.bairroAtual;
-        inptCidade = sessionStorage.cidadeAtual;
-        inptnumero = Number(sessionStorage.numeroAtual);
-        inptComplemento = sessionStorage.complementoAtual;
-        inptCEP = sessionStorage.CEPAtual;
-
-        
     }
 </script>

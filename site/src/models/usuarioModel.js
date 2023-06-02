@@ -49,20 +49,30 @@ function cadastrarFuncionario(nome, email, senha, fkEmpresa) {
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
-function EmpresaEndereco(Rua, bairro, cidade, CEP, numero, complemento, fkEmpresa){
+function EmpresaNewEndereco(Rua, Bairro, Cidade, CEP, Numero, Complemento, fkEmpresa){
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente");
 
     var instrucao = `INSERT INTO Endereco (ruaEmpresa, bairroEmpresa, cidadeEmpresa, CEPEmpresa, numeroEmpresa, complementoEmpresa, fkEmpresa) VALUES (
-        '${Rua}','${bairro}','${cidade}','${CEP}',${numero},'${complemento}',${fkEmpresa});`;
+        '${Rua}','${Bairro}','${Cidade}','${CEP}',${Numero},'${Complemento}',${fkEmpresa});`;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
 
+function EditarEnderecoEmpresa(Rua, Bairro, Cidade, CEP, Numero, Complemento, fkEmpresa ){
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente");
+    
+    var instrucao = `UPDATE Endereco SET ruaEmpresa = '${Rua}', bairroEmpresa = '${Bairro}',
+    cidadeEmpresa = '${Cidade}', CEPEmpresa = '${CEP}', numeroEmpresa = ${Numero},
+    complementoEmpresa = '${Complemento}' WHERE fkEmpresa = ${fkEmpresa};`
+    
+    return database.executar(instrucao);
+}
 module.exports = {
     entrar,
     entrarFuncionario,
     cadastrarFuncionario,
     cadastrar,
     listar,
-    EmpresaEndereco
+    EmpresaNewEndereco,
+    EditarEnderecoEmpresa
 };

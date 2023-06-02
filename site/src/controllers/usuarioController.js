@@ -161,26 +161,26 @@ function cadastrarFuncionario(req, res) {
     }
 
 }
-function EmpresaEndereco(req, res) {
+function EmpresaNewEndereco(req, res) {
     var Rua = req.body.RuaServer;
-    var bairro = req.body.BairroServer;
-    var cidade = req.body.CidadeServer;
+    var Bairro = req.body.BairroServer;
+    var Cidade = req.body.CidadeServer;
     var CEP = req.body.CEPServer;
-    var numero = req.body.NumeroServer;
-    var complemento = req.body.ComplementoServer;
+    var Numero = req.body.NumeroServer;
+    var Complemento = req.body.ComplementoServer;
     var fkEmpresa = req.body.fkEmpresaServer;
     
     if (Rua == undefined) {
         res.status(400).send("Sua Rua está undefined!");
-    } else if (cidade == undefined) {
+    } else if (Cidade == undefined) {
         res.status(400).send("Sua cidade está undefined!");
     } else if (CEP == undefined) {
         res.status(400).send("Seu CEP está undefined!");
-    } else if (numero == undefined) {
+    } else if (Numero == undefined) {
         res.status(400).send("Seu numero está undefined!");
     }
     else {
-        usuarioModel.EmpresaEndereco(Rua, bairro, cidade, CEP, numero, complemento, fkEmpresa)
+        usuarioModel.EmpresaNewEndereco(Rua, Bairro, Cidade, CEP, Numero, Complemento, fkEmpresa)
             .then(function (resultado) {
                 res.json(resultado);
             }
@@ -196,7 +196,41 @@ function EmpresaEndereco(req, res) {
             );
     }
 }
-
+function EditarEnderecoEmpresa(req, res){
+    var Rua = req.body.RuaServer;
+    var Bairro = req.body.BairroServer;
+    var Cidade = req.body.CidadeServer;
+    var CEP = req.body.CEPServer;
+    var Numero = req.body.NumeroServer;
+    var Complemento = req.body.ComplementoServer;
+    var fkEmpresa = req.params.fkEmpresa;
+    if (Rua == undefined) {
+        res.status(400).send("Sua Rua está undefined!");
+    } else if (Cidade == undefined) {
+        res.status(400).send("Sua cidade está undefined!");
+    } else if (CEP == undefined) {
+        res.status(400).send("Seu CEP está undefined!");
+    } else if (Numero == undefined) {
+        res.status(400).send("Seu numero está undefined!");
+    }
+    else{
+        
+        usuarioModel.EditarEnderecoEmpresa(Rua, Bairro, Cidade, CEP, Numero, Complemento, fkEmpresa)
+        .then(function (resultado){
+            res.json(resultado)
+        }
+        ).catch(
+            function (erro){
+                console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage);
+                        res.status(500).json(erro.sqlMessage);
+            }
+            
+        )
+    }
+}
 module.exports = {
     entrar,
     entrarFuncionario,
@@ -204,5 +238,6 @@ module.exports = {
     cadastrarFuncionario,
     listar,
     testar,
-    EmpresaEndereco
+    EmpresaNewEndereco,
+    EditarEnderecoEmpresa
 }

@@ -180,12 +180,14 @@
         .then(function (resposta){
             if(resposta.ok){
                 resposta.json().then(json =>{
-                    var publicacao = resposta;
-                   sessionStorage.setItem('RuaAtual',json.ruaEmpresa );
-                   sessionStorage.setItem('bairroAtual',json.bairroEmpresa);
-                   sessionStorage.cidadeAtual = json.cidadeEmpresa;
-                   sessionStorage.CEPAtual =  json.CEPEmpresa;
-                   sessionStorage.numeroAtual = json.numeroEmpresa;
+                    console.log(json);
+                    var publicacao = json[0];
+                    sessionStorage.RuaAtual = publicacao.ruaEmpresa;
+                    sessionStorage.BairroAtual = publicacao.bairroEmpresa;
+                    sessionStorage.CidadeAtual = publicacao.cidadeEmpresa;
+                    sessionStorage.NumeroAtual = publicacao.numeroEmpresa;
+                    sessionStorage.ComplementoAtual = publicacao.complementoEmpresa;
+                    sessionStorage.CEPAtual = publicacao.CEPEmpresa;
                    window.location = `editarEndereco.html`
                 })
             }

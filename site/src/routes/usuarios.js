@@ -26,8 +26,11 @@ router.post("/autenticarFuncionario", function (req, res) {
     usuarioController.entrarFuncionario(req, res);
 });
 
+router.post("/EmpresaNewEndereco", function (req, res) {
+    usuarioController.EmpresaNewEndereco(req, res);
+});
 
-router.post("/EmpresaEndereco", function (req, res) {
-    usuarioController.EmpresaEndereco(req, res);
+router.post("/EditarEnderecoEmpresa/:fkEmpresa", function(req, res){
+    usuarioController.EditarEnderecoEmpresa(req,res);
 });
 module.exports = router;
