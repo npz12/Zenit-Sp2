@@ -24,7 +24,7 @@ function alertar(resposta, idAquario) {
     var temp = resposta[0].temperatura;
     console.log('alertando')
 
-    console.log(idAquario === resposta[0].fk_aquario)
+    console.log(idAquario === resposta[0].fk_transformador)
     
     var grauDeAviso ='';
 

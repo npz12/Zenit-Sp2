@@ -41,8 +41,8 @@ create table medida (
 	lm35_temperatura DECIMAL,
 	chave TINYINT,
 	momento DATETIME,
-	fk_aquario INT,
-	FOREIGN KEY (fk_aquario) REFERENCES aquario(id)
+	fk_transformador INT,
+	FOREIGN KEY (fk_transformador) REFERENCES aquario(id)
 );
 
 
@@ -80,7 +80,7 @@ comando para sql server - banco remoto - ambiente de produção
 -- 	lm35_temperatura DECIMAL,
 -- 	chave TINYINT,
 -- 	momento DATETIME,
--- 	fk_aquario INT FOREIGN KEY REFERENCES aquario(id)
+-- 	fk_transformador INT FOREIGN KEY REFERENCES aquario(id)
 -- );
 
 -- /*

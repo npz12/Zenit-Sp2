@@ -168,6 +168,7 @@
 
 </html>
 <script>
+    let fkEmpresa = sessionStorage.ID_EMPRESA;
     function atualizacaoPeriodica() {
         obterdados(1);
         obterdados(2);
@@ -259,7 +260,7 @@
             clearTimeout(proximaAtualizacao);
         }
 
-        fetch(`/medidas/ultimas/${idTransformador}`, { cache: 'no-store' }).then(function (response) {
+        fetch(`/medidas/ultimas/${idTransformador}/${fkEmpresa}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
                     // console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
@@ -388,7 +389,7 @@
 
 
 
-        fetch(`/medidas/tempo-real/${idTransformador}`, { cache: 'no-store' }).then(function (response) {
+        fetch(`/medidas/tempo-real/${idTransformador}/${fkEmpresa}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (novoRegistro) {
 

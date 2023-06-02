@@ -8,7 +8,7 @@ var limites = {
     muito_frio: 20
 };
 
-function buscarUltimasMedidas(idAquario, limite_linhas) {
+function buscarUltimasMedidas(idAquario, limite_linhas, idEmpresa) {
 
     instrucaoSql = ''
 
@@ -18,7 +18,7 @@ function buscarUltimasMedidas(idAquario, limite_linhas) {
                         momento,
                         FORMAT(momento, 'HH:mm:ss') as momento_grafico
                     from medida
-                    where fk_aquario = ${idAquario}
+                    where fk_transformador = ${idAquario}
                     order by id desc`;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `select 
@@ -26,7 +26,7 @@ function buscarUltimasMedidas(idAquario, limite_linhas) {
                         momento,
                         DATE_FORMAT(momento,'%H:%i:%s') as momento_grafico
                     from medida
-                    where fk_aquario = ${idAquario}
+                    where fk_transformador = ${idAquario} and fkEmpresa = ${idEmpresa}
                     order by id desc limit ${limite_linhas}`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
@@ -37,7 +37,7 @@ function buscarUltimasMedidas(idAquario, limite_linhas) {
     return database.executar(instrucaoSql);
 }
 
-function buscarMedidasEmTempoReal(idAquario) {
+function buscarMedidasEmTempoReal(idAquario, idEmpresa) {
 
     instrucaoSql = ''
 
@@ -45,16 +45,16 @@ function buscarMedidasEmTempoReal(idAquario) {
         instrucaoSql = `select top 1
         lm35_temperatura as temperatura,  
                         CONVERT(varchar, momento, 108) as momento_grafico, 
-                        fk_aquario 
-                        from medida where fk_aquario = ${idAquario} 
+                        fk_transformador 
+                        from medida where fk_transformador = ${idAquario} 
                     order by id desc`;
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `select 
         lm35_temperatura as temperatura,
                         DATE_FORMAT(momento,'%H:%i:%s') as momento_grafico, 
-                        fk_aquario 
-                        from medida where fk_aquario = ${idAquario} 
+                        fk_transformador 
+                        from medida where fk_transformador = ${idAquario} and fkEmpresa = ${idEmpresa}
                     order by id desc limit 1`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
