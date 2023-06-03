@@ -11,131 +11,110 @@
         <link rel="stylesheet" href=".././css/styleCalculadora.css">
     </head>
     
-    <body>
-        <div class="divHeader">
-            <div class="divLogo">
-                <a href="main.html" id="link"> <img src="../assets/imgs/logo-1.png" alt="Logo Zenit" id="imgHeaderLogo">
-                </a>
-            </div>
+<body>
+    <div class="divHeader">
+        <div class="divLogo">
+            <a href="main.html" id="link"> <img src="../assets/imgs/logo-1.png" alt="Logo Zenit"
+                    id="imgHeaderLogo">
+            </a>
+        </div>
             <a href="CalculadorLogin.html"><h4 id="liCalGanhos">Calcular Ganhos</h4></a>
             <a href="nossoProdutoLogin.html"><h4 id="liNossoProduto">Nosso Produto</h4></a>
             <a href="QuemSomosLogin.html"><h4 id="liQuemSomos">Quem Somos</h4></a>
-            <a href="./dashboard.html">
-                <h4 id="liDashboard">Dashboard</h4></a>
-            <div class="divPerfil">
-                <img id="imgHeader" src="../assets/imgs/icon-user-transparente.png" alt=""> 
-                <h4 id="liPerfil">Perfil</h4>
-                <a href="../index.html"><h4 id="liPerfil">Logout</h4></a>
-                <!-- <h4 id="liPerfil"><a href='./login.html'>Log In</a></h4>
-                <h4>|</h4>
-                <h4 id="liPerfil"><a href='./HTML/cadastro.html'>Cadastro</a></h4> -->
-            </div>
-    
-            <!-- <div class="divBarraPesquisa">
-                &#8981;
-                <input type="text" id="iptBarraPesquisa" placeholder="Buscar">
-            </div> -->
-    
+            <a href="dashboard.html"><h4 id="liDashboard">Dashboard</h4></a>
+        <div class="divPerfil">
+            <img id="imgHeader" src="../assets/imgs/icon-user-transparente.png" alt="">
+            <a href="perfil.html"><h4>Perfil</h4></a>
+            <a href="../index.html"><h4 id="liPerfil">Logout</h4></a>
         </div>
-        
-
     </div>
 
-        <div class="contentContainer">
-            <div class="container">
-                <div class="base">
-                    <h2>Calcule o <u>Prejuízo</u> que a Zenit irá evitar à você servidor público ou para você síndico
-                    </h2>
+    <div class="contentContainer">
+        <div class="container">
+            <div class="base">
+                <h2>Calcule o <u>Prejuízo</u> que a Zenit irá evitar à você servidor público ou para você síndico
+                </h2>
 
-                    <h4>Caso o transformador foi de poste ou afeta uma área residencial/condomínio utilize esta
-                        calculadora!
-                        </h3>
-                        <div class="interaction">
-                            <p>Digite a quantidade de transformadores de poste que explodiram</p>
-                            <input type="text" id="poste">
-                        </div>
-                        <div class="interaction">
-                            <p>Digite a quantidade de carros afetados</p>
-                            <input placeholder="(máximo 3 por transformador)" type="text" id="carros">
-                        </div>
-                        <div class="interaction">
-                            <p>Digite a quantidade de pessoas afetadas</p>
-                            <input type="text" id="feridos">
-                        </div>
-                        <button class="calcular" onclick="Calcular()">Calcular</button>
+                <h4>Caso o transformador foi de poste ou afeta uma área residencial/condomínio utilize esta
+                    calculadora!
+                    </h3>
+                    <div class="interaction">
+                        <p>Digite a quantidade de transformadores de poste que explodiram</p>
+                        <input type="text" id="poste">
+                    </div>
+                    <div class="interaction">
+                        <p>Digite a quantidade de carros afetados</p>
+                        <input placeholder="(máximo 3 por transformador)" type="text" id="carros">
+                    </div>
+                    <div class="interaction">
+                        <p>Digite a quantidade de pessoas afetadas</p>
+                        <input type="text" id="feridos">
+                    </div>
+                    <button class="calcular" onclick="Calcular()">Calcular</button>
 
-                        <div id="msg"></div>
-                </div>
+                    <div id="msg"></div>
             </div>
-            <!-- <div class="menu"> conteúdo a ser inserido em navbar lateral!!
-                <p>O preço de <b>R$ 30000</b> do transformador foi retirado da média de preços de transformadores
-                    trifásicos a óleo com até 112,5 KVA de potência nominal</p>
-                <p>A quantidade de carros atingidos ao máximo foi feito baseado em parâmetros de um transformador de
-                    poste</p>
-                <p>Foi levado em consideração para o preço dos carros a tabela fipe de hatchs populares e chegado na
-                    méia de <b>R$ 50000</b> para um hatch seminovo(menos de cem mil KM)</p>
-                <p>Foi levado em consideração para o número de pessoas afetadas um caso onde a pessoa recebeu <b>R$
-                        55000</p>
-            </div> -->
-            <div class="container">
-                <div class="base">
-                    <div class="interaction">
-                        <h2>Cálcule o <u>prejuízo</u> que a Zenit evitará a você dono de empresa!</h2>
-                        <h4>Utilize esta calculadora caso o transformador se localizava em uma empresa</h4>
-                        <p>Sua Empresa é grande </p>
-                        <input placeholder="(mais de 100 funcionários)?(s/n)" id="empresaSize">
-                    </div>
-                    <div class="interaction">
-                        <p>Quantos transformádores trifásicos à óleo possúi? </p>
-                        <input id="qntdTransf">
-                    </div>
-                    <div class="interaction">
-                        <p>Qual o faturamento mensal da sua empresa</p>
-                        <input id="faturamento">
-                    </div>
-                    <button class="calcular" onclick="calculando()">Calcular</button>
-                    <div>
-                        <p id="message"></p>
-                    </div>
+        </div>
+        
+        <div class="container">
+            <div class="base">
+                <div class="interaction">
+                    <h2>Cálcule o <u>prejuízo</u> que a Zenit evitará a você dono de empresa!</h2>
+                    <h4>Utilize esta calculadora caso o transformador se localizava em uma empresa</h4>
+                    <p>Sua Empresa é grande </p>
+                    <input placeholder="(mais de 100 funcionários)?(s/n)" id="empresaSize">
+                </div>
+                <div class="interaction">
+                    <p>Quantos transformádores trifásicos à óleo possúi? </p>
+                    <input id="qntdTransf">
+                </div>
+                <div class="interaction">
+                    <p>Qual o faturamento mensal da sua empresa</p>
+                    <input id="faturamento">
+                </div>
+                <button class="calcular" onclick="calculando()">Calcular</button>
+                <div>
+                    <p id="message"></p>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="divFooter">
-            <div class="content">
-                <img src="../assets/imgs/logo-1.png" alt="Logo Footer" id="imgFooterLogo">
-                <div class="divColuna">  
-                    <h5>INÍCIO</h5>    
-                    <ul id="listaFooterHome">
-                        <li><a href="main.html"> Home </a></li>
-                        <li><a href="../index.html"> Log out </a></li>
-                        <li><a href=""> Blog </a></li>
-                        <li><a href="">  </a></li>
-                    </ul>    
-                </div>
-                <div class="divColuna">  
-                    <h5>FALE CONOSCO</h5>    
-                    <ul id="listaFooterFaleConosco">
-                        <li><a href="nossoProdutoLogin.html"> Informações da Empresa </a></li>
-                        <li><a href=""> Contrate Nosso Serviço </a></li>
-                        <li><a href="QuemSomosLogin.html"> Sobre nós </a></li>
-                    </ul>    
-                </div>
-                <div class="divColuna">
-                    <h5>SUPORTE</h5> 
-                    <ul id="listaFooterSuporte">
-                        <li><a href=""> FAQ </a></li>
-                        <li><a href=""> Central de ajuda </a></li>
-                    </ul>
-                </div>
-                <div class="divColunaRedes">
-                    <a href="https://www.instagram.com/"><img src="../assets/imgs/instagram-icon.svg" alt="icon - instagram" class="iconsFooter"></a>
-                    <a href="https://www.linkedin.com"><img src="../assets/imgs/linkedin-icon.svg" alt="icon - linkedin" class="iconsFooter"></a>
-                    <a href="https://github.com/Zenit-Sp2/Zenit-Sp2.git"><img src="../assets/imgs/github-icon-footer.svg" alt="icon - github" class="iconsFooter"></a>    
-                </div>
+    <div class="divFooter">
+        <div class="content">
+            <img src="../assets/imgs/logo-1.png" alt="Logo Footer" id="imgFooterLogo">
+            <div class="divColuna">  
+                <h5>INÍCIO</h5>    
+                <ul id="listaFooterHome">
+                    <li><a href="main.html"> Home </a></li>
+                    <li><a href="dashboard.html"> Dashboard </a></li>
+                    <li><a href="cadastrarFuncionario.html"> Cadastrar Funcionário </a></li>
+                    <li><a href="perfil.html"> Perfil </a></li>
+                </ul>    
             </div>
-    
-            <div id="zenitFooter"><h4>© 2023 Copyright Zenit</h4></div>
+            <div class="divColuna">  
+                <h5>FALE CONOSCO</h5>    
+                <ul id="listaFooterFaleConosco">
+                    <li><a href="nossoProdutoLogin.html"> Informações da Empresa </a></li>
+                    <li><a href="FaleConoscoLogin.html"> Contrate Nosso Serviço </a></li>
+                    <li><a href="QuemSomosLogin.html"> Sobre nós </a></li>
+                </ul>    
+            </div>
+            <div class="divColuna">
+                <h5>SUPORTE</h5> 
+                <ul id="listaFooterSuporte">
+                    <li><a href="FaqZenit"> FAQ </a></li>
+                    <li><a href="https://zeniteletrica.atlassian.net"> Central de ajuda </a></li>
+                </ul>
+            </div>
+            <div class="divColunaRedes">
+                <a href="https://www.instagram.com/"><img src="../assets/imgs/instagram-icon.svg" alt="icon - instagram" class="iconsFooter"></a>
+                <a href="https://www.linkedin.com"><img src="../assets/imgs/linkedin-icon.svg" alt="icon - linkedin" class="iconsFooter"></a>
+                <a href="https://github.com/npz12/Zenit-Sp2.git"><img src="../assets/imgs/github-icon-footer.svg" alt="icon - github" class="iconsFooter"></a>    
+            </div>
+        </div>
+
+        <div id="zenitFooter"><h4>© 2023 Copyright Zenit</h4></div>
     </div>
 </body>
 

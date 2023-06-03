@@ -16,33 +16,21 @@
 <body>
     <div class="divHeader">
         <div class="divLogo">
-            <a href="../mainZenit.html" id="link"> <img src="../assets/imgs/logo-1.png" alt="Logo Zenit" id="imgHeaderLogo">
+            <a href="main.html" id="link"> <img src="../assets/imgs/logo-1.png" alt="Logo Zenit" id="imgHeaderLogo">
             </a>
         </div>
-        <a href="./simulador.html">
-            <h4 class="liHeader">Calcular Ganhos</h4>
-        </a>
-        <a href="./nossoProduto.html">
-            <h4 class="liHeader">Nosso Produto</h4>
-        </a>
-        <a href="./QuemSomos.html">
-            <h4 class="liHeader">Quem Somos</h4>
-        </a>
+        
+            <a href="CalculadorLogin.html"><h4 class="liHeader">Calcular Ganhos</h4></a>
+            <a href="nossoProdutoLogin.html"><h4 class="liHeader">Nosso Produto</h4></a>
+            <a href="QuemSomosLogin.html"><h4 class="liHeader">Quem Somos</h4></a>
+
         <div class="divPerfil">
-            <!-- <img id="imgHeader"
-                src/assets/imgs/icon-user-transparente.png"
-                alt=""> -->
-            <h4 id="liPerfil"><a href='./login.html'>Log In</a></h4>
+            <h4 id="liPerfil"><a href='../login.html'>Log In</a></h4>
             <h4>|</h4>
-            <h4 id="liPerfil"><a href='./cadastro.html'>Cadastro</a></h4>
+            <h4 id="liPerfil"><a href='../cadastro.html'>Cadastro</a></h4>
         </div>
-
-        <!-- <div class="divBarraPesquisa">
-            &#8981;
-            <input type="text" id="iptBarraPesquisa" placeholder="Buscar">
-        </div> -->
-
     </div>
+
     <div class="divTitulo">
         <h1>Cadastro</h1>
     </div>
@@ -66,11 +54,10 @@
 
         <button class="btnCadastro" onclick="cadastrar()">Cadastrar</button>
 
-       
     </div>
+
     <div class="divCadastro" id="telaSucesso" style="display: none;">
         <div class="h1Titulo">Funcionario cadastrado com sucesso!</div>
-
     </div>
 
     <div class="divFooter">
@@ -79,38 +66,34 @@
             <div class="divColuna">  
                 <h5>INÍCIO</h5>    
                 <ul id="listaFooterHome">
-                    <li><a href="../mainZenit.html"> Home </a></li>
-                    <li><a href="login.html"> Log in </a></li>
-                    <li><a href=""> Blog </a></li>
-                    <li><a href="">  </a></li>
+                    <li><a href="main.html"> Home </a></li>
+                    <li><a href="cadastrarFuncionario.html"> Cadastrar Funcionário </a></li>
+                    <li><a href="perfil.html"> Perfil </a></li>
                 </ul>    
             </div>
             <div class="divColuna">  
                 <h5>FALE CONOSCO</h5>    
                 <ul id="listaFooterFaleConosco">
-                    <li><a href="nossoProduto.html"> Informações da Empresa </a></li>
-                    <li><a href=""> Contrate Nosso Serviço </a></li>
-                    <li><a href="QuemSomos.html"> Sobre nós </a></li>
+                    <li><a href="nossoProdutoLogin.html"> Informações da Empresa </a></li>
+                    <li><a href="FaleConoscoLogin.html"> Contrate Nosso Serviço </a></li>
+                    <li><a href="QuemSomosLogin.html"> Sobre nós </a></li>
                 </ul>    
             </div>
             <div class="divColuna">
                 <h5>SUPORTE</h5> 
                 <ul id="listaFooterSuporte">
-                    <li><a href=""> FAQ </a></li>
-                    <li><a href=""> Central de ajuda </a></li>
+                    <li><a href="FaqZenit.html"> FAQ </a></li>
+                    <li><a href="https://zeniteletrica.atlassian.net"> Central de ajuda </a></li>
                 </ul>
             </div>
             <div class="divColunaRedes">
                 <a href="https://www.instagram.com/"><img src="../assets/imgs/instagram-icon.svg" alt="icon - instagram" class="iconsFooter"></a>
                 <a href="https://www.linkedin.com"><img src="../assets/imgs/linkedin-icon.svg" alt="icon - linkedin" class="iconsFooter"></a>
-                <a href="https://github.com/Zenit-Sp2/Zenit-Sp2.git"><img src="../assets/imgs/github-icon-footer.svg" alt="icon - github" class="iconsFooter"></a>    
+                <a href="https://github.com/npz12/Zenit-Sp2.git"><img src="../assets/imgs/github-icon-footer.svg" alt="icon - github" class="iconsFooter"></a>    
             </div>
         </div>
 
         <div id="zenitFooter"><h4>© 2023 Copyright Zenit</h4></div>
-        <div id="div_aguardar" class="loading-div">
-            <img src="../assets/circle-loading.gif" id="loading-gif">
-        </div>
 
         <div id="div_erros_login"></div>
         <div class="alerta_erro">
@@ -118,6 +101,7 @@
                 <span id="mensagem_erro"></span>
             </div>
         </div>
+    </div>
 </body>
 
 </html>

@@ -60,6 +60,11 @@
     cursor: pointer;
 }
 
+#div_aguardar{
+    display: none;
+    margin-top: 15px;   
+}
+
 .mensagem-de-erro{
     font-size: 10px;
     color: #444;
