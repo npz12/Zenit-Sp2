@@ -180,14 +180,20 @@
             if(resposta.ok){
                 resposta.json().then(json =>{
                     console.log(json);
-                    var publicacao = json[0];
+                    if(json.length == 0){
+                        window.location = 'enderecoNovo.html'
+                    }
+                    else{
+                        var publicacao = json[0];
                     sessionStorage.RuaAtual = publicacao.ruaEmpresa;
                     sessionStorage.BairroAtual = publicacao.bairroEmpresa;
                     sessionStorage.CidadeAtual = publicacao.cidadeEmpresa;
                     sessionStorage.NumeroAtual = publicacao.numeroEmpresa;
                     sessionStorage.ComplementoAtual = publicacao.complementoEmpresa;
                     sessionStorage.CEPAtual = publicacao.CEPEmpresa;
-                   window.location = `editarEndereco.html`
+                    window.location = `editarEndereco.html`
+                    }
+                    
                 })
             }
         }).catch(function (resposta){
