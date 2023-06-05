@@ -11,6 +11,7 @@
     <script src="../js/funcoes.js"></script>
     <script src="./alerta.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
 </head>
 
 <body>
@@ -46,21 +47,58 @@
             <div id="graficos">
                 <div id="grafico1" class="display-block">
                     <h3 class="tituloGraficos">
-                        <span id="tituloTransf1"></span>
+                        <span id="tituloTransformador1">Transformador 1</span>
                     </h3>
                     <div class="grafico">
-                        <canvas id="graficoTransformador1" width="800px"></canvas>
+                        <canvas id="graficoTransformador1"></canvas>
                     </div>
                     <div class="label-captura">
                         <p id="avisoCaptura1"></p>
                     </div>
                 </div>
+
+                <div id="grafico2" class="display-none">
+                    <h3 class="tituloGraficos">
+                        <span id="tituloTransformador2">Transformador 2</span>
+                    </h3>
+                    <div class="grafico">
+                        <canvas id="graficoTransformador2"></canvas>
+                    </div>
+                    <div class="label-captura">
+                        <p id="avisoCaptura2"></p>
+                    </div>
+                </div>
+
+                <div id="grafico3" class="display-none">
+                    <h3 class="tituloGraficos">
+                        <span id="tituloTransformador3">Transformador 3</span>
+                    </h3>
+                    <div class="grafico">
+                        <canvas id="graficoTransformador3"></canvas>
+                    </div>
+                    <div class="label-captura">
+                        <p id="avisoCaptura3"></p>
+                    </div>
+                </div>
+
+                <div id="grafico4" class="display-none">
+                    <h3 class="tituloGraficos">
+                        <span id="tituloTransformador4">Transformador 4</span>
+                    </h3>
+                    <div class="grafico">
+                        <canvas id="graficoTransformador4"></canvas>
+                    </div>
+                    <div class="label-captura">
+                        <p id="avisoCaptura4"></p>
+                    </div>
+                </div>
             </div>
+            
         </div>
         <div class="divKPI" id="divKpiGeral">
 
             <div class="miniKPI">
-                <canvas id="graficoKpiGeral" width="200px"></canvas>
+                <canvas id="graficoKpi" width="200px"></canvas>
             </div>
             <div class="miniKPI" id="caixaUm">
                 <span id="kpiCritico">0</span>
@@ -72,14 +110,14 @@
                     <div class="card">
                         <h1>Transformador 1</h1>
                         <div class="temperatura">
-                            <p id="temp_transf_1">-°C</p>
+                            <p id="temp_transf_1" class="tempExibida">-°C</p>
                         </div>
                         <div class="cor-alerta" id="card_1"></div>
                     </div>
                     <div class="card">
                         <h1>Transformador 1</h1>
                         <div class="temperatura">
-                            <p id="temp_transf_2">-°C</p>
+                            <p id="temp_transf_2" class="tempExibida">-°C</p>
                         </div>
                         <div class="cor-alerta" id="card_2"></div>
 
@@ -87,14 +125,14 @@
                     <div class="card">
                         <h1>Transformador 1</h1>
                         <div class="temperatura">
-                            <p id="temp_transf_3">-°C</p>
+                            <p id="temp_transf_3" class="tempExibida">-°C</p>
                         </div>
                         <div class="cor-alerta ideal" id="card_3"></div>
                     </div>
                     <div class="card">
                         <h1>Transformador 1</h1>
                         <div class="temperatura">
-                            <p id="temp_transf_4">-°C</p>
+                            <p id="temp_transf_4" class="tempExibida">-°C</p>
                         </div>
                         <div class="cor-alerta" id="card_4"></div>
                     </div>
@@ -156,10 +194,7 @@
 
     // const visaoAmpla = document.getElementById('graficoVisaoAmpla');
     // const visaoDetalhada = document.getElementById('graficoTransformador1');
-    const kpiGeral = document.getElementById('graficoKpiGeral');
-
-
-
+    const kpiGeral = document.getElementById('graficoKpi');
 
     Chart.defaults.color = "#000";
 
@@ -183,8 +218,8 @@
 
 
     function alterarTitulo(idTransformador) {
-        var tituloTransf = document.getElementById(`tituloTransf${idTransformador}`)
-        tituloTransf.innerHTML = "Últimas medidas de Temperatura e Umidade do <span style='color: #e6005a'>Transformador " + idTransformador + "</span>"
+        var tituloTransformador = document.getElementById(`tituloTransformador${idTransformador}`)
+        tituloTransformador.innerHTML = "Últimas medidas de Temperatura e Umidade do <span style='color: #e6005a'>Transformador " + idTransformador + "</span>"
     }
 
     function exibirTransf(idTransformador) {
@@ -193,17 +228,19 @@
         for (i = 1; i <= todosOsGraficos.childElementCount; i++) {
             // exibindo - ou não - o gráfico
             let elementoAtual = document.getElementById(`grafico${i}`)
+            let kpiAtual = document.getElementById(``)
+
             if (elementoAtual.classList.contains("display-block")) {
                 elementoAtual.classList.remove("display-block")
             }
             elementoAtual.classList.add("display-none")
 
             // alterando estilo do botão
-            let btnAtual = document.getElementById(`btnTransf${i}`)
-            if (btnAtual.classList.contains("btn-pink")) {
-                btnAtual.classList.remove("btn-pink")
-            }
-            btnAtual.classList.add("btn-white")
+            // let btnAtual = document.getElementById(`btnTransf${i}`)
+            // if (btnAtual.classList.contains("btn-pink")) {
+            //     btnAtual.classList.remove("btn-pink")
+            // }
+            // btnAtual.classList.add("btn-white")
         }
 
         // exibindo - ou não - o gráfico
@@ -212,9 +249,9 @@
         graficoExibir.classList.add("display-block")
 
         // alterando estilo do botão
-        let btnExibir = document.getElementById(`btnTransf${idTransformador}`)
-        btnExibir.classList.remove("btn-white")
-        btnExibir.classList.add("btn-pink")
+        // let btnExibir = document.getElementById(`btnTransf${idTransformador}`)
+        // btnExibir.classList.remove("btn-white")
+        // btnExibir.classList.add("btn-pink")
     }
 
     // O gráfico é construído com três funções:

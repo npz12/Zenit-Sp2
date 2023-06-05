@@ -10,6 +10,7 @@
     border-radius: 20px;
     background-color: #e0e3e5;
 }
+
 .divKPI {
     display: flex;
     width: 200px;
@@ -17,6 +18,7 @@
     /* margin-top: 50px; */
     gap: 5px;
 }
+
 .miniKPI {
     display: flex;
     width: 200px;
@@ -29,6 +31,7 @@
     flex-direction: column;
     align-items: center;
 }
+
 #metricas {
     align-items: center;
     justify-content: center;
@@ -37,7 +40,8 @@
     width: 76%;
 
 }
-.grafico{
+
+.grafico {
     /* background: rgb(83,83,83);
     background: radial-gradient(circle, rgba(83,83,83,1) 0%, rgba(0,0,0,1) 100%); */
     /* border: 1px solid; */
@@ -46,6 +50,7 @@
     padding: 30px;
     /* margin: 10px; */
 }
+
 .divContainerGrafico {
     display: flex;
     align-items: center;
@@ -54,9 +59,9 @@
 
 }
 
-.buttonGrafico{
+.buttonGrafico {
     /* border: 2px solid #5cabeb; */
-    border: none ;
+    border: none;
     background-color: #5cabeb;
     padding: 10px;
     border-radius: 30px;
@@ -65,20 +70,21 @@
     cursor: pointer;
 }
 
-.buttonGrafico:hover{
+.buttonGrafico:hover {
     transform: scale(1.03);
     transition: 0.1s;
 }
+
 .divContainerGrafico h1 {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-#caixaUm{
+#caixaUm {
     background-color: #ff4444;
     color: white;
 }
 
-#caixaUm p{
+#caixaUm p {
     font-size: 20px;
     margin: 0;
 }
@@ -88,43 +94,71 @@
     color: #4e4e4e;
 
 } */
-#caixaDois{
-    overflow-y: auto;    
+#caixaDois {
+    overflow-y: auto;
 }
-#visaoGeral{
+
+#visaoGeral {
     font-size: 10px;
     margin: 15px;
 }
 
 
-#maiorTemperatura{
+#maiorTemperatura {
     background-color: #ff4444;
     color: #fff;
 
 }
 
-#maiorTemperatura p{
+#maiorTemperatura p {
     font-size: 15px;
     margin: 0;
 }
 
-#menorTemperatura{
+#menorTemperatura {
     background-color: #44a1ff;
     color: #fff;
 }
 
-#menorTemperatura p{
+#menorTemperatura p {
     font-size: 15px;
     margin: 0;
 }
 
-#mediaTemperatura{
+#mediaTemperatura {
     background-color: #ffff44;
     color: #4e4e4e;
 
 }
 
-#mediaTemperatura p{
+#mediaTemperatura p {
     font-size: 15px;
     margin: 0;
+}
+
+.display-none {
+    display: none;
+}
+
+.display-flex {
+    display: flex;
+}
+
+.display-block {
+    display: block;
+}
+
+canvas {
+    width: 800px !important;
+    height: 400px !important;
+}
+
+#graficoKpi {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.tempExibida {
+    width: 35px;
+    border-radius: 5px;
 }
