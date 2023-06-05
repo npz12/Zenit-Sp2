@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,6 +11,7 @@
     <link rel="stylesheet" href="../css/styleCadastro.css">
     <link rel="stylesheet" href="../css/Zstyle.css">
 </head>
+
 <body onload="info()">
     <div class="divHeader">
         <div class="divLogo">
@@ -68,43 +70,49 @@
     <div class="divFooter">
         <div class="content">
             <img src="../assets/imgs/logo-1.png" alt="Logo Footer" id="imgFooterLogo">
-            <div class="divColuna">  
-                <h5>INÍCIO</h5>    
+            <div class="divColuna">
+                <h5>INÍCIO</h5>
                 <ul id="listaFooterHome">
                     <li><a href="main.html"> Home </a></li>
                     <li><a href="dashboard.html"> Dashboard </a></li>
                     <li><a href="cadastrarFuncionario.html"> Cadastrar Funcionário </a></li>
                     <li><a href="perfil.html"> Perfil </a></li>
-                </ul>    
+                </ul>
             </div>
-            <div class="divColuna">  
-                <h5>FALE CONOSCO</h5>    
+            <div class="divColuna">
+                <h5>FALE CONOSCO</h5>
                 <ul id="listaFooterFaleConosco">
                     <li><a href="nossoProdutoLogin.html"> Informações da Empresa </a></li>
                     <li><a href="FaleConoscoLogin.html"> Contrate Nosso Serviço </a></li>
                     <li><a href="QuemSomosLogin.html"> Sobre nós </a></li>
-                </ul>    
+                </ul>
             </div>
             <div class="divColuna">
-                <h5>SUPORTE</h5> 
+                <h5>SUPORTE</h5>
                 <ul id="listaFooterSuporte">
                     <li><a href="FaqZenit"> FAQ </a></li>
                     <li><a href="https://zeniteletrica.atlassian.net"> Central de ajuda </a></li>
                 </ul>
             </div>
             <div class="divColunaRedes">
-                <a href="https://www.instagram.com/"><img src="../assets/imgs/instagram-icon.svg" alt="icon - instagram" class="iconsFooter"></a>
-                <a href="https://www.linkedin.com"><img src="../assets/imgs/linkedin-icon.svg" alt="icon - linkedin" class="iconsFooter"></a>
-                <a href="https://github.com/npz12/Zenit-Sp2.git"><img src="../assets/imgs/github-icon-footer.svg" alt="icon - github" class="iconsFooter"></a>    
+                <a href="https://www.instagram.com/"><img src="../assets/imgs/instagram-icon.svg" alt="icon - instagram"
+                        class="iconsFooter"></a>
+                <a href="https://www.linkedin.com"><img src="../assets/imgs/linkedin-icon.svg" alt="icon - linkedin"
+                        class="iconsFooter"></a>
+                <a href="https://github.com/npz12/Zenit-Sp2.git"><img src="../assets/imgs/github-icon-footer.svg"
+                        alt="icon - github" class="iconsFooter"></a>
             </div>
         </div>
 
-        <div id="zenitFooter"><h4>© 2023 Copyright Zenit</h4></div>
+        <div id="zenitFooter">
+            <h4>© 2023 Copyright Zenit</h4>
+        </div>
     </div>
 </body>
+
 </html>
 <script>
-    function info(){
+    function info() {
         inptRua.value = sessionStorage.RuaAtual;
         inptBairro.value = sessionStorage.BairroAtual;
         inptCidade.value = sessionStorage.CidadeAtual;
@@ -112,7 +120,7 @@
         inptComplemento.value = sessionStorage.ComplementoAtual;
         inptCEP.value = sessionStorage.CEPAtual;
     }
-    function editar(){
+    function editar() {
         var varRua = inptRua.value;
         var varBairro = inptBairro.value;
         var varNumero = inptNumero.value;
@@ -120,33 +128,46 @@
         var varCEP = inptCEP.value;
         var varComplemento = inptComplemento.value;
         var fkEmpresa = sessionStorage.ID_EMPRESA;
-        fetch(`/usuarios/EditarEnderecoEmpresa/${fkEmpresa}`,{
-            method : "POST",
+
+        if (varRua == '' || varNumero == '' || varCidade == '' || varCEP == '') {
+            cardErro.style.display = "block"
+
+            mensagem_erro.innerHTML = "Verifique se o campo Endereço, Número, Cidade e CEP foram preenchidos";
+
+            setInterval(() => {
+                cardErro.style.display = "none"
+            }, 5000)
+
+        }
+        else {
+
+            fetch(`/usuarios/EditarEnderecoEmpresa/${fkEmpresa}`, {
+                method: "POST",
                 headers: {
                     "Content-type": "application/json"
                 },
                 body: JSON.stringify({
-                    RuaServer : varRua,
-                    BairroServer : varBairro,
-                    NumeroServer : varNumero,
-                    CidadeServer : varCidade,
-                    CEPServer : varCEP,
-                    ComplementoServer : varComplemento,
+                    RuaServer: varRua,
+                    BairroServer: varBairro,
+                    NumeroServer: varNumero,
+                    CidadeServer: varCidade,
+                    CEPServer: varCEP,
+                    ComplementoServer: varComplemento,
                 })
-        }).then(function(resposta){
-            console.log(resposta);
-            if(resposta.ok){
-                mensagem_erro.innerHTML = `Cadastro realizado com sucesso, redirecionando para tela de perfil`;
+            }).then(function (resposta) {
+                console.log(resposta);
+                if (resposta.ok) {
+                    mensagem_erro.innerHTML = `Cadastro realizado com sucesso, redirecionando para tela de perfil`;
                     setTimeout(() => {
                         window.location = 'perfil.html';
                     }, 3000);
-            }else{
-                throw(`Houve um erro ao realizar o cadastro`)
-            }
-        }).catch(function(resposta){
-            console.log(`#ERRO: ${resposta}`);
-        })
-        return false;
-
+                } else {
+                    throw (`Houve um erro ao realizar o cadastro`)
+                }
+            }).catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            })
+            return false;
+        }
     }
 </script>
