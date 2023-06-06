@@ -31,7 +31,7 @@ create table endereco (
 
 
 create table transformador (
-	id INT PRIMARY KEY AUTO_INCREMENT,
+	idTransformador INT PRIMARY KEY AUTO_INCREMENT,
 	descricao VARCHAR(300),
     fkEmpresa INT,
     FOREIGN KEY(fkEmpresa) REFERENCES empresa(idEmpresa)

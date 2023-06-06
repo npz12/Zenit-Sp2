@@ -11,4 +11,8 @@ router.get("/tempo-real/:idTransformador/:idEmpresa", function (req, res) {
     medidaController.buscarMedidasEmTempoReal(req, res);
 })
 
+router.get("/ultimas-kpis/:idTransformador/:idEmpresa", function (req, res) {
+    medidaController.buscarUltimasKpis(req, res);
+});
+
 module.exports = router; 

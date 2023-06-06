@@ -67,9 +67,28 @@ function buscarMedidasEmTempoReal(idTransformador, fkEmpresa) {
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
+function buscarUltimasKpis(idTransformador, limite_linhas, fkEmpresa) {
+
+    instrucaoSql = ''
+    if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
+        instrucaoSql = `select
+                count(case when (lm35 <= 45 and lm35 > 20) or (lm35 >= 80 and lm35 < 100) then lm35 end) as alerta,
+                count(case when lm35 <= 20 or lm35 >= 100 then lm35 end) as critico,
+                count(case when lm35 > 45 and lm35 < 80 then lm35 end) as ideal
+            from (select * from medida join transformador on fkEmpresa = ${fkEmpresa} where fk_transformador = ${idTransformador} order by medida.id desc limit ${limite_linhas}) as subconsulta;`
+;
+    } else {
+        console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
+        return
+    }
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
 
 
 module.exports = {
     buscarUltimasMedidas,
-    buscarMedidasEmTempoReal
+    buscarMedidasEmTempoReal,
+    buscarUltimasKpis
 }
