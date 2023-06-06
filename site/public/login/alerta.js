@@ -74,73 +74,73 @@ function alertar(resposta, idTransformador) {
     if (idTransformador == 1) {
         temp_transf_1.innerHTML = temp + "°C";
         if (temp >= limites.muito_quente) {
-            temp_transf_1.style = 'background-color: red;'
+            temp_transf_1.style = 'background-color: #ff4444;'
         }
         else if (temp < limites.muito_quente && temp >= limites.quente) {
-            temp_transf_1.style = 'background-color: yellow;'
+            temp_transf_1.style = 'background-color: #ffff44;'
         }
         else if (temp < limites.quente && temp > limites.frio) {
-            temp_transf_1.style = 'background-color: green;'
+            temp_transf_1.style = 'background-color: #44ff44;'
         }
         else if (temp <= limites.frio && temp > limites.muito_frio) {
-            temp_transf_1.style = 'background-color: yellow;'
+            temp_transf_1.style = 'background-color: #ffff44;'
         }
         else if (temp <= limites.muito_frio) {
-            temp_transf_1.style = 'background-color: red;'
+            temp_transf_1.style = 'background-color: #ff4444;'
         }
         card = card_1
     } else if (idTransformador == 2) {
         temp_transf_2.innerHTML = temp + "°C";
         if (temp >= limites.muito_quente) {
-            temp_transf_2.style = 'background-color: red;'
+            temp_transf_2.style = 'background-color: #ff4444;'
         }
         else if (temp < limites.muito_quente && temp >= limites.quente) {
-            temp_transf_2.style = 'background-color: yellow;'
+            temp_transf_2.style = 'background-color: #ffff44;'
         }
         else if (temp < limites.quente && temp > limites.frio) {
-            temp_transf_2.style = 'background-color: green;'
+            temp_transf_2.style = 'background-color: #44ff44;'
         }
         else if (temp <= limites.frio && temp > limites.muito_frio) {
-            temp_transf_2.style = 'background-color: yellow;'
+            temp_transf_2.style = 'background-color: #ffff44;'
         }
         else if (temp <= limites.muito_frio) {
-            temp_transf_2.style = 'background-color: red;'
+            temp_transf_2.style = 'background-color: #ff4444;'
         }
         card = card_2
     } else if (idTransformador == 3) {
         temp_transf_3.innerHTML = temp + "°C";
         if (temp >= limites.muito_quente) {
-            temp_transf_3.style = 'background-color: red;'
+            temp_transf_3.style = 'background-color: #ff4444;'
         }
         else if (temp < limites.muito_quente && temp >= limites.quente) {
-            temp_transf_3.style = 'background-color: yellow;'
+            temp_transf_3.style = 'background-color: #ffff44;'
         }
         else if (temp < limites.quente && temp > limites.frio) {
-            temp_transf_3.style = 'background-color: green;'
+            temp_transf_3.style = 'background-color: #44ff44;'
         }
         else if (temp <= limites.frio && temp > limites.muito_frio) {
-            temp_transf_3.style = 'background-color: yellow;'
+            temp_transf_3.style = 'background-color: #ffff44;'
         }
         else if (temp <= limites.muito_frio) {
-            temp_transf_3.style = 'background-color: red;'
+            temp_transf_3.style = 'background-color: #ff4444;'
         }
         card = card_3
     } else if (idTransformador == 4) {
         temp_transf_4.innerHTML = temp + "°C";
         if (temp >= limites.muito_quente) {
-            temp_transf_4.style = 'background-color: red;'
+            temp_transf_4.style = 'background-color: #ff4444;'
         }
         else if (temp < limites.muito_quente && temp >= limites.quente) {
-            temp_transf_4.style = 'background-color: yellow;'
+            temp_transf_4.style = 'background-color: #ffff44;'
         }
         else if (temp < limites.quente && temp > limites.frio) {
-            temp_transf_4.style = 'background-color: green;'
+            temp_transf_4.style = 'background-color: #44ff44;'
         }
         else if (temp <= limites.frio && temp > limites.muito_frio) {
-            temp_transf_4.style = 'background-color: yellow;'
+            temp_transf_4.style = 'background-color: #ffff44;'
         }
         else if (temp <= limites.muito_frio) {
-            temp_transf_4.style = 'background-color: red;'
+            temp_transf_4.style = 'background-color: #ff4444;'
         }
         card = card_4
     }

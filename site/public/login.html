@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/styleCadastro.css">
-    <script src="../JS/validacao.js"></script>
+    <script src="./js/validacao.js"></script>
     <title>Login</title>
 </head>
 
@@ -85,127 +85,124 @@
 </html>
 <script>
 
-    function entrar() {
+    // function entrar() {
 
 
-        var emailVar = email_input.value;
-        var senhaVar = senha_input.value;
-        sessionStorage.SALVAR_EMAIL = emailVar;
-        var checkbox = checkBoxFuncionario.checked
+    //     var emailVar = email_input.value;
+    //     var senhaVar = senha_input.value;
+    //     sessionStorage.SALVAR_EMAIL = emailVar;
+    //     var checkbox = checkBoxFuncionario.checked
 
-        if (emailVar == "" || senhaVar == "") {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+    //     if (emailVar == "" || senhaVar == "") {
+    //         cardErro.style.display = "block"
+    //         mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
 
-            return false;
-        }
-        else {
+    //         return false;
+    //     }
+    //     else {
 
-        }
-        if (checkbox == true) {
-            sessionStorage.FUNCIONARIO_PERMISSAO = 1;
-            console.log('verificado')
-            console.log("FORM LOGIN: ", emailVar);
-            console.log("FORM SENHA: ", senhaVar);
+    //     }
+    //     if (checkbox == true) {
+    //         sessionStorage.FUNCIONARIO_PERMISSAO = 1;
+    //         console.log('verificado')
+    //         console.log("FORM LOGIN: ", emailVar);
+    //         console.log("FORM SENHA: ", senhaVar);
 
-            fetch("/usuarios/autenticarFuncionario", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    emailFuncServer: emailVar,
-                    senhaFuncServer: senhaVar
-                })
-            }).then(function (resposta) {
-                console.log("ESTOU NO THEN DO entrar()!")
+    //         fetch("/usuarios/autenticarFuncionario", {
+    //             method: "POST",
+    //             headers: {
+    //                 "Content-Type": "application/json"
+    //             },
+    //             body: JSON.stringify({
+    //                 emailFuncServer: emailVar,
+    //                 senhaFuncServer: senhaVar
+    //             })
+    //         }).then(function (resposta) {
+    //             // console.log("ESTOU NO THEN DO entrar()!")
 
-                if (resposta.ok) {
-                    console.log(resposta);
+    //             if (resposta.ok) {
+    //                 console.log(resposta);
 
-                    resposta.json().then(json => {
-                        console.log(json);
-                        console.log(JSON.stringify(json));
-                        sessionStorage.ID_EMPRESA = json.fkEmpresa;
-
-
-
-                        setTimeout(function () {
-                            window.location = "/login/main.html";
-                        }, 1000); // apenas para exibir o loading
-
-                    });
-
-                } else {
-
-                    console.log("Houve um erro ao tentar realizar o login!");
-
-                    resposta.text().then(texto => {
-                        console.error(texto);
-
-                    });
-                }
-
-            }).catch(function (erro) {
-                console.log(erro);
-            })
-
-            return false;
-        } else {
-            sessionStorage.FUNCIONARIO_PERMISSAO = 2;
-            console.log('nao foi verificado')
-
-
-            console.log("FORM LOGIN: ", emailVar);
-            console.log("FORM SENHA: ", senhaVar);
-
-            fetch("/usuarios/autenticar", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    emailServer: emailVar,
-                    senhaServer: senhaVar
-                })
-            }).then(function (resposta) {
-                console.log("ESTOU NO THEN DO entrar()!")
-
-                if (resposta.ok) {
-                    console.log(resposta);
-
-                    resposta.json().then(json => {
-                        console.log(json);
-                        console.log(JSON.stringify(json));
-                        sessionStorage.ID_EMPRESA = json.idEmpresa;
+    //                 resposta.json().then(json => {
+    //                     console.log(json);
+    //                     console.log(JSON.stringify(json));
+    //                     sessionStorage.ID_EMPRESA = json.fkEmpresa;
 
 
 
-                        setTimeout(function () {
-                            window.location = "/login/main.html";
-                        }, 1000); // apenas para exibir o loading
+    //                     setTimeout(function () {
+    //                         window.location = "/login/main.html";
+    //                     }, 1000); // apenas para exibir o loading
 
-                    });
+    //                 });
 
-                } else {
+    //             } else {
 
-                    console.log("Houve um erro ao tentar realizar o login!");
+    //                 console.log("Houve um erro ao tentar realizar o login!");
 
-                    resposta.text().then(texto => {
-                        console.error(texto);
+    //                 resposta.text().then(texto => {
+    //                     console.error(texto);
 
-                    });
-                }
+    //                 });
+    //             }
 
-            }).catch(function (erro) {
-                console.log(erro);
-            })
+    //         }).catch(function (erro) {
+    //             console.log(erro);
+    //         })
 
-            return false;
-        }
-    }
+    //         return false;
+    //     } else {
+    //         sessionStorage.FUNCIONARIO_PERMISSAO = 2;
+    //         console.log('nao foi verificado')
 
-    function sumirMensagem() {
-        cardErro.style.display = "none"
-    }
+
+    //         console.log("FORM LOGIN: ", emailVar);
+    //         console.log("FORM SENHA: ", senhaVar);
+
+    //         fetch("/usuarios/autenticar", {
+    //             method: "POST",
+    //             headers: {
+    //                 "Content-Type": "application/json"
+    //             },
+    //             body: JSON.stringify({
+    //                 emailServer: emailVar,
+    //                 senhaServer: senhaVar
+    //             })
+    //         }).then(function (resposta) {
+    //             console.log("ESTOU NO THEN DO entrar()!")
+
+    //             if (resposta.ok) {
+    //                 console.log(resposta);
+
+    //                 resposta.json().then(json => {
+    //                     console.log(json);
+    //                     console.log(JSON.stringify(json));
+    //                     sessionStorage.ID_EMPRESA = json.idEmpresa;
+
+
+
+    //                     setTimeout(function () {
+    //                         window.location = "/login/main.html";
+    //                     }, 1000); // apenas para exibir o loading
+
+    //                 });
+
+    //             } else {
+
+    //                 console.log("Houve um erro ao tentar realizar o login!");
+
+    //                 resposta.text().then(texto => {
+    //                     console.error(texto);
+
+    //                 });
+    //             }
+
+    //         }).catch(function (erro) {
+    //             console.log(erro);
+    //         })
+
+    //         return false;
+    //     }
+    // }
+
 </script>

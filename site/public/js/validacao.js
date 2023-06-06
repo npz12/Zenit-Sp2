@@ -1,51 +1,51 @@
-var nome = '';
-var email = '';
-var tel = '';
-var cnpj = '';
-var senha = ''
-var confirmarSenha = '';
-var emailRegistrado = '';
-var senhaRegistrado = '';
+// var nome = '';
+// var email = '';
+// var tel = '';
+// var cnpj = '';
+// var senha = ''
+// var confirmarSenha = '';
+// var emailRegistrado = '';
+// var senhaRegistrado = '';
 
 function cadastrar() {
-    var nome = iptNome.value;
-    var email = iptEmail.value;
-    var tel = iptTelefone.value;
-    var cnpj = iptCNPJ.value;
-    var senha = iptSenha.value;
-    confirmarSenha = iptConfirmarSenha.value;
+    var nomeVar = nome_input.value;
+    var emailVar = email_input.value;
+    var senhaVar = senha_input.value;
+    var telVar = iptTelefone.value;
+    var cnpjVar = iptCNPJ.value;
+    var confirmacaoSenhaVar = confirmacao_senha_input.value;
 
-    var nomePreenchido = nome != '';
-    var emailPreenchido = email != '';
-    var telPreenchido = tel != '' && tel.length == 11;
-    var cnpjPreenchido = cnpj != '' && cnpj.length == 14;
-    var senhaPreenchido = senha != '';
-    var confirmarSenhaPreenchido = confirmarSenha != '';
+    var nomePreenchido = nomeVar != '';
+    var emailPreenchido = emailVar != '';
+    var telPreenchido = telVar != '' && telVar.length == 11;
+    var cnpjPreenchido = cnpjVar != '' && cnpjVar.length == 14;
+    var senhaPreenchido = senhaVar != '';
+    var confirmarSenhaPreenchido = confirmacaoSenhaVar != '';
 
-    var caractereEspecialNomeValido = !nome.includes('!') && !nome.includes('@') && !nome.includes('#') && !nome.includes('$') && !nome.includes('%') && !nome.includes('&') && !nome.includes('*') && !nome.includes('(') && !nome.includes(')') && !nome.includes('-') && !nome.includes('+') && !nome.includes('=') && !nome.includes('/') && !nome.includes('.') && !nome.includes(',');
+    var caractereEspecialNomeValido = !nomeVar.includes('!') && !nomeVar.includes('@') && !nomeVar.includes('#') && !nomeVar.includes('$') && !nomeVar.includes('%') && !nomeVar.includes('&') && !nomeVar.includes('*') && !nomeVar.includes('(') && !nomeVar.includes(')') && !nomeVar.includes('-') && !nomeVar.includes('+') && !nomeVar.includes('=') && !nomeVar.includes('/') && !nomeVar.includes('.') && !nomeVar.includes(',');
 
-    var emailValido = email.includes('@') && email.includes('.');
+    var emailValido = emailVar.includes('@') && emailVar.includes('.');
 
     // verifica se a confirmação é igual a senha
-    var confirmacaoValida = senha == confirmarSenha;
+    var confirmacaoValida = senhaVar == confirmacaoSenhaVar;
 
     // verifica se o tamanho da senha é maior que 8 caracteres
-    var tamanhoSenhaValido = senha.length >= 8;
+    var tamanhoSenhaValido = senhaVar.length >= 8;
 
     // verifica se a senha contem ao menos um caractere especial
-    var caractereEspecialSenhaValido = senha.includes('!') || senha.includes('@') || senha.includes('#') || senha.includes('$') || senha.includes('%') || senha.includes('&') || senha.includes('*') || senha.includes('(') || senha.includes(')');
+    var caractereEspecialSenhaValido = senhaVar.includes('!') || senhaVar.includes('@') || senhaVar.includes('#') || senhaVar.includes('$') || senhaVar.includes('%') || senhaVar.includes('&') || senhaVar.includes('*') || senhaVar.includes('(') || senhaVar.includes(')');
 
     // verifica se a senha contem ao menos um numero
-    var numeroSenhaValido = senha.includes('0') || senha.includes('1') || senha.includes('2') || senha.includes('3') || senha.includes('4') || senha.includes('5') || senha.includes('6') || senha.includes('7') || senha.includes('8') || senha.includes('9');
+    var numeroSenhaValido = senhaVar.includes('0') || senhaVar.includes('1') || senhaVar.includes('2') || senhaVar.includes('3') || senhaVar.includes('4') || senhaVar.includes('5') || senhaVar.includes('6') || senhaVar.includes('7') || senhaVar.includes('8') || senhaVar.includes('9');
 
 
     if (nomePreenchido && emailPreenchido && senhaPreenchido && confirmarSenhaPreenchido && telPreenchido && cnpjPreenchido) {
-        iptNome.style = 'border: 1px solid black;';
-        iptEmail.style = 'border: 1px solid black;';
+        nome_input.style = 'border: 1px solid black;';
+        email_input.style = 'border: 1px solid black;';
         iptTelefone.style = 'border: 1px solid black;';
         iptCNPJ.style = 'border: 1px solid black;';
-        iptSenha.style = 'border: 1px solid black;';
-        iptConfirmarSenha.style = 'border: 1px solid black;';
+        senha_input.style = 'border: 1px solid black;';
+        confirmacao_senha_input.style = 'border: 1px solid black;';
         if (caractereEspecialNomeValido && emailValido && confirmacaoValida && tamanhoSenhaValido && caractereEspecialSenhaValido && numeroSenhaValido) {
             
             span_erro_caractere_especial_nome.style = 'border-color:black';
@@ -55,9 +55,48 @@ function cadastrar() {
             span_erro_numero_senha.style = 'border-color:black;'
             // tela_registro.style = 'display: none;';
             // tela_sucesso.style = 'display: flex;';
-            alert('Cadastro da empresa realizado com sucesso! Entraremos em contato pelo email')
             // emailRegistrado = email;
             // senhaRegistrado = senha;
+                        // Enviando o valor da nova input
+                        fetch("/usuarios/cadastrar", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify({
+                                // crie um atributo que recebe o valor recuperado aqui
+                                // Agora vá para o arquivo routes/usuario.js
+                                nomeServer: nomeVar,
+                                emailServer: emailVar,
+                                telServer: telVar,
+                                cnpjServer: cnpjVar,
+                                senhaServer: senhaVar
+                            })
+                        }).then(function (resposta) {
+                
+                            console.log("resposta: ", resposta);
+                
+                            if (resposta.ok) {
+                                cardErro.style.display = "block";
+                
+                                mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+                
+                                setTimeout(() => {
+                                    window.location = "login.html";
+                                }, "2000")
+                
+                                // limparFormulario();
+                                // finalizarAguardar();
+                            } else {
+                                throw ("Houve um erro ao tentar realizar o cadastro!");
+                            }
+                        }).catch(function (resposta) {
+                            console.log(`#ERRO: ${resposta}`);
+                            // finalizarAguardar();
+                        });
+                
+                        return false;
+
 
         } else {
             
@@ -71,7 +110,7 @@ function cadastrar() {
                 alert('email invalido')
             }
             if (!confirmacaoValida) {
-                alert('as senhas não são iguais')
+                alert('A confirmação de senha não está igual a senha!')
             }
             if (!tamanhoSenhaValido) {
                 span_erro_caractere_senha.style = 'color:red;'
@@ -94,14 +133,14 @@ function cadastrar() {
     } else {
         alert('Informe todos os campos!')
         if (!nomePreenchido) {
-            iptNome.style = 'border: 1px solid red;'
+            nome_input.style = 'border: 1px solid red;'
         } else{
-            iptNome.style = 'border: 1px solid black;'
+            nome_input.style = 'border: 1px solid black;'
         }
         if (!emailPreenchido) {
-            iptEmail.style = 'border: 1px solid red;'
+            email_input.style = 'border: 1px solid red;'
         } else{
-            iptEmail.style = 'border: 1px solid black;'
+            email_input.style = 'border: 1px solid black;'
         }
         if (!telPreenchido) {
             iptTelefone.style = 'border: 1px solid red;'
@@ -114,42 +153,146 @@ function cadastrar() {
             iptCNPJ.style = 'border: 1px solid black;'
         }
         if (!senhaPreenchido) {
-            iptSenha.style = 'border: 1px solid red;'
+            senha_input.style = 'border: 1px solid red;'
         } else{
-            iptSenha.style = 'border: 1px solid black;'
+            senha_input.style = 'border: 1px solid black;'
         }
         if (!confirmarSenhaPreenchido) {
-            iptConfirmarSenha.style = 'border: 1px solid red;'
+            confirmacao_senha_input.style = 'border: 1px solid red;'
         } else{
-            iptConfirmarSenha.style = 'border: 1px solid black;'
+            confirmacao_senha_input.style = 'border: 1px solid black;'
         }
     }
 
-
-
-
-    console.log(`Nome especial ${caractereEspecialNomeValido} email ${emailValido} confirmacao ${confirmacaoValida} tamanho senha ${tamanhoSenhaValido} especial ${caractereEspecialSenhaValido} numeros ${numeroSenhaValido}`)
 }
 
-function logar() {
-    var senhaRegistradoValido = iptSenhaRegistrado.value;
-    var emailRegistradoValido = iptEmailRegistrado.value;
-    var emailValido1 = emailRegistradoValido.includes('@');
-    var emailValido2 = emailRegistradoValido.includes('.');
-    var tamanhoSenhaValido = senhaRegistradoValido.length >= 8;
-    // verifica se a senha contem ao menos um caractere especial
-    var caractereEspecialSenhaValido = senhaRegistradoValido.includes('!') || senhaRegistradoValido.includes('@') || senhaRegistradoValido.includes('#') || senhaRegistradoValido.includes('$') || senhaRegistradoValido.includes('%') || senhaRegistradoValido.includes('&') || senhaRegistradoValido.includes('*') || senhaRegistradoValido.includes('(') || senhaRegistradoValido.includes(')');
-
-    // verifica se a senhaRegistradoValido contem ao menos um numero
-    var numeroSenhaValido = senhaRegistradoValido.includes('0') || senhaRegistradoValido.includes('1') || senhaRegistradoValido.includes('2') || senhaRegistradoValido.includes('3') || senhaRegistradoValido.includes('4') || senhaRegistradoValido.includes('5') || senhaRegistradoValido.includes('6') || senhaRegistradoValido.includes('7') || senhaRegistradoValido.includes('8') || senhaRegistradoValido.includes('9');
+function entrar() {
 
 
+    var emailVar = email_input.value;
+    var senhaVar = senha_input.value;
+    sessionStorage.SALVAR_EMAIL = emailVar;
+    var checkbox = checkBoxFuncionario.checked
 
-    if (emailValido1 && emailValido2  && tamanhoSenhaValido  && caractereEspecialSenhaValido  && numeroSenhaValido ) {
-        alert('logado com sucesso');
-        window.open('login/main.html');
-        window.close('login.html');
+    if (emailVar == "" || senhaVar == "") {
+        senha_input.style = 'border: 1px solid red;'
+        email_input.style = 'border: 1px solid red;'
+        console.log('Preencha todos os campos!')
+        return false;
+    }
+    else {
+        senha_input.style = 'border: 1px solid black;'
+        email_input.style = 'border: 1px solid black;'
+    }
+    if (checkbox == true) {
+        sessionStorage.FUNCIONARIO_PERMISSAO = 1;
+        console.log('verificado')
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar);
+
+        fetch("/usuarios/autenticarFuncionario", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailFuncServer: emailVar,
+                senhaFuncServer: senhaVar
+            })
+        }).then(function (resposta) {
+            // console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+                senha_input.style = 'border: 1px solid black;'
+                email_input.style = 'border: 1px solid black;'
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+                    sessionStorage.ID_EMPRESA = json.fkEmpresa;
+
+
+
+                    setTimeout(function () {
+                        window.location = "/login/main.html";
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+                alert('Email ou senha incorretos!');
+                senha_input.style = 'border: 1px solid red;'
+                email_input.style = 'border: 1px solid red;'
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
     } else {
-        alert('Email ou senha incorreto')
+        sessionStorage.FUNCIONARIO_PERMISSAO = 2;
+        console.log('nao foi verificado')
+
+
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar);
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+                senha_input.style = 'border: 1px solid black;'
+                email_input.style = 'border: 1px solid black;'
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+                    sessionStorage.ID_EMPRESA = json.idEmpresa;
+
+
+
+                    setTimeout(function () {
+                        window.location = "/login/main.html";
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+                alert('Email ou senha incorretos!');
+                senha_input.style = 'border: 1px solid red;'
+                email_input.style = 'border: 1px solid red;'
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
     }
 }

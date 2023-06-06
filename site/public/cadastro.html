@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./css/styleCadastro.css">
     <link rel="icon" href="/">
     <script src="./js/funcoes.js"></script>
-    <!-- <script src="./js/validacao.js"></script> -->
+    <script src="./js/validacao.js"></script>
     <title>Cadastro</title>
 </head>
 
@@ -117,7 +117,7 @@
 </html>
 
 <script>
-    function cadastrar() {
+    function cadastrarA() {
         aguardar();
 
         //Recupere o valor da nova input pelo nome do id
@@ -160,29 +160,30 @@
             console.log("resposta: ", resposta);
 
             if (resposta.ok) {
-                cardErro.style.display = "block";
+                // cardErro.style.display = "block";
 
-                mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+                // mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
 
                 setTimeout(() => {
                     window.location = "login.html";
                 }, "2000")
 
-                limparFormulario();
-                finalizarAguardar();
+                // limparFormulario();
+                // finalizarAguardar();
             } else {
                 throw ("Houve um erro ao tentar realizar o cadastro!");
+                alert("Houve um erro ao tentar realizar o cadastro!")
             }
         }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
-            finalizarAguardar();
+            // finalizarAguardar();
         });
 
         return false;
     }
 
-    function sumirMensagem() {
-        cardErro.style.display = "none"
-    }
+    // function sumirMensagem() {
+    //     cardErro.style.display = "none"
+    // }
 
 </script>

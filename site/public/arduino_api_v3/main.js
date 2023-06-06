@@ -5,6 +5,7 @@ const mysql = require('mysql2');
 const SERIAL_BAUD_RATE = 9600;
 const SERVIDOR_PORTA = 3000;
 const HABILITAR_OPERACAO_INSERIR = true;
+let contador = 0;
 
 const serial = async (
     // valoresDht11Umidade,
@@ -52,10 +53,18 @@ const serial = async (
         // valoresChave.push(chave);
 
         if (HABILITAR_OPERACAO_INSERIR) {
-            await poolBancoDados.execute(
-                'INSERT INTO medida (lm35, momento, fk_transformador, fk_empresa) VALUES (?, now(), 1, 1)',
-                [lm35Temperatura]
-            );
+            if(contador < 10){
+                await poolBancoDados.execute(
+                    'INSERT INTO medida (lm35, momento, fk_transformador, fk_empresa) VALUES (?, now(), 1, 1)',
+                    [lm35Temperatura]
+                );
+                contador++;
+            } else{
+                await poolBancoDados.execute(
+                    'INSERT INTO medida (lm35, momento, fk_transformador, fk_empresa) VALUES (160, now(), 1, 1)'
+                );
+                contador = 0;
+            }
         }
 
     });
