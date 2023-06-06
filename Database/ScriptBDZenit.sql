@@ -1,5 +1,7 @@
 -- CREATE USER 'zenitUser'@'localhost' IDENTIFIED BY 'Zenit@123';
 create database  zenit;
+select * from empresa;
+
 
 use zenit;
 -- GRANT ALL PRIVILEGES ON zenit.* TO 'zenitUser'@'localhost';
@@ -13,7 +15,8 @@ create table empresa(
     telEmpresa varchar(45)
 	)
 ;
-SELECT * FROM empresa;
+insert into empresa (nomeEmpresa, emailEmpresa, senhaEmpresa, CNPJ, telEmpresa) values ('teste', 'teste@gmail.com', '12345', '12345678901234', '11999999999');
+-- SELECT * FROM empresa;
 
 
 create table endereco (
@@ -31,35 +34,39 @@ create table endereco (
 
 
 create table transformador (
-	idTransformador INT PRIMARY KEY AUTO_INCREMENT,
-	descricao VARCHAR(300),
-    fkEmpresa INT,
-    FOREIGN KEY(fkEmpresa) REFERENCES empresa(idEmpresa)
+	idTransformador INT,
+	fkEmpresa INT,
+    FOREIGN KEY(fkEmpresa) REFERENCES empresa(idEmpresa),
+    PRIMARY KEY(idTransformador, fkEmpresa)
 );
-
-
-insert into medida (lm35, momento, fk_transformador)values
-	(30, now(), 1);
-
+-- select * from transformador;
+insert into transformador values (1, 1), (2, 1), (1, 2);
+select * from transformador where idTransformador = 1 and fkEmpresa = 2;
+select * from transformador;
+-- insert into medida (lm35, momento, fk_transformador)values
+-- 	(30, now(), 1);
+INSERT INTO medida (lm35, momento, fk_transformador, fk_empresa) VALUES (160, now(), 1, 1);
 create table medida (
 	id INT PRIMARY KEY AUTO_INCREMENT,
-	dht11_umidade DECIMAL,
-	dht11_temperatura DECIMAL,
-	luminosidade DECIMAL,
+-- 	dht11_umidade DECIMAL,
+-- 	dht11_temperatura DECIMAL,
+-- 	luminosidade DECIMAL,
 	lm35 DECIMAL,
-	chave TINYINT,
+-- 	chave TINYINT,
 	momento DATETIME,
 	fk_transformador INT,
-	FOREIGN KEY (fk_transformador) REFERENCES transformador(id)
+    fk_empresa INT,
+	FOREIGN KEY (fk_transformador) REFERENCES transformador(idTransformador),
+    FOREIGN KEY (fk_empresa) REFERENCES transformador(fkEmpresa)
 );
 
 
 create table funcionario (
-    fkEmpresa int ,
+    fkEmpresa int,
     foreign key (fkEmpresa) references empresa (idEmpresa),
     -- idUsuario int primary key auto_increment,
     idFuncionario int primary key auto_increment,
-    senhaFuncionario varchar(45) ,
+    senhaFuncionario varchar(45),
     emailFuncionario varchar(45) 
     -- fkEmpresa int,
     -- foreign key (fkEmpresa) references empresa (idEmpresa),
