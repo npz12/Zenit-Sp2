@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="./styleChart.css">
     <script src="../js/funcoes.js"></script>
     <script src="./alerta.js"></script>
+    <script src="../arduino_api_v3/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </head>
@@ -155,6 +156,7 @@
             </div>
         </div>
     </div>
+    <button onclick="teste()">teste</button>
     </div>
 
     <div class="divFooter">
@@ -226,7 +228,7 @@
 
     let proximaAtualizacao;
 
-    window.onload = obterDadosGraficos(), obterDadosKpi(1);
+    window.onload = obterDadosGraficos(), obterDadosKpi(1, fkEmpresa);
     
     
     function obterDadosGraficos() {
@@ -242,26 +244,26 @@
     //     // obterDadosKpi(4)
     // }
     var dadosKpi = [0, 0, 0];
-    let atualizarTransformador = setInterval(() => obterDadosKpi(1), 2000)
+    let atualizarTransformador = setInterval(() => obterDadosKpi(1, fkEmpresa), 2000)
     function intervaloTransf1() {
         clearInterval(atualizarTransformador)
-        obterDadosKpi(1)
-        atualizarTransformador = setInterval(() => obterDadosKpi(1), 2000)
+        obterDadosKpi(1, fkEmpresa)
+        atualizarTransformador = setInterval(() => obterDadosKpi(1, fkEmpresa), 2000)
     }
     function intervaloTransf2() {
         clearInterval(atualizarTransformador)
-        obterDadosKpi(2)
-        atualizarTransformador = setInterval(() => obterDadosKpi(2), 2000)
+        obterDadosKpi(2, fkEmpresa)
+        atualizarTransformador = setInterval(() => obterDadosKpi(2, fkEmpresa), 2000)
     }
     function intervaloTransf3() {
         clearInterval(atualizarTransformador)
-        obterDadosKpi(3)
-        atualizarTransformador = setInterval(() => obterDadosKpi(3), 2000)
+        obterDadosKpi(3, fkEmpresa)
+        atualizarTransformador = setInterval(() => obterDadosKpi(3, fkEmpresa), 2000)
     }
     function intervaloTransf4() {
         clearInterval(atualizarTransformador)
-        obterDadosKpi(4)
-        atualizarTransformador = setInterval(() => obterDadosKpi(4), 2000)
+        obterDadosKpi(4, fkEmpresa)
+        atualizarTransformador = setInterval(() => obterDadosKpi(4, fkEmpresa), 2000)
     }
 
 

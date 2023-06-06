@@ -5,11 +5,7 @@ const mysql = require('mysql2');
 const SERIAL_BAUD_RATE = 9600;
 const SERVIDOR_PORTA = 3000;
 const HABILITAR_OPERACAO_INSERIR = true;
-function teste(){
-    let fkEmpresa = sessionStorage.ID_EMPRESA;
-    console.log(fkEmpresa);
 
-}
 const serial = async (
     // valoresDht11Umidade,
     // valoresDht11Temperatura,
@@ -57,7 +53,7 @@ const serial = async (
 
         if (HABILITAR_OPERACAO_INSERIR) {
             await poolBancoDados.execute(
-                'INSERT INTO medida (lm35, momento, fk_transformador) VALUES (?, now(), 1)',
+                'INSERT INTO medida (lm35, momento, fk_transformador, fk_empresa) VALUES (?, now(), 1, 1)',
                 [lm35Temperatura]
             );
         }
