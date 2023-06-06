@@ -133,6 +133,42 @@
             }, 5000)
 
         }
+        else if(varRua.length < 5){
+            cardErro.style.display = "block"
+
+            mensagem_erro.innerHTML = "O campo rua deve ter ao menos 5 caracteres";
+
+            setInterval(() => {
+                cardErro.style.display = "none"
+            }, 5000)
+        }
+        else if(varBairro.length < 3){
+            cardErro.style.display = "block"
+
+            mensagem_erro.innerHTML = "O campo bairro deve ter ao menos 3 caracteres";
+
+            setInterval(() => {
+                cardErro.style.display = "none"
+            }, 5000)
+        }
+        else if(varCidade.length < 5){
+            cardErro.style.display = "block"
+
+            mensagem_erro.innerHTML = "O campo cidade deve ter ao menos 5 caracteres";
+
+            setInterval(() => {
+                cardErro.style.display = "none"
+            }, 5000)
+        }
+        else if(varCEP.length != 9){
+            cardErro.style.display = "block"
+
+            mensagem_erro.innerHTML = "O campo CEP deve ter 9 caracteres contando com o '-'";
+
+            setInterval(() => {
+                cardErro.style.display = "none"
+            }, 5000)
+        } 
         else {
 
             fetch(`/usuarios/EditarEnderecoEmpresa/${fkEmpresa}`, {
