@@ -84,3 +84,6 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+#telaCadastro{
+    height: 33vw;
+}
