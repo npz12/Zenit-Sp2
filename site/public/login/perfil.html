@@ -12,8 +12,8 @@
 
 <body onload="listar()">
     <div class="divHeader">
-    <div class="divLogo">
-        <a href="main.html" id="link"> <img src="../assets/imgs/logo-1.png" alt="Logo Zenit" id="imgHeaderLogo">
+        <div class="divLogo">
+            <a href="main.html" id="link"> <img src="../assets/imgs/logo-1.png" alt="Logo Zenit" id="imgHeaderLogo">
             </a>
         </div>
         <a href="CalculadorLogin.html">
@@ -54,14 +54,16 @@
                 <span class="profileText">Endereço: </span>
             </div>
             <div class="mainColumn1">
-                <span id="CNPJAtual" class="profileText">&nbsp</span>
-                <span id="nmrAtual" class="profileText">&nbsp</span>
-                <span id="emailAtual" class="profileText">&nbsp</span>
+                <span id="CNPJAtual" class="profileText"></span>
+                <span id="nmrAtual" class="profileText"></span>
+                <span id="emailAtual" class="profileText"></span>
                 <span id="qntdSensorAtual" class="profileText">&nbsp</span>
-                <span id="qntdFuncionarioAtual" class="profileText"> &nbsp
-                </span>
-                <a class="link" id="btnFuncionario" href="infoFuncionario.html">Gerenciar Funcionarios</a>
-                <span id="enderecoAtual" class="profileText">&nbsp</span>
+                <b id="qntdFuncionarioAtual" class="profileText"></b>
+                
+            </div>
+            <div class="mainColumn2">
+                <button  class="link" onclick="direcionar()" id="btnFuncionario">Gerenciar Funcionarios</button>
+                <button onclick="verificar()" class="link" id="btnEndereco">Gerenciar Endereços</button>
             </div>
         </div>
         <!-- &nbsp é para ocupar o espaço do texto para o estilo ficar correto-->
@@ -93,7 +95,7 @@
                 <h5>SUPORTE</h5> 
                 <ul id="listaFooterSuporte">
                     <li><a href="https://mail.google.com"> Zeniteletrica@gmail.com </a></li>
-                    <li><a href="https://zeniteletrica.atlassian.net/servicedesk/customer/portal/1"> Central de ajuda </a></li>
+                    <li><a href="https://zeniteletrica.atlassian.net"> Central de ajuda </a></li>
                 </ul>
             </div>
             <div class="divColunaRedes">
@@ -133,9 +135,7 @@
                             CNPJAtual.innerHTML = `${publicacao.CNPJ}`
                             nmrAtual.innerHTML = `${publicacao.telEmpresa}`
                             emailAtual.innerHTML = `${publicacao.emailEmpresa}`
-                            qntdSensorAtual.innerHTML = `${publicacao.qntdSensores}`
                             qntdFuncionarioAtual.innerHTML = `${publicacao.qntdFuncionario}`
-                            enderecoAtual.innerHTML =`${publicacao.ruaEmpresa} ${publicacao.numeroEmpresa}`
 
 
 
@@ -160,9 +160,7 @@
                             CNPJAtual.innerHTML = `${publicacao.CNPJ}`
                             nmrAtual.innerHTML = `${publicacao.telEmpresa}`
                             emailAtual.innerHTML = `${publicacao.emailEmpresa}`
-                            qntdSensorAtual.innerHTML = `${publicacao.qntdSensores}`
                             qntdFuncionarioAtual.innerHTML = `${publicacao.qntdFuncionario}`
-                            enderecoAtual.innerHTML =`${publicacao.ruaEmpresa}, ${publicacao.numeroEmpresa}`
                             
 
 
@@ -203,4 +201,7 @@
         })
     }
 
+    function direcionar(){
+        window.location  = 'infoFuncionario.html'
+    }
 </script>

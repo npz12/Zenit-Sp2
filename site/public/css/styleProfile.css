@@ -1,6 +1,6 @@
 .container{
     width: 70vw;
-    height: 50vh;
+    height: 40vh;
     margin:  auto;
     margin-top: 10vh;
     display: flex;
@@ -23,7 +23,14 @@ margin-right: 2vw;
     display: flex;
     flex-direction: column;
     padding-left: 1vh;
-    gap: 0;
+}
+.mainColumn2{
+    display: flex;
+    flex-direction: column;
+    padding-left: 1vh;
+    flex-direction: column;
+    justify-content: top;
+    padding: 1vh;
 }
 .profileText{
     margin-bottom: 2vh;
@@ -33,17 +40,6 @@ margin-right: 2vw;
     text-decoration: underline;
     background-color: darkgrey;
     padding: 0.2vw;
+    margin-bottom: 1.5vh;
     border-radius: 3px;
-    margin-left: 35px;
-    gap: 0;
-}
-#parte1{
-    display: flex;
-    flex-direction: column;
-    padding-left: 1vh;
-}
-#parte2{
-    display: flex;
-    flex-direction: column;
-    padding-left: 1vh;
 }
