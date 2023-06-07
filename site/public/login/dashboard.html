@@ -116,7 +116,16 @@
                 </div>
             </div>
 
+            <div id="kpis">
+                <span>20</span>
+                <span>45</span>
+                <span>60</span>
+                <span>80</span>
+                <span>100</span>
+            </div>
+            <div id="regua"></div>
         </div>
+
         <div class="divKPI" id="divKpiGeral">
 
             <div class="miniKPI">
@@ -206,13 +215,14 @@
 </html>
 <script>
 
+    let tempoIntervalo = 6000;
     let fkEmpresa = sessionStorage.ID_EMPRESA;
     function atualizacaoPeriodica() {
         obterdados(1);
         obterdados(2);
         obterdados(3);
         obterdados(4);
-        setTimeout(atualizacaoPeriodica, 5000);
+        setTimeout(atualizacaoPeriodica, tempoIntervalo);
     }
     atualizacaoPeriodica()
     
@@ -245,26 +255,26 @@
     //     // obterDadosKpi(4)
     // }
     var dadosKpi = [0, 0, 0];
-    let atualizarTransformador = setInterval(() => obterDadosKpi(1, fkEmpresa), 2000)
+    let atualizarTransformador = setInterval(() => obterDadosKpi(1, fkEmpresa), tempoIntervalo)
     function intervaloTransf1() {
         clearInterval(atualizarTransformador)
         obterDadosKpi(1, fkEmpresa)
-        atualizarTransformador = setInterval(() => obterDadosKpi(1, fkEmpresa), 2000)
+        atualizarTransformador = setInterval(() => obterDadosKpi(1, fkEmpresa), tempoIntervalo)
     }
     function intervaloTransf2() {
         clearInterval(atualizarTransformador)
         obterDadosKpi(2, fkEmpresa)
-        atualizarTransformador = setInterval(() => obterDadosKpi(2, fkEmpresa), 2000)
+        atualizarTransformador = setInterval(() => obterDadosKpi(2, fkEmpresa), tempoIntervalo)
     }
     function intervaloTransf3() {
         clearInterval(atualizarTransformador)
         obterDadosKpi(3, fkEmpresa)
-        atualizarTransformador = setInterval(() => obterDadosKpi(3, fkEmpresa), 2000)
+        atualizarTransformador = setInterval(() => obterDadosKpi(3, fkEmpresa), tempoIntervalo)
     }
     function intervaloTransf4() {
         clearInterval(atualizarTransformador)
         obterDadosKpi(4, fkEmpresa)
-        atualizarTransformador = setInterval(() => obterDadosKpi(4, fkEmpresa), 2000)
+        atualizarTransformador = setInterval(() => obterDadosKpi(4, fkEmpresa), tempoIntervalo)
     }
 
 
@@ -458,7 +468,7 @@
             config
         );
 
-        setTimeout(() => atualizarGrafico(idTransformador, dados, myChart, kpi), 2000);
+        setTimeout(() => atualizarGrafico(idTransformador, dados, myChart, kpi), tempoIntervalo);
     }
 
     // Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
@@ -503,12 +513,12 @@
                     }
 
                     // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idTransformador, dados, myChart, kpi), 2000);
+                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idTransformador, dados, myChart, kpi), tempoIntervalo);
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
                 // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                proximaAtualizacao = setTimeout(() => atualizarGrafico(idTransformador, dados, myChart, kpi), 2000);
+                proximaAtualizacao = setTimeout(() => atualizarGrafico(idTransformador, dados, myChart, kpi), tempoIntervalo);
             }
         })
             .catch(function (error) {

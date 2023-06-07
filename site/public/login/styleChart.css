@@ -178,3 +178,16 @@ canvas {
 .selectGrafico{
     margin: 0 50%;
 }
+#regua{
+    border: 1px solid;
+    width: 100%;
+    height: 40px;
+    border-radius: 8px;
+    background: rgb(255,68,68);
+background: linear-gradient(90deg, rgba(255,68,68,1) 0%, rgba(255,243,68,1) 20%, rgba(255,255,68,1) 35%, rgba(68,255,68,1) 50%, rgba(255,255,68,1) 65%, rgba(255,255,68,1) 80%, rgba(255,68,68,1) 100%);
+}
+#kpis{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 15px;
+}

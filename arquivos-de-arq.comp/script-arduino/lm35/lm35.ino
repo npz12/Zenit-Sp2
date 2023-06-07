@@ -13,6 +13,6 @@ Serial.begin(9600); // inicializa a comunicação serial
 void loop() {
 temperatura = (float(analogRead(LM35)* 0.00488)) * 100;
 Serial.println(temperatura);
-delay(2000);
+delay(4000);
 
 }
