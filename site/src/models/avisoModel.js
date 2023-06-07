@@ -4,11 +4,14 @@ function listar(idEmpresa) {
     console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
     var instrucao = `
     SELECT 
-        u.nomeEmpresa,
-        u.emailEmpresa,
-        u.CNPJ,
-        u.telEmpresa,
-        (SELECT count(idFuncionario) FROM funcionario WHERE fkEmpresa='${idEmpresa}') as qntdFuncionario
+    u.nomeEmpresa,
+    u.emailEmpresa,
+    u.CNPJ,
+    u.telEmpresa,
+    (SELECT count(idFuncionario) FROM funcionario WHERE fkEmpresa= '${idEmpresa}') as qntdFuncionario,
+    (SELECT count(idTransformador) FROM transformador WHERE fkEmpresa = '${idEmpresa}') as qntdSensores,
+    (SELECT rua FROM endereco WHERE fkEmpresa = '${idEmpresa}') as ruaEmpresa,
+        (SELECT numero FROM endereco WHERE fkEmpresa = '${idEmpresa}') as numeroEmpresa
     FROM empresa u WHERE idEmpresa = '${idEmpresa}';
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
@@ -23,7 +26,10 @@ function listarPorFk(idEmpresa, emailFunc) {
         u.CNPJ,
         u.telEmpresa,
         (SELECT count(idFuncionario) FROM funcionario WHERE fkEmpresa='${idEmpresa}') as qntdFuncionario,
-        (SELECT nomeFuncionario FROM funcionario WHERE emailFuncionario = '${emailFunc}') as nomeFuncionario
+        (SELECT count(idTransformador) FROM transformador WHERE fkEmpresa = '${idEmpresa}') as qntdSensores,
+        (SELECT nomeFuncionario FROM funcionario WHERE emailFuncionario = '${emailFunc}') as nomeFuncionario,
+        (SELECT rua FROM endereco WHERE fkEmpresa = '${idEmpresa}') as ruaEmpresa,
+        (SELECT numero FROM endereco WHERE fkEmpresa = '${idEmpresa}') as numeroEmpresa
     FROM empresa u WHERE idEmpresa = '${idEmpresa}';
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);

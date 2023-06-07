@@ -61,8 +61,7 @@
                 <span id="qntdFuncionarioAtual" class="profileText"> &nbsp
                 </span>
                 <a class="link" id="btnFuncionario" href="infoFuncionario.html">Gerenciar Funcionarios</a>
-                <span id="EnderecoAtual" class="profileText">&nbsp<button onclick="verificar()" class="link"
-                        id="btnEndereco">Gerenciar Endereços</button></span>
+                <span id="enderecoAtual" class="profileText">&nbsp</span>
             </div>
         </div>
         <!-- &nbsp é para ocupar o espaço do texto para o estilo ficar correto-->
@@ -134,8 +133,9 @@
                             CNPJAtual.innerHTML = `${publicacao.CNPJ}`
                             nmrAtual.innerHTML = `${publicacao.telEmpresa}`
                             emailAtual.innerHTML = `${publicacao.emailEmpresa}`
-                            qntdSensorAtual.innerHTML = `${publicacao.qntdSensor}`
+                            qntdSensorAtual.innerHTML = `${publicacao.qntdSensores}`
                             qntdFuncionarioAtual.innerHTML = `${publicacao.qntdFuncionario}`
+                            enderecoAtual.innerHTML =`${publicacao.ruaEmpresa} ${publicacao.numeroEmpresa}`
 
 
 
@@ -160,7 +160,9 @@
                             CNPJAtual.innerHTML = `${publicacao.CNPJ}`
                             nmrAtual.innerHTML = `${publicacao.telEmpresa}`
                             emailAtual.innerHTML = `${publicacao.emailEmpresa}`
+                            qntdSensorAtual.innerHTML = `${publicacao.qntdSensores}`
                             qntdFuncionarioAtual.innerHTML = `${publicacao.qntdFuncionario}`
+                            enderecoAtual.innerHTML =`${publicacao.ruaEmpresa}, ${publicacao.numeroEmpresa}`
                             
 
 
