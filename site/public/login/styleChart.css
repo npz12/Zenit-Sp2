@@ -31,6 +31,18 @@
     flex-direction: column;
     align-items: center;
 }
+.listaKpi {
+    display: flex;
+    width: 200px;
+    height: 400px;
+    font-size: 120px;
+    background-color: #fff;
+    font-weight: bold;
+    /* border: solid #5cabeb 1px; */
+    border-radius: 20px;
+    flex-direction: column;
+    align-items: center;
+}
 
 #metricas {
     align-items: center;
@@ -94,7 +106,7 @@
     color: #4e4e4e;
 
 } */
-#caixaDois {
+#listaTransformadores {
     overflow-y: auto;
 }
 
@@ -159,7 +171,10 @@ canvas {
 }
 
 .tempExibida {
-    width: 35px;
+    width: 60px;
     border-radius: 5px;
+    font-size: 20px;
 }
-
+.selectGrafico{
+    margin: 0 50%;
+}
