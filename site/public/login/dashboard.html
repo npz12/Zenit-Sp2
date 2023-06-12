@@ -56,16 +56,15 @@
                 <option value="4">Transformador 4</option>
             </select> -->
             <!-- <div class="btns-dash"> -->
-                <!-- O gráfico é chamado de acordo com o id (fk_transformador) do banco  -->
-                <button class="buttonGrafico" onclick="exibirTransf(1), intervaloTransf1()"
-                    id="btnTransf1">Transformador 1</button>
-                <button class="buttonGrafico" onclick="exibirTransf(2), intervaloTransf2()"
-                    id="btnTransf2">Transformador 2</button>
-                <button class="buttonGrafico" onclick="exibirTransf(3), intervaloTransf3()"
-                    id="btnTransf3">Transformador 3</button>
-                <button class="buttonGrafico" onclick="exibirTransf(4), intervaloTransf4()"
-                    id="btnTransf4">Transformador 4</button>
-            </div>
+            <!-- O gráfico é chamado de acordo com o id (fk_transformador) do banco  -->
+            <button class="buttonGrafico" onclick="exibirTransf(1), intervaloTransf1()" id="btnTransf1">Transformador
+                1</button>
+            <button class="buttonGrafico" onclick="exibirTransf(2), intervaloTransf2()" id="btnTransf2">Transformador
+                2</button>
+            <button class="buttonGrafico" onclick="exibirTransf(3), intervaloTransf3()" id="btnTransf3">Transformador
+                3</button>
+            <button class="buttonGrafico" onclick="exibirTransf(4), intervaloTransf4()" id="btnTransf4">Transformador
+                4</button>
             <div id="graficos">
                 <div id="grafico1" class="display-block">
                     <h3 class="tituloGraficos">
@@ -114,8 +113,11 @@
                         <p id="avisoCaptura4"></p>
                     </div>
                 </div>
+
+
             </div>
 
+            <div id="regua"></div>
             <div id="kpis">
                 <span>20</span>
                 <span>45</span>
@@ -123,15 +125,13 @@
                 <span>80</span>
                 <span>100</span>
             </div>
-            <div id="regua"></div>
+            
         </div>
-
         <div class="divKPI" id="divKpiGeral">
 
             <div class="miniKPI">
                 <canvas id="graficoKpi" width="200px"></canvas>
             </div>
-
             <div class="listaKpi" id="listaTransformadores">
                 <span id="visaoGeral">
                     <div class="card">
@@ -147,7 +147,7 @@
                             <p id="temp_transf_2" class="tempExibida">-°C</p>
                         </div>
                         <div class="cor-alerta" id="card_2"></div>
-
+    
                     </div>
                     <div class="card">
                         <h1>Transformador 3</h1>
@@ -166,43 +166,53 @@
                 </span>
             </div>
         </div>
+
+    </div>
+
+
     </div>
     </div>
 
     <div class="divFooter">
         <div class="content">
             <img src="../assets/imgs/logo-1.png" alt="Logo Footer" id="imgFooterLogo">
-            <div class="divColuna">  
-                <h5>INÍCIO</h5>    
+            <div class="divColuna">
+                <h5>INÍCIO</h5>
                 <ul id="listaFooterHome">
                     <li><a href="main.html"> Home </a></li>
                     <li><a href="dashboard.html"> Dashboard </a></li>
                     <li><a href="cadastrarFuncionario.html"> Cadastrar Funcionário </a></li>
                     <li><a href="perfil.html"> Perfil </a></li>
-                </ul>    
+                </ul>
             </div>
-            <div class="divColuna">  
-                <h5>FALE CONOSCO</h5>    
+            <div class="divColuna">
+                <h5>FALE CONOSCO</h5>
                 <ul id="listaFooterFaleConosco">
                     <li><a href="nossoProdutoLogin.html"> Informações da Empresa </a></li>
                     <li><a href="QuemSomosLogin.html"> Sobre nós </a></li>
-                </ul>    
+                </ul>
             </div>
             <div class="divColuna">
-                <h5>SUPORTE</h5> 
+                <h5>SUPORTE</h5>
                 <ul id="listaFooterSuporte">
                     <li><a href="https://mail.google.com"> Zeniteletrica@gmail.com </a></li>
-                    <li><a href="https://zeniteletrica.atlassian.net/servicedesk/customer/portal/1"> Central de ajuda </a></li>
+                    <li><a href="https://zeniteletrica.atlassian.net/servicedesk/customer/portal/1"> Central de ajuda
+                        </a></li>
                 </ul>
             </div>
             <div class="divColunaRedes">
-                <a href="https://www.instagram.com/"><img src="../assets/imgs/instagram-icon.svg" alt="icon - instagram" class="iconsFooter"></a>
-                <a href="https://www.linkedin.com"><img src="../assets/imgs/linkedin-icon.svg" alt="icon - linkedin" class="iconsFooter"></a>
-                <a href="https://github.com/npz12/Zenit-Sp2.git"><img src="../assets/imgs/github-icon-footer.svg" alt="icon - github" class="iconsFooter"></a>    
+                <a href="https://www.instagram.com/"><img src="../assets/imgs/instagram-icon.svg" alt="icon - instagram"
+                        class="iconsFooter"></a>
+                <a href="https://www.linkedin.com"><img src="../assets/imgs/linkedin-icon.svg" alt="icon - linkedin"
+                        class="iconsFooter"></a>
+                <a href="https://github.com/npz12/Zenit-Sp2.git"><img src="../assets/imgs/github-icon-footer.svg"
+                        alt="icon - github" class="iconsFooter"></a>
             </div>
         </div>
 
-        <div id="zenitFooter"><h4>© 2023 Copyright Zenit</h4></div>
+        <div id="zenitFooter">
+            <h4>© 2023 Copyright Zenit</h4>
+        </div>
     </div>
 </body>
 
@@ -219,12 +229,12 @@
         setTimeout(atualizacaoPeriodica, tempoIntervalo);
     }
     atualizacaoPeriodica()
-    
+
 
     const kpiGeral = document.getElementById('graficoKpi');
 
     Chart.defaults.color = "#000";
-    
+
 
     function arredondar(dateTimeValue) {
         return (dateTimeValue < 10) ? '0' + dateTimeValue.toString() : dateTimeValue.toString();
@@ -233,8 +243,8 @@
     let proximaAtualizacao;
 
     window.onload = obterDadosGraficos(), obterDadosKpi(1, fkEmpresa);
-    
-    
+
+
     function obterDadosGraficos() {
         obterDadosGrafico(1)
         obterDadosGrafico(2)
@@ -464,6 +474,6 @@
             });
 
     }
-       
+
 
 </script>
