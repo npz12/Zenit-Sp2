@@ -49,15 +49,15 @@
         <div class="dash">
             <div id="alerta">
             </div>
-            <select class="selectGrafico" onchange="exibirTransf(this.value)">
+            <!-- <select class="selectGrafico" onchange="exibirTransf(this.value)">
                 <option value="1">Transformador 1</option>
                 <option value="2">Transformador 2</option>
                 <option value="3">Transformador 3</option>
                 <option value="4">Transformador 4</option>
-            </select>
+            </select> -->
             <!-- <div class="btns-dash"> -->
                 <!-- O gráfico é chamado de acordo com o id (fk_transformador) do banco  -->
-                <!-- <button class="buttonGrafico" onclick="exibirTransf(1), intervaloTransf1()"
+                <button class="buttonGrafico" onclick="exibirTransf(1), intervaloTransf1()"
                     id="btnTransf1">Transformador 1</button>
                 <button class="buttonGrafico" onclick="exibirTransf(2), intervaloTransf2()"
                     id="btnTransf2">Transformador 2</button>
@@ -65,7 +65,7 @@
                     id="btnTransf3">Transformador 3</button>
                 <button class="buttonGrafico" onclick="exibirTransf(4), intervaloTransf4()"
                     id="btnTransf4">Transformador 4</button>
-            </div> -->
+            </div>
             <div id="graficos">
                 <div id="grafico1" class="display-block">
                     <h3 class="tituloGraficos">
@@ -220,8 +220,7 @@
     }
     atualizacaoPeriodica()
     
-    // const visaoAmpla = document.getElementById('graficoVisaoAmpla');
-    // const visaoDetalhada = document.getElementById('graficoTransformador1');
+
     const kpiGeral = document.getElementById('graficoKpi');
 
     Chart.defaults.color = "#000";
@@ -242,12 +241,7 @@
         obterDadosGrafico(3)
         obterDadosGrafico(4)
     }
-    // function obterDadosKpis(){
-        //     obterDadosKpi(1)
-    //     // obterDadosKpi(2)
-    //     // obterDadosKpi(3)
-    //     // obterDadosKpi(4)
-    // }
+
     var dadosKpi = [0, 0, 0];
     let atualizarTransformador = setInterval(() => obterDadosKpi(1, fkEmpresa), tempoIntervalo)
     function intervaloTransf1() {
@@ -280,6 +274,7 @@
 
     function exibirTransf(idTransformador) {
         let todosOsGraficos = document.getElementById("graficos")
+        console.log(idTransformador)
 
         for (i = 1; i <= todosOsGraficos.childElementCount; i++) {
             // exibindo - ou não - o gráfico
@@ -290,37 +285,14 @@
                 elementoAtual.classList.remove("display-block")
             }
             elementoAtual.classList.add("display-none")
-
-            // alterando estilo do botão
-            // let btnAtual = document.getElementById(`btnTransf${i}`)
-            // if (btnAtual.classList.contains("btn-pink")) {
-            //     btnAtual.classList.remove("btn-pink")
-            // }
-            // btnAtual.classList.add("btn-white")
         }
 
-        // exibindo - ou não - o gráfico
         let graficoExibir = document.getElementById(`grafico${idTransformador}`)
         graficoExibir.classList.remove("display-none")
         graficoExibir.classList.add("display-block")
 
-        // alterando estilo do botão
-        // let btnExibir = document.getElementById(`btnTransf${idTransformador}`)
-        // btnExibir.classList.remove("btn-white")
-        // btnExibir.classList.add("btn-pink")
     }
 
-    // O gráfico é construído com três funções:
-    // 1. obterDadosGrafico -> Traz dados do Banco de Dados para montar o gráfico da primeira vez
-    // 2. plotarGrafico -> Monta o gráfico com os dados trazidos e exibe em tela
-    // 3. atualizarGrafico -> Atualiza o gráfico, trazendo novamente dados do Banco
-
-    // Esta função *obterDadosGrafico* busca os últimos dados inseridos em tabela de medidas.
-    // para, quando carregar o gráfico da primeira vez, já trazer com vários dados.
-    // A função *obterDadosGrafico* também invoca a função *plotarGrafico*
-
-    //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
-    //     Para ajustar o "select", ajuste o comando sql em src/models
 
     function obterDadosGrafico(idTransformador) {
 
@@ -347,9 +319,7 @@
             });
     }
 
-    // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
-    // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
-    // A função *plotarGrafico* também invoca a função *atualizarGrafico*
+
     let plotarDadosKpi = {
         type: 'pie',
         data: {
@@ -386,15 +356,13 @@
         fetch(`/medidas/ultimas-kpis/${idTransformador}/${fkEmpresa}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
-                    // console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
                     console.log(resposta[0])
-                    // console.log(resposta, idTransformador, fkEmpresa)
-                    // console.log(dadosKpi, 'antes')
+
                     dadosKpi[0] = resposta[0].ideal;
                     dadosKpi[1] = resposta[0].alerta;
                     dadosKpi[2] = resposta[0].critico;
-                    // console.log(dadosKpi, 'depois')
-                    // console.log(dadosKpi)
+
                     plotarDadosKpi.data.labels = [`Ideal(${dadosKpi[0]})`, `Alerta(${dadosKpi[1]})`, `Critico(${dadosKpi[2]})`];
                     kpi.update();
 
@@ -412,17 +380,14 @@
 
     function plotarGrafico(resposta, idTransformador) {
 
-        // console.log('iniciando plotagem do gráfico...');
 
-        // Criando estrutura para plotar gráfico - labels
         let labels = [];
 
-        // Criando estrutura para plotar gráfico - dados
         let dados = {
             labels: labels,
             datasets: [
                 {
-                    label: 'Temperatura( °C ) 00/00/0000',
+                    label: 'Temperatura( °C )',
                     data: [],
                     fill: false,
                     borderColor: "#4472c4",
@@ -431,32 +396,18 @@
                 }]
         };
 
-        // console.log('----------------------------------------------')
-        // console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
-        // console.log(resposta)
-
-        // Inserindo valores recebidos em estrutura para plotar o gráfico
         for (i = 0; i < resposta.length; i++) {
             var registro = resposta[i];
             labels.push(registro.momento_grafico);
             dados.datasets[0].data.push(registro.temperatura);
         }
 
-        // console.log('----------------------------------------------')
-        // console.log('O gráfico será plotado com os respectivos valores:')
-        // console.log('Labels:')
-        // console.log(labels)
-        // console.log('Dados:')
-        // console.log(dados.datasets)
-        // console.log('----------------------------------------------')
-
-        // Criando estrutura para plotar gráfico - config
         const config = {
             type: 'line',
             data: dados,
         };
 
-        // Adicionando gráfico criado em div na tela
+
         let myChart = new Chart(
             document.getElementById(`graficoTransformador${idTransformador}`),
             config
@@ -465,11 +416,7 @@
         setTimeout(() => atualizarGrafico(idTransformador, dados, myChart, kpi), tempoIntervalo);
     }
 
-    // Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
-    // buscando a última medida inserida em tabela contendo as capturas, 
 
-    //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
-    //     Para ajustar o "select", ajuste o comando sql em src/models
     function atualizarGrafico(idTransformador, dados, myChart, kpi) {
 
 
@@ -477,17 +424,14 @@
             if (response.ok) {
                 response.json().then(function (novoRegistro) {
 
-                    // console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
-                    // console.log(`Dados atuais do gráfico:`);
-                    // console.log(dados);
+
 
                     let avisoCaptura = document.getElementById(`avisoCaptura${idTransformador}`)
                     avisoCaptura.innerHTML = ""
 
 
                     if (novoRegistro[0].momento_grafico == dados.labels[dados.labels.length - 1]) {
-                        // console.log("---------------------------------------------------------------")
-                        // console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+
                         avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
                         // console.log(dados.datasets[0].data.length)
                         // console.log("Horário do novo dado capturado:")
@@ -520,59 +464,6 @@
             });
 
     }
-        // var graficoDetalhado = new Chart(visaoDetalhada, {
-            //     type: 'line',
-            //     data: {
-                // labels: ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00'],
-                //         datasets: [{
-                    //             label: `Temperatura( °C ) 00/00/0000`,
-        //             // label: 'Ideal',
-        //             data: dadosVI,
-        //             borderWidth: 5,
-        //             borderColor: "#4472c4",
-        //             backgroundColor: "#4472c4"
-        //         },]
-        //     },
-        //     options: {
-        //         plugins: {
-        //             legend: {
-        //                 labels: {
-        //                     font: {
-            //                         size: 25
-            //                     }
-            //                 },
-            //                 title: {
-                //                     font: {
-                    //                         size: 40
-                    //                     },
-                    //                     display: true,
-                    //                     text: 'Transformador: 1',
-                    //                 },
-                    //             }
-                    //         },
-                    //         scales: {
-                        //             y: {
-                            //                 grid: {
-                                //                     color: '#636363'
-                                //                 },
-                                //                 beginAtZero: false,
-                                //                 title: {
-                                    //                     display: true,
-                                    //                     text: 'Temperatura'
-                                    //                 }
-                                    //             },
-                                    //             x: {
-                                        //                 grid: {
-                                            //                     display: true,
-        //                     color: '#636363'
-        //                 },
-        //                 title: {
-        //                     display: true,
-        //                     text: 'Horário'
-        //                 }
-        //             }
-        //         }
-        //     }
-        // });
+       
 
 </script>
