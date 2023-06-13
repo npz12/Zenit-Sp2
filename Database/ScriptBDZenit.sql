@@ -2,8 +2,8 @@
 create database  zenit;
 select * from empresa;
 
-
 use zenit;
+
 -- GRANT ALL PRIVILEGES ON zenit.* TO 'zenitUser'@'localhost';
 
 create table empresa(
